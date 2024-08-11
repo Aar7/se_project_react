@@ -4,6 +4,9 @@
 
 .header {
   display: flex;
+  font-family: "Cabinet Grotesk Bold", "Arial";
+  font-size: 20px;
+  font-weight: 700;
   justify-content: space-between;
   padding: 0;
   height: 40px;
@@ -14,15 +17,35 @@
   align-items: center;
 }
 
-.header__profile {
-  display: flex;
+.header__logo {
+  width: 89px;
+  height: 40px;
 }
 
-.header__date-location {
-  margin: 0 0 0 12px;
-  align-self: center;
+.header__add-clothes {
+  font-family: "Cabinet Grotesk Bold", "Arial";
+  font-size: 20px;
+  font-weight: 700;
+  background-color: white;
+  border: 0;
+}
+
+.header__profile {
+  display: flex;
+  align-items: center;
 }
 
 .header__profile-name {
   margin: 0 0 0 20px;
+}
+
+.header__profile-image {
+  margin: 0 0 0 12px;
+  height: 40px;
+  width: 40px;
+}
+
+.header__date-location {
+  margin: 0 0 0 24px;
+  align-self: center;
 }
