@@ -1,4 +1,4 @@
-// import React from "react";
+import profImage from "../../assets/images/profile-image-placeholder.svg";
 import "./Header.css";
 
 function Header() {
@@ -12,7 +12,7 @@ function Header() {
         <button className="header__add-clothes">+ Add clothes</button>
         <div className="header__profile">
           <p className="header__profile-name">NAME</p>
-          <img className="header__profile-image"></img>
+          <img className="header__profile-image" src={profImage} />
         </div>
       </div>
     </div>
