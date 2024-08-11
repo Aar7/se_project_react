@@ -1,0 +1,8 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Cabinet Grotesk Regular";
+  font-size: 16px;
+  line-height: 20px;
+}

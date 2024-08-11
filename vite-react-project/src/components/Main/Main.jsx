@@ -1,11 +1,13 @@
 import "./Main.css";
-import ItemCard from "./ItemCard/ItemCard";
 import WeatherCard from "./WeatherCard/WeatherCard";
+import ItemCard from "./ItemCard/ItemCard";
 function Main() {
   return (
     <>
-      <ItemCard />
-      <WeatherCard />
+      <div className="main">
+        <WeatherCard />
+        <ItemCard />
+      </div>
     </>
   );
 }

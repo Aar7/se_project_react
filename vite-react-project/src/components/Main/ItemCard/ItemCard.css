@@ -1,0 +1,19 @@
+.main__cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.main__cards_cardsList {
+  display: grid;
+}
+
+.main__cards_cardsList {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.main__cards_listItem-image {
+  position: relative;
+}
