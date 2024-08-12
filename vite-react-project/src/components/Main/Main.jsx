@@ -1,15 +1,15 @@
 import "./Main.css";
 import WeatherCard from "./WeatherCard/WeatherCard";
 import ItemCard from "./ItemCard/ItemCard";
-import defaultContent from "../../utils/defaultContent.js";
-function Main() {
+// import defaultContent from "../../utils/defaultContent.js";
+function Main({ temp, defaultContent }) {
   return (
     <>
       <div className="main">
-        <WeatherCard />
+        <WeatherCard temp={temp} />
         <div className="main__cards">
           <p className="main__cards_suggestion">
-            Today is insanely buggy. Wear DevTools
+            {`Today is ${temp}° F / You may want to wear:`}
           </p>
           <ul className="main__cards_cardsList">
             <ItemCard
