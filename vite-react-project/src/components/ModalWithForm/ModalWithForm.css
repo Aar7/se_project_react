@@ -1,9 +1,25 @@
+.modal__wrapper {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
 .modal {
   position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 300px;
-  background-color: violet;
+  width: 496px;
+  background-color: rgba(255, 255, 255, 1);
   padding: 28px 28px 36px 28px;
 
   border: rgba(0, 0, 0, 0.3) 1px;
@@ -14,18 +30,32 @@
   font-size: 16px;
 }
 
+.modal__opened {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+}
+
 .modal__form-title {
   margin: 0;
   margin-bottom: 24px;
   font-size: 16px;
 }
 
+.button {
+  cursor: pointer;
+}
+
 .modal__close-button {
   position: absolute;
+  padding: 0;
   right: 28px;
   top: 20px;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background-size: 20px 20px;
+  background-image: url("../../assets/images/close-icon.svg");
 }
 
 .modal__form {
@@ -34,7 +64,7 @@
 }
 
 .modal__label {
-  display: flex;
+  /* display: block; */
   flex-direction: column;
   margin: 0;
   margin-bottom: 8px;
@@ -43,11 +73,15 @@
 .modal__input {
   margin: 0;
   margin-bottom: 24px;
+  padding: 0;
+  padding-bottom: 4px;
   border: none;
-  border-bottom: 1px rgba(0, 0, 0, 1);
+  border-bottom: solid black 1px;
+  font-size: 16px;
 }
 
 .modal__submit-button {
+  color: rgba(255, 255, 255, 1);
   height: 36px;
   padding: 8px, 16px, 8px, 16px;
   border: none;
@@ -55,4 +89,9 @@
   font-family: "Cabinet Grotesk Regular";
   line-height: 20px;
   font-size: 16px;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.modal__submit-button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
