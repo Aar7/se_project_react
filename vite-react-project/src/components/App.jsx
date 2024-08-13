@@ -6,6 +6,7 @@ import { constants } from "../utils/constants.js";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
+import ModalWithForm from "./ModalWithForm/ModalWithForm.jsx";
 
 function App() {
   const [temperature, setTemperature] = useState(0);
@@ -27,6 +28,11 @@ function App() {
       <Header date={currentDate} location={currentLocation} />
       <Main temp={temperature} defaultContent={defaultContent} />
       <Footer />
+      {/* <ModalWithForm
+        formTitle={"Form Title"}
+        formName={"formName"}
+        buttonText={"Submit Button"}
+      /> */}
     </>
   );
 }
