@@ -14,7 +14,7 @@ function Main(props) {
   return (
     <>
       <div className="main">
-        <WeatherCard temp={props.temp} />
+        <WeatherCard temp={props.temp} weatherType={props.weatherType} />
         <div className="main__cards">
           <p className="main__cards_suggestion">
             {`Today is ${props.temp}°F. You may feel ${tempDescribe} and want to wear:`}

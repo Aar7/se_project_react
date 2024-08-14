@@ -19,7 +19,46 @@
 }
 
 .main__weather_image {
-  height: 60px;
-  width: 60px;
+  /* height: 60px;
+  width: 60px; */
   border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.main__weather_weather-type-clear {
+  background-color: rgba(0, 163, 255, 1);
+}
+.main__weather_weather-type-clouds {
+  background-color: rgba(0, 163, 255, 1);
+}
+.main__weather_weather-type-rain {
+  background-color: rgba(108, 166, 199, 1);
+}
+.main__weather_weather-type-thunderstorm {
+  background-color: rgba(108, 166, 199, 1);
+}
+.main__weather_weather-type-snow {
+  background-color: rgba(108, 166, 199, 1);
+}
+.main__weather_weather-type-fog {
+  background-color: rgba(108, 166, 199, 1);
+}
+
+.main__weather_image_weather-type-clear {
+  content: url("../../../assets/images/sun.svg");
+}
+.main__weather_image_weather-type-clouds {
+  content: url("../../../assets/images/cloudy.svg");
+}
+.main__weather_image_weather-type-rain {
+  content: url("../../../assets/images/rainy.svg");
+}
+.main__weather_image_weather-type-thunderstorm {
+  content: url("../../../assets/images/thunderstorm.svg");
+}
+.main__weather_image_weather-type-snow {
+  content: url("../../../assets/images/snowy.svg");
+}
+.main__weather_image_weather-type-fog {
+  content: url("../../../assets/images/foggy.svg");
 }

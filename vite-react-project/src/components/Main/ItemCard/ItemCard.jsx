@@ -16,7 +16,6 @@ export function ItemCard(props) {
       return null;
     }
   });
-  console.log(newClothing);
   return newClothing;
 }
 

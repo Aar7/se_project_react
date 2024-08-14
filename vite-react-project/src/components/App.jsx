@@ -16,14 +16,16 @@ function App() {
       day: "numeric",
     })
   );
-  const [currentLocation, setCurrentLocation] = useState("unknown");
+  const [currentLocation, setCurrentLocation] = useState("Earth");
   const [wrapperClasslist, setWrapperClasslist] = useState(["modal__wrapper"]);
+  const [weatherType, setWeatherType] = useState("sunny");
   const [clothing, setClothing] = useState(defaultContent);
   const weather = new WeatherApi(constants);
 
   weather.fetchData().then((res) => {
     setTemperature(res.main.temp);
     setCurrentLocation(res.name);
+    setWeatherType(res.weather[0].main.toLowerCase());
   });
 
   function handleCloseModal() {
@@ -42,6 +44,7 @@ function App() {
         temp={temperature}
         defaultContent={clothing}
         onOpen={handleOpenModal}
+        weatherType={weatherType}
       />
       <Footer />
       <ModalWithForm
