@@ -42,6 +42,10 @@
   font-size: 16px;
 }
 
+.modal__header {
+  margin-bottom: 12px;
+}
+
 .button {
   cursor: pointer;
 }
@@ -68,6 +72,7 @@
   flex-direction: column;
   margin: 0;
   margin-bottom: 8px;
+  font-weight: 700;
 }
 
 .modal__input {
@@ -80,16 +85,30 @@
   font-size: 16px;
 }
 
+.modal__input_radio {
+  margin: 0;
+  margin-right: 8px;
+}
+
 .modal__submit-button {
   color: rgba(255, 255, 255, 1);
   height: 36px;
-  padding: 8px, 16px, 8px, 16px;
+  padding: 8px 16px;
   border: none;
   border-radius: 4px;
   font-family: "Cabinet Grotesk Regular";
   line-height: 20px;
   font-size: 16px;
   background-color: rgba(0, 0, 0, 1);
+  width: max-content;
+}
+
+.modal__radio-wrapper {
+  margin-bottom: 8px;
+}
+
+.modal__radio-wrapper:last-of-type {
+  margin-bottom: 32px;
 }
 
 .modal__submit-button:hover {

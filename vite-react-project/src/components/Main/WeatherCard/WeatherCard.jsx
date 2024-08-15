@@ -1,9 +1,7 @@
 import "./WeatherCard.css";
 import placeholderSun from "../../../assets/images/rainy-night.svg";
 function WeatherCard(props) {
-  console.log(props.weatherType);
-  // let wwww = props.weatherType;
-  // wwww = wwww.toLowerCase();
+  // console.log(props.weatherType);
   return (
     <div
       className={`main__weather main__weather_weather-type-${props.weatherType}`}

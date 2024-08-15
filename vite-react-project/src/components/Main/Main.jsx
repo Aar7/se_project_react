@@ -1,7 +1,7 @@
 import "./Main.css";
 import WeatherCard from "./WeatherCard/WeatherCard";
 import ItemCard from "./ItemCard/ItemCard";
-// import defaultContent from "../../utils/defaultContent.js";
+
 function Main(props) {
   let tempDescribe;
   if (props.temp > 85) {
