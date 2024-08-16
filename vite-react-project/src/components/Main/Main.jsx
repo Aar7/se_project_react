@@ -26,8 +26,12 @@ function Main(props) {
               onOpen={props.onOpen}
               itemModalClasslist={props.itemModalClasslist}
               setItemModalClasslist={props.setItemModalClasslist}
-              itemCardData={props.itemCardData}
-              setItemCardData={props.setItemCardData}
+              weatherTemp={props.weatherTemp}
+              setWeatherTemp={props.setWeatherTemp}
+              setItemCardLink={props.setItemCardLink}
+              itemCardLink={props.itemCardLink}
+              setItemCardName={props.setItemCardName}
+              itemCardName={props.itemCardName}
             />
           </ul>
         </div>

@@ -27,17 +27,12 @@ function ItemModal(props) {
         <img
           className="item-modal__item-image"
           // src={props.itemCardData[0].cardLink}
-          src={sample}
+          src={props.itemCardLink}
           alt=""
         />
         <div className="item-modal__item-weather-desc">
-          <p className="item-modal__item-desc">
-            {/* {props.itemCardData[0].cardName} */}
-            Sample Clothing Item
-          </p>
-          <p className="item-modal__weather-desc">
-            Weather: Sample weather type
-          </p>
+          <p className="item-modal__item-desc">{props.itemCardName}</p>
+          <p className="item-modal__weather-desc">{`Weather: ${props.weatherTemp}`}</p>
         </div>
       </div>
     </div>

@@ -25,41 +25,39 @@ function App() {
     useState("modal__wrapper");
   const [weatherType, setWeatherType] = useState("sunny");
   const [clothing, setClothing] = useState(defaultContent);
-  const [itemCardData, setItemCardData] = useState([]);
+  const [itemCardName, setItemCardName] = useState("Default Name");
+  const [itemCardLink, setItemCardLink] = useState("Default Link");
+  const [weatherTemp, setWeatherTemp] = useState("Default Temp");
+
   const weather = new WeatherApi(constants);
 
   weather.fetchData().then((res) => {
     setTemperature(Math.round(res.main.temp));
+    // setTemperature(Math.round(50));
     setCurrentLocation(res.name);
     setWeatherType(res.weather[0].main.toLowerCase());
   });
 
   function handleOpenModal(classlist, setterFn) {
     setterFn(classlist.concat(" modal__opened"));
-    console.log("Open modal called");
     document.addEventListener("keydown", handlePressEsc);
+    console.log("Open modal called");
   }
 
   function handleCloseModal(classlist, setterFn) {
     document.removeEventListener("keydown", handlePressEsc);
     setterFn(classlist.replace(" modal__opened", ""));
     console.log("Close modal called");
+    setItemCardLink("");
+    setItemCardName("");
   }
 
   function handlePressEsc(event, classlist, setterFn) {
-    console.log("PressEscape called");
-    // handleCloseModal(classlist, setterFn);
-    // console.log(event);
     if (event.key === "Escape") {
-      // const openModal = document.querySelector(".modal__opened");
-      // console.log(`Open Modal: ${openModal}`);
-
-      // openModal.classList.remove("modal__opened");
       handleCloseModal(itemModalClasslist, setItemModalClasslist);
       handleCloseModal(formModalClasslist, setFormModalClasslist);
     }
-    // console.log(openModal.classList);
-    // document.removeEventListener("keydown", handlePressEsc);
+    console.log("PressEscape called");
   }
 
   function testForDomEvent() {
@@ -84,8 +82,12 @@ function App() {
         onOpen={handleOpenModal}
         itemModalClasslist={itemModalClasslist}
         setItemModalClasslist={setItemModalClasslist}
-        itemCardData={itemCardData}
-        setItemCardData={setItemCardData}
+        weatherTemp={weatherTemp}
+        setWeatherTemp={setWeatherTemp}
+        setItemCardLink={setItemCardLink}
+        itemCardLink={itemCardLink}
+        setItemCardName={setItemCardName}
+        itemCardName={itemCardName}
       />
       <Footer />
       <ModalWithForm
@@ -103,8 +105,13 @@ function App() {
         itemModalClasslist={itemModalClasslist} /* name={} weather={} */
         setItemModalClasslist={setItemModalClasslist}
         onClose={handleCloseModal}
-        itemCardData={itemCardData}
-        setItemCardData={setItemCardData}
+        // weatherType={weatherType}
+        weatherTemp={weatherTemp}
+        setWeatherTemp={setWeatherTemp}
+        itemCardLink={itemCardLink}
+        setItemCardLink={setItemCardLink}
+        itemCardName={itemCardName}
+        setItemCardName={setItemCardName}
       ></ItemModal>
     </>
   );

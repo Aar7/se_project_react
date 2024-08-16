@@ -2,11 +2,15 @@
   - fonts
   - miscellaneous
 * enable night weather css for WeatherCard
-***** add Esc event listener when opening modals and remove it when closing them
-* add event listener to the cards that open the ItemModal when they are clicked...
 ***** do media queries
-***** figure out how to send data to ItemModal from ItemCard
 
 COMPLETED TASKS
 * SOLVED: added event.stopPropagation() to child element
     there is something weird with the clicking on the modals. Sometimes when they are clicked, inside, the close-modal function runs. Maybe this is related to event bubbling.
+
+* SOLVED: added event listeners
+  ***** add Esc event listener when opening modals and remove it when closing them
+    * add event listener to the cards that open the ItemModal when they are clicked...
+
+* SOLVED: created hooks for each state(name, link, weather), and set them on card-clicked
+  ***** figure out how to send data to ItemModal from ItemCard
