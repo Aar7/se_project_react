@@ -102,7 +102,7 @@ function App() {
         {forms[0]}
       </ModalWithForm>
       <ItemModal
-        itemModalClasslist={itemModalClasslist} /* name={} weather={} */
+        itemModalClasslist={itemModalClasslist}
         setItemModalClasslist={setItemModalClasslist}
         onClose={handleCloseModal}
         // weatherType={weatherType}

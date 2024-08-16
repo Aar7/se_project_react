@@ -2,9 +2,10 @@
   - fonts
   - miscellaneous
 * enable night weather css for WeatherCard
+* enable validation
 ***** do media queries
 
-COMPLETED TASKS
+-~*~-~*~-~*~- COMPLETED TASKS -~*~-~*~-~*~-
 * SOLVED: added event.stopPropagation() to child element
     there is something weird with the clicking on the modals. Sometimes when they are clicked, inside, the close-modal function runs. Maybe this is related to event bubbling.
 

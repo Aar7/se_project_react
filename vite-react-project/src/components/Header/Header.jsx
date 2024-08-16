@@ -9,7 +9,7 @@ function Header(props) {
         <img className="header__logo" src={logo} />
         <p className="header__date-location">{`${props.date}, ${props.location}`}</p>
       </div>
-
+      <button className="header__wrapper-button" type="button"></button>
       <div className="header__wrapper header__button-profile-wrapper">
         <button
           className="header__add-clothes"

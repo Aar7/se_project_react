@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   display: flex;
   font-family: "Cabinet Grotesk Bold", "Arial";
   font-size: 20px;
@@ -11,6 +12,27 @@
 .header__wrapper {
   display: flex;
   align-items: center;
+  /* visibility: hidden; */
+}
+
+.header__wrapper-button {
+  position: absolute;
+  padding: 16px 8px;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 12px;
+  border: 0;
+  background: no-repeat center;
+  background-size: 28px 12px;
+  /* box-shadow: 10px 10px 10px 10px; */
+  background-image: url("../../assets/images/line.svg");
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.header__button-profile-wrapper {
+  visibility: visible;
 }
 
 .header__logo {
@@ -45,3 +67,22 @@
   margin: 0 0 0 24px;
   align-self: center;
 }
+
+/* @media screen and (max-width: 375px) {
+  .header__wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .header__button-profile-wrapper {
+    visibility: hidden;
+  }
+
+  .header__wrapper-button {
+    visibility: visible;
+  }
+
+  .header__logo-date-location-wrapper {
+    width: 100%;
+  }
+} */
