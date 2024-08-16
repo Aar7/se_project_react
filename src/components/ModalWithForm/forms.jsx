@@ -1,4 +1,4 @@
-const forms = [
+const Forms = [
   <>
     <label className="modal__label">Name</label>
     <input className="modal__input" placeholder="Name" type="text" />
@@ -50,4 +50,4 @@ const forms = [
   </>,
 ];
 
-export default forms;
+export default Forms;

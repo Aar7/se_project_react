@@ -3,7 +3,7 @@ import "./App.css";
 import defaultContent from "../utils/defaultContent.js";
 import WeatherApi from "../utils/weatherApi.js";
 import { constants } from "../utils/constants.js";
-import forms from "./ModalWithForm/forms.jsx";
+import Forms from "./ModalWithForm/Forms.jsx";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
@@ -99,7 +99,7 @@ function App() {
         setFormModalClasslist={setFormModalClasslist}
         handlePressEsc={handlePressEsc}
       >
-        {forms[0]}
+        {Forms[0]}
       </ModalWithForm>
       <ItemModal
         itemModalClasslist={itemModalClasslist}
