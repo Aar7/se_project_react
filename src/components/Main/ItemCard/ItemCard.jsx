@@ -2,9 +2,9 @@ import "./ItemCard.css";
 
 export function ItemCard(props) {
   // consider putting this in App.jsx...and pass down to this component as an array
-  let newClothing = [];
+  let NewClothing = [];
 
-  newClothing = props.defaultContent.map((item, i) => {
+  NewClothing = props.defaultContent.map((item, i) => {
     if (item.weather == props.tempDescribe) {
       // props.setItemCardLink(item.link);
       // props.setItemCardName(item.name);
@@ -28,7 +28,7 @@ export function ItemCard(props) {
     }
   });
   // console.log(newClothing);
-  return newClothing;
+  return NewClothing;
 }
 
 export default ItemCard;
