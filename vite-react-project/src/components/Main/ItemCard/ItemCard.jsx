@@ -7,7 +7,17 @@ export function ItemCard(props) {
   newClothing = props.defaultContent.map((item, i) => {
     if (item.weather == props.tempDescribe) {
       return (
-        <li className="main__cards_listItem" key={i}>
+        <li
+          className="main__cards_listItem"
+          key={i}
+          onClick={() => {
+            // props.setItemCardData([
+            //   ...props.itemCardData,
+            //   { cardLink: item.link, name: item.cardName },
+            // ]);
+            props.onOpen(props.itemModalClasslist, props.setItemModalClasslist);
+          }}
+        >
           <p className="main__cards_listItem-title">{item.name}</p>
           <img className="main__cards_listItem-image" src={item.link} />
         </li>

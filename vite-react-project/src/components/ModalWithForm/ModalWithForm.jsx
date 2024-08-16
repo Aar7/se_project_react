@@ -6,7 +6,7 @@ function ModalWithForm(props) {
     <div
       className={props.formModalClasslist}
       onClick={(event) => {
-        props.onClose(props.setFormModalClasslist);
+        props.onClose(props.formModalClasslist, props.setFormModalClasslist);
       }}
     >
       <div
@@ -16,10 +16,27 @@ function ModalWithForm(props) {
         className={`modal modal_type_${props.formName}`}
       >
         <h2 className="modal__form-title">{props.formTitle}</h2>
-        <button className="button modal__close-button"></button>
+        <button
+          className="button modal__close-button"
+          onClick={(event) => {
+            props.onClose(
+              props.formModalClasslist,
+              props.setFormModalClasslist
+            );
+          }}
+        ></button>
         <form className="modal__form" name={`${props.formName}`}>
           {props.children}
-          <button className="button modal__submit-button">
+          <button
+            className="button modal__submit-button"
+            onClick={(event) => {
+              event.preventDefault();
+              props.onClose(
+                props.formModalClasslist,
+                props.setFormModalClasslist
+              );
+            }}
+          >
             {props.buttonText}
           </button>
         </form>

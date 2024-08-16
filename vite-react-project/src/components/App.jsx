@@ -25,6 +25,7 @@ function App() {
     useState("modal__wrapper");
   const [weatherType, setWeatherType] = useState("sunny");
   const [clothing, setClothing] = useState(defaultContent);
+  const [itemCardData, setItemCardData] = useState([]);
   const weather = new WeatherApi(constants);
 
   weather.fetchData().then((res) => {
@@ -33,8 +34,8 @@ function App() {
     setWeatherType(res.weather[0].main.toLowerCase());
   });
 
-  function handleCloseModal(setterFn) {
-    setterFn("modal__wrapper");
+  function handleCloseModal(classlist, setterFn) {
+    setterFn(classlist.replace(" modal__opened", ""));
     console.log("Close modal called");
   }
 
@@ -42,8 +43,9 @@ function App() {
     setterFn(classlist.concat(" modal__opened"));
     console.log("Open modal called");
   }
-  console.log(formModalClasslist);
+  // console.log(formModalClasslist);
   // console.log(forms);
+  console.log(itemCardData);
   return (
     <>
       <Header
@@ -56,8 +58,12 @@ function App() {
       <Main
         temp={temperature}
         defaultContent={clothing}
-        onOpen={handleOpenModal}
         weatherType={weatherType}
+        onOpen={handleOpenModal}
+        itemModalClasslist={itemModalClasslist}
+        setItemModalClasslist={setItemModalClasslist}
+        itemCardData={itemCardData}
+        setItemCardData={setItemCardData}
       />
       <Footer />
       <ModalWithForm
@@ -72,6 +78,10 @@ function App() {
       </ModalWithForm>
       <ItemModal
         itemModalClasslist={itemModalClasslist} /* name={} weather={} */
+        setItemModalClasslist={setItemModalClasslist}
+        onClose={handleCloseModal}
+        itemCardData={itemCardData}
+        setItemCardData={setItemCardData}
       ></ItemModal>
     </>
   );

@@ -23,6 +23,11 @@ function Main(props) {
             <ItemCard
               defaultContent={props.defaultContent}
               tempDescribe={tempDescribe}
+              onOpen={props.onOpen}
+              itemModalClasslist={props.itemModalClasslist}
+              setItemModalClasslist={props.setItemModalClasslist}
+              itemCardData={props.itemCardData}
+              setItemCardData={props.setItemCardData}
             />
           </ul>
         </div>
