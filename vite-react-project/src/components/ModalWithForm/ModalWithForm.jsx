@@ -8,6 +8,15 @@ function ModalWithForm(props) {
       onClick={(event) => {
         props.onClose(props.formModalClasslist, props.setFormModalClasslist);
       }}
+      // onKeyDown={(event) => {
+      //   console.log(`Pressed key: ${event.key}`);
+      //   if (event.key === "Escape") {
+      //     props.handlePressEsc(
+      //       props.formModalClasslist,
+      //       props.setFormModalClasslist
+      //     );
+      //   }
+      // }}
     >
       <div
         onClick={(event) => {

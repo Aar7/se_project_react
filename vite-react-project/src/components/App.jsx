@@ -34,18 +34,40 @@ function App() {
     setWeatherType(res.weather[0].main.toLowerCase());
   });
 
+  function handleOpenModal(classlist, setterFn) {
+    setterFn(classlist.concat(" modal__opened"));
+    console.log("Open modal called");
+    document.addEventListener("keydown", handlePressEsc);
+  }
+
   function handleCloseModal(classlist, setterFn) {
+    document.removeEventListener("keydown", handlePressEsc);
     setterFn(classlist.replace(" modal__opened", ""));
     console.log("Close modal called");
   }
 
-  function handleOpenModal(classlist, setterFn) {
-    setterFn(classlist.concat(" modal__opened"));
-    console.log("Open modal called");
+  function handlePressEsc(event, classlist, setterFn) {
+    console.log("PressEscape called");
+    // handleCloseModal(classlist, setterFn);
+    // console.log(event);
+    if (event.key === "Escape") {
+      // const openModal = document.querySelector(".modal__opened");
+      // console.log(`Open Modal: ${openModal}`);
+
+      // openModal.classList.remove("modal__opened");
+      handleCloseModal(itemModalClasslist, setItemModalClasslist);
+      handleCloseModal(formModalClasslist, setFormModalClasslist);
+    }
+    // console.log(openModal.classList);
+    // document.removeEventListener("keydown", handlePressEsc);
+  }
+
+  function testForDomEvent() {
+    console.log("TEST FUNCTION RUN");
   }
   // console.log(formModalClasslist);
   // console.log(forms);
-  console.log(itemCardData);
+  // console.log(itemCardData);
   return (
     <>
       <Header
@@ -73,6 +95,7 @@ function App() {
         formModalClasslist={formModalClasslist}
         onClose={handleCloseModal}
         setFormModalClasslist={setFormModalClasslist}
+        handlePressEsc={handlePressEsc}
       >
         {forms[0]}
       </ModalWithForm>

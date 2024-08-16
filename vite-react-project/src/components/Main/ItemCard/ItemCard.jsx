@@ -11,10 +11,6 @@ export function ItemCard(props) {
           className="main__cards_listItem"
           key={i}
           onClick={() => {
-            // props.setItemCardData([
-            //   ...props.itemCardData,
-            //   { cardLink: item.link, name: item.cardName },
-            // ]);
             props.onOpen(props.itemModalClasslist, props.setItemModalClasslist);
           }}
         >

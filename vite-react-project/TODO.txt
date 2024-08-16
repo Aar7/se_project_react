@@ -2,8 +2,10 @@
   - fonts
   - miscellaneous
 * enable night weather css for WeatherCard
-* add Esc event listener when opening modals and remove it when closing them
+***** add Esc event listener when opening modals and remove it when closing them
 * add event listener to the cards that open the ItemModal when they are clicked...
+***** do media queries
+***** figure out how to send data to ItemModal from ItemCard
 
 COMPLETED TASKS
 * SOLVED: added event.stopPropagation() to child element
