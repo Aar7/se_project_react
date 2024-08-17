@@ -31,12 +31,20 @@ function App() {
 
   const weather = new WeatherApi(constants);
 
-  weather.fetchData().then((res) => {
-    setTemperature(Math.round(res.main.temp));
-    // setTemperature(Math.round(50));
-    setCurrentLocation(res.name);
-    setWeatherType(res.weather[0].main.toLowerCase());
-  });
+  function requestWeatherData() {
+    weather
+      .fetchData()
+      .then((res) => {
+        setTemperature(Math.round(res.main.temp));
+        // setTemperature(Math.round(50));
+        setCurrentLocation(res.name);
+        setWeatherType(res.weather[0].main.toLowerCase());
+      })
+      .catch((error) => console.log(error));
+  }
+
+  useEffect(requestWeatherData, []);
+  // requestWeatherData();
 
   function handleOpenModal(classlist, setterFn) {
     setterFn(classlist.concat(" modal__opened"));
