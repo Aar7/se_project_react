@@ -29,7 +29,7 @@
   font-size: 16px;
 }
 
-.modal__opened {
+.modal_opened {
   display: flex;
   visibility: visible;
   opacity: 1;

@@ -1,10 +1,19 @@
 const Forms = [
   <>
-    <label className="modal__label">Name</label>
-    <input className="modal__input" placeholder="Name" type="text" />
+    <label className="modal__label" htmlFor="name">
+      Name
+    </label>
+    <input className="modal__input" id="name" placeholder="Name" type="text" />
 
-    <label className="modal__label">Image</label>
-    <input className="modal__input" placeholder="Image URL" type="url" />
+    <label className="modal__label" htmlFor="imageLink">
+      Image
+    </label>
+    <input
+      className="modal__input"
+      id="imageLink"
+      placeholder="Image URL"
+      type="url"
+    />
 
     <h2 className="modal__form-title modal__header">Select weather type</h2>
     <div className="modal__radio-wrapper">

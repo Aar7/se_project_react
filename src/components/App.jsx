@@ -44,22 +44,24 @@ function App() {
   }
 
   useEffect(requestWeatherData, []);
-  // requestWeatherData();
 
   function handleOpenModal(classlist, setterFn) {
-    setterFn(classlist.concat(" modal__opened"));
+    setterFn(classlist.concat(" modal_opened"));
     document.addEventListener("keydown", handlePressEsc);
     console.log("Open modal called");
   }
 
   function handleCloseModal(classlist, setterFn) {
     document.removeEventListener("keydown", handlePressEsc);
-    setterFn(classlist.replace(" modal__opened", ""));
+    setterFn(classlist.replace(" modal_opened", ""));
     console.log("Close modal called");
     setItemCardLink("");
     setItemCardName("");
   }
 
+  // CONSIDER USING onKeyPress IN THE MODALS AND PASSING THIS FUNCTION
+  //  TO IT INSTEAD OF ADDING AND REMOVING IT VIA THE close AND open HANDLERS.
+  //  MAY NEED TO USE useEffect()
   function handlePressEsc(event, classlist, setterFn) {
     if (event.key === "Escape") {
       handleCloseModal(itemModalClasslist, setItemModalClasslist);
