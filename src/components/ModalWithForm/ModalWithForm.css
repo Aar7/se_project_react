@@ -29,6 +29,14 @@
   font-size: 16px;
 }
 
+.modal__radio-buttons {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .modal_opened {
   display: flex;
   visibility: visible;
@@ -84,13 +92,19 @@
   font-size: 16px;
 }
 
-.modal__input_radio {
+.modal__label_type_radio:last-of-type {
+  margin-bottom: 0;
+}
+
+.modal__input_type_radio {
   margin: 0;
   margin-right: 8px;
 }
 
 .modal__submit-button {
   color: rgba(255, 255, 255, 1);
+  margin: 0;
+  margin-top: 32px;
   height: 36px;
   padding: 8px 16px;
   border: none;
@@ -102,13 +116,13 @@
   width: max-content;
 }
 
-.modal__radio-wrapper {
+/* .modal__radio-wrapper {
   margin-bottom: 8px;
 }
 
 .modal__radio-wrapper:last-of-type {
   margin-bottom: 32px;
-}
+} */
 
 .modal__submit-button:hover {
   background-color: rgba(0, 0, 0, 0.6);

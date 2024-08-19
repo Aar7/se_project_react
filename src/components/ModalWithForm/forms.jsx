@@ -15,47 +15,43 @@ const Forms = [
       type="url"
     />
 
-    <h2 className="modal__form-title modal__header">Select weather type</h2>
-    <div className="modal__radio-wrapper">
-      <input
-        className="modal__input modal__input_radio"
-        id="hot"
-        type="radio"
-        value="Hot"
-        name="weather"
-      />
-      <label className="modal__label" htmlFor="hot">
+    <fieldset className="modal__radio-buttons">
+      <legend className="modal__form-title modal__header">
+        Select weather type
+      </legend>
+      <label className="modal__label modal__label_type_radio" htmlFor="hot">
+        <input
+          className=" modal__input_type_radio"
+          id="hot"
+          type="radio"
+          value="Hot"
+          name="weather"
+        />
         Hot
       </label>
-    </div>
-    <div className="modal__radio-wrapper">
-      <input
-        className="modal__input modal__input_radio"
-        id="warm"
-        type="radio"
-        value="Warm"
-        name="weather"
-      />
-      <label className="modal__label" htmlFor="warm">
+
+      <label className="modal__label modal__label_type_radio" htmlFor="warm">
+        <input
+          className=" modal__input_type_radio"
+          id="warm"
+          type="radio"
+          value="Warm"
+          name="weather"
+        />
         Warm
       </label>
-    </div>
-    <div className="modal__radio-wrapper">
-      <input
-        className="modal__input modal__input_radio"
-        id="cold"
-        type="radio"
-        value="Cold"
-        name="weather"
-      />
-      <label className="modal__label" htmlFor="cold">
+
+      <label className="modal__label modal__label_type_radio" htmlFor="cold">
+        <input
+          className=" modal__input_type_radio"
+          id="cold"
+          type="radio"
+          value="Cold"
+          name="weather"
+        />
         Cold
       </label>
-    </div>
-  </>,
-  <>
-    <label className="modal__label">Label1</label>
-    <input className="modal__input" placeholder="Input1" />
+    </fieldset>
   </>,
 ];
 

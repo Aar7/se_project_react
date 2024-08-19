@@ -29,10 +29,7 @@ function ModalWithForm(props) {
             className="button modal__submit-button"
             onClick={(event) => {
               event.preventDefault();
-              props.onClose(
-                props.formModalClasslist,
-                props.setFormModalClasslist
-              );
+              props.setActiveModal("");
             }}
           >
             {props.formButtonText}
