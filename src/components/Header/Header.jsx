@@ -19,6 +19,12 @@ function Header(props) {
           className="header__add-clothes"
           type="button"
           onClick={() => {
+            // props.handleOpenFormModal(
+            //   "add-garment",
+            //   "New Garment",
+            //   "new-garment",
+            //   "Add Garment"
+            // );
             props.setActiveModal("add-garment");
           }}
         >

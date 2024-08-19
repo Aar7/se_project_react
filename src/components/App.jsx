@@ -23,10 +23,11 @@ function App() {
   const [itemCardName, setItemCardName] = useState("Default Name");
   const [itemCardLink, setItemCardLink] = useState("Default Link");
   const [weatherTemp, setWeatherTemp] = useState("Default Temp");
+  // const [formTitle, setFormTitle] = useState("formTitle");
+  // const [formName, setFormName] = useState("formName");
+  // const [formButtonText, setFormButtonText] = useState("formButtonText");
   const [activeModal, setActiveModal] = useState("");
-  const [formTitle, setFormTitle] = useState("formTitle");
-  const [formName, setFormName] = useState("formName");
-  const [formButtonText, setFormButtonText] = useState("formButtonText");
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const weather = new WeatherApi(constants);
 
@@ -42,7 +43,15 @@ function App() {
       .catch((error) => console.log(error));
   }
 
+  // function handleOpenFormModal(modalId, formName, formTitle, formButtonText) {
+  //   setActiveModal(modalId);
+  //   setFormName(formName);
+  //   setFormTitle(formTitle);
+  //   setFormButtonText(formButtonText);
+  // }
+
   function handleCloseModal() {
+    // setModalIsOpen(false);
     setActiveModal("");
   }
 
@@ -76,6 +85,7 @@ function App() {
         date={currentDate}
         location={currentLocation}
         setActiveModal={setActiveModal}
+        // handleOpenFormModal={handleOpenFormModal}
       />
       <Main
         temp={temperature}
@@ -89,22 +99,25 @@ function App() {
         itemCardName={itemCardName}
         activeModal={activeModal}
         setActiveModal={setActiveModal}
-        setFormTitle={setFormTitle}
-        setFormName={setFormName}
-        setFormButtonText={setFormButtonText}
+        // setFormTitle={setFormTitle}
+        // setFormName={setFormName}
+        // setFormButtonText={setFormButtonText}
         handleCardClick={handleCardClick}
       />
       <Footer />
       <ModalWithForm
-        formTitle={formTitle}
-        formName={formName}
-        formButtonText={formButtonText}
+        // formTitle={formTitle}
+        // formName={formName}
+        // formButtonText={formButtonText}
+        formTitle={"New Garment"}
+        formName={"new-garment"}
+        formButtonText={"Add Garment"}
         handleCloseModal={handleCloseModal}
-        isOpen={
-          activeModal === "add-garment" || "other-form" || "yet-another-form"
-        }
+        isOpen={activeModal === "add-garment"}
+        // modalIsOpen={modalIsOpen}
       >
         {/* Add a check here to generate different forms. Each form in Forms.js will have  unique identifier */}
+        {/* {Forms[activeModal]} */}
         {Forms[0]}
       </ModalWithForm>
       <ItemModal
