@@ -20,7 +20,11 @@ export function ItemCard(props) {
           }}
         >
           <p className="main__cards_listItem-title">{item.name}</p>
-          <img className="main__cards_listItem-image" src={item.link} />
+          <img
+            className="main__cards_listItem-image"
+            src={item.link}
+            alt={`An image of a/an ${item.name}`}
+          />
         </li>
       );
     } else {

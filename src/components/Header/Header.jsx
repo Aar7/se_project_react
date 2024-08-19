@@ -6,7 +6,11 @@ function Header(props) {
   return (
     <div className="header">
       <div className="header__wrapper header__logo-date-location-wrapper">
-        <img className="header__logo" src={logo} />
+        <img
+          className="header__logo"
+          src={logo}
+          alt="Header logo showing the letters w t w r"
+        />
         <p className="header__date-location">{`${props.date}, ${props.location}`}</p>
       </div>
       <button className="header__wrapper-button" type="button"></button>
@@ -23,7 +27,11 @@ function Header(props) {
 
         <div className="header__profile">
           <p className="header__profile-name">Name, Namerson</p>
-          <img className="header__profile-image" src={profImage} />
+          <img
+            className="header__profile-image"
+            src={profImage}
+            alt="User profile image"
+          />
         </div>
       </div>
     </div>

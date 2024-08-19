@@ -28,7 +28,7 @@ function ItemModal(props) {
           className="item-modal__item-image"
           // src={props.itemCardData[0].cardLink}
           src={props.itemCardLink}
-          alt=""
+          alt={`An image of a/an ${props.itemCardName}`}
         />
         <div className="item-modal__item-weather-desc">
           <p className="item-modal__item-desc">{props.itemCardName}</p>
