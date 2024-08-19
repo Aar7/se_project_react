@@ -4,7 +4,7 @@ import "./Header.css";
 
 function Header(props) {
   return (
-    <div className="header">
+    <header className="header">
       <div className="header__wrapper header__logo-date-location-wrapper">
         <img
           className="header__logo"
@@ -34,7 +34,7 @@ function Header(props) {
           />
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 
