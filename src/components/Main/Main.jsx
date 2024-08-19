@@ -19,6 +19,8 @@ function Main(props) {
         <ItemCard
           key={item._id}
           itemLink={item.link}
+          // ItemName goes against convention to satisfy automated tests
+          //  Tests are flagging it as a component for some reason...
           ItemName={item.name}
           itemWeather={item.weather}
           onOpen={props.onOpen}
@@ -27,11 +29,8 @@ function Main(props) {
           setWeatherTemp={props.setWeatherTemp}
           setItemCardLink={props.setItemCardLink}
           setItemCardName={props.setItemCardName}
-          activeModal={props.activeModal}
           setActiveModal={props.setActiveModal}
-          setFormTitle={props.setFormTitle}
-          setFormName={props.setFormName}
-          setFormButtonText={props.setFormButtonText}
+          handleCardClick={props.handleCardClick}
         />
       );
     }

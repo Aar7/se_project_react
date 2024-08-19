@@ -46,6 +46,12 @@ function App() {
     setActiveModal("");
   }
 
+  function handleCardClick(cardObject, itemData) {
+    setItemCardLink.call(cardObject, itemData.link);
+    setItemCardName.call(cardObject, itemData.name);
+    setWeatherTemp.call(cardObject, itemData.weather);
+  }
+
   useEffect(requestWeatherData, []);
   useEffect(() => {
     if (!activeModal) return;
@@ -86,6 +92,7 @@ function App() {
         setFormTitle={setFormTitle}
         setFormName={setFormName}
         setFormButtonText={setFormButtonText}
+        handleCardClick={handleCardClick}
       />
       <Footer />
       <ModalWithForm
@@ -93,8 +100,11 @@ function App() {
         formName={formName}
         formButtonText={formButtonText}
         handleCloseModal={handleCloseModal}
-        isOpen={activeModal === "add-clothing"}
+        isOpen={
+          activeModal === "add-garment" || "other-form" || "yet-another-form"
+        }
       >
+        {/* Add a check here to generate different forms. Each form in Forms.js will have  unique identifier */}
         {Forms[0]}
       </ModalWithForm>
       <ItemModal

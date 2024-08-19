@@ -19,7 +19,7 @@ function Header(props) {
           className="header__add-clothes"
           type="button"
           onClick={() => {
-            props.setActiveModal("add-clothing");
+            props.setActiveModal("add-garment");
           }}
         >
           + Add clothes

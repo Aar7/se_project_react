@@ -5,13 +5,12 @@ export function ItemCard(props) {
     <li
       className="main__cards_listItem"
       onClick={() => {
-        props.setItemCardLink.call(this, props.itemLink);
-        props.setItemCardName.call(this, props.ItemName);
-        props.setWeatherTemp.call(this, props.itemWeather);
+        props.handleCardClick(this, {
+          link: props.itemLink,
+          name: props.ItemName,
+          weather: props.itemWeather,
+        });
         props.setActiveModal("open-card");
-        props.setFormTitle("New Garment");
-        props.setFormName("new-garment");
-        props.setFormButtonText("Add Garment");
       }}
     >
       <p className="main__cards_listItem-title">{props.ItemName}</p>
