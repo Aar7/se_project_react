@@ -11,6 +11,31 @@ function Main(props) {
   } else {
     tempDescribe = "cold";
   }
+  let newClothing = [];
+
+  newClothing = props.defaultContent.map((item, i) => {
+    if (item.weather == tempDescribe) {
+      return (
+        <ItemCard
+          key={i}
+          itemLink={item.link}
+          itemName={item.name}
+          itemWeather={item.weather}
+          // defaultContent={props.defaultContent}
+          // tempDescribe={tempDescribe}
+          onOpen={props.onOpen}
+          itemModalClasslist={props.itemModalClasslist}
+          setItemModalClasslist={props.setItemModalClasslist}
+          // weatherTemp={props.weatherTemp}
+          setWeatherTemp={props.setWeatherTemp}
+          setItemCardLink={props.setItemCardLink}
+          // itemCardLink={props.itemCardLink}
+          setItemCardName={props.setItemCardName}
+          // itemCardName={props.itemCardName}
+        />
+      );
+    }
+  });
   return (
     <main className="main">
       <WeatherCard temp={props.temp} weatherType={props.weatherType} />
@@ -19,7 +44,7 @@ function Main(props) {
           {`Today is ${props.temp}°F. You may feel ${tempDescribe} and want to wear:`}
         </p>
         <ul className="main__cards_cardsList">
-          <ItemCard
+          {/* <ItemCard
             defaultContent={props.defaultContent}
             tempDescribe={tempDescribe}
             onOpen={props.onOpen}
@@ -31,7 +56,8 @@ function Main(props) {
             itemCardLink={props.itemCardLink}
             setItemCardName={props.setItemCardName}
             itemCardName={props.itemCardName}
-          />
+          /> */}
+          {newClothing}
         </ul>
       </div>
     </main>
