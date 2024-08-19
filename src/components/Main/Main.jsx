@@ -19,7 +19,7 @@ function Main(props) {
         <ItemCard
           key={item._id}
           itemLink={item.link}
-          itemName={item.name}
+          ItemName={item.name}
           itemWeather={item.weather}
           onOpen={props.onOpen}
           itemModalClasslist={props.itemModalClasslist}
