@@ -1,5 +1,4 @@
 import "./ItemModal.css";
-import sample from "../../assets/images/cap.svg";
 
 function ItemModal(props) {
   return (

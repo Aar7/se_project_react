@@ -24,11 +24,6 @@ function Main(props) {
           ItemName={item.name}
           itemWeather={item.weather}
           onOpen={props.onOpen}
-          itemModalClasslist={props.itemModalClasslist}
-          setItemModalClasslist={props.setItemModalClasslist}
-          setWeatherTemp={props.setWeatherTemp}
-          setItemCardLink={props.setItemCardLink}
-          setItemCardName={props.setItemCardName}
           setActiveModal={props.setActiveModal}
           handleCardClick={props.handleCardClick}
         />
