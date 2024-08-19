@@ -26,7 +26,6 @@ function ItemModal(props) {
         ></button>
         <img
           className="item-modal__item-image"
-          // src={props.itemCardData[0].cardLink}
           src={props.itemCardLink}
           alt={`An image of a/an ${props.itemCardName}`}
         />

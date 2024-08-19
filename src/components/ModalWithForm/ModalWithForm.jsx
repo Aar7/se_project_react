@@ -7,7 +7,6 @@ function ModalWithForm(props) {
         props.activeModal == "add-clothing" ? "modal_opened" : ""
       }`}
       onClick={(event) => {
-        // props.onClose(props.formModalClasslist, props.setFormModalClasslist);
         props.setActiveModal("");
       }}
     >
@@ -21,10 +20,6 @@ function ModalWithForm(props) {
         <button
           className="button modal__close-button"
           onClick={(event) => {
-            // props.onClose(
-            //   props.formModalClasslist,
-            //   props.setFormModalClasslist
-            // );
             props.setActiveModal("");
           }}
         ></button>
@@ -40,7 +35,7 @@ function ModalWithForm(props) {
               );
             }}
           >
-            {props.buttonText}
+            {props.formButtonText}
           </button>
         </form>
       </div>

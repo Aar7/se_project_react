@@ -19,7 +19,6 @@ function Header(props) {
           className="header__add-clothes"
           type="button"
           onClick={() => {
-            // props.onOpen(props.formModalClasslist, props.setFormModalClasslist);
             props.setActiveModal("add-clothing");
           }}
         >

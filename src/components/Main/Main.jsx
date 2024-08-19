@@ -21,19 +21,17 @@ function Main(props) {
           itemLink={item.link}
           itemName={item.name}
           itemWeather={item.weather}
-          // defaultContent={props.defaultContent}
-          // tempDescribe={tempDescribe}
           onOpen={props.onOpen}
           itemModalClasslist={props.itemModalClasslist}
           setItemModalClasslist={props.setItemModalClasslist}
-          // weatherTemp={props.weatherTemp}
           setWeatherTemp={props.setWeatherTemp}
           setItemCardLink={props.setItemCardLink}
-          // itemCardLink={props.itemCardLink}
           setItemCardName={props.setItemCardName}
-          // itemCardName={props.itemCardName}
           activeModal={props.activeModal}
           setActiveModal={props.setActiveModal}
+          setFormTitle={props.setFormTitle}
+          setFormName={props.setFormName}
+          setFormButtonText={props.setFormButtonText}
         />
       );
     }
@@ -45,22 +43,7 @@ function Main(props) {
         <p className="main__cards_suggestion">
           {`Today is ${props.temp}°F. You may feel ${tempDescribe} and want to wear:`}
         </p>
-        <ul className="main__cards_cardsList">
-          {/* <ItemCard
-            defaultContent={props.defaultContent}
-            tempDescribe={tempDescribe}
-            onOpen={props.onOpen}
-            itemModalClasslist={props.itemModalClasslist}
-            setItemModalClasslist={props.setItemModalClasslist}
-            weatherTemp={props.weatherTemp}
-            setWeatherTemp={props.setWeatherTemp}
-            setItemCardLink={props.setItemCardLink}
-            itemCardLink={props.itemCardLink}
-            setItemCardName={props.setItemCardName}
-            itemCardName={props.itemCardName}
-          /> */}
-          {newClothing}
-        </ul>
+        <ul className="main__cards_cardsList">{newClothing}</ul>
       </div>
     </main>
   );

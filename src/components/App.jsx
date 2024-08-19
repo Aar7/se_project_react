@@ -24,6 +24,9 @@ function App() {
   const [itemCardLink, setItemCardLink] = useState("Default Link");
   const [weatherTemp, setWeatherTemp] = useState("Default Temp");
   const [activeModal, setActiveModal] = useState("");
+  const [formTitle, setFormTitle] = useState("formTitle");
+  const [formName, setFormName] = useState("formName");
+  const [formButtonText, setFormButtonText] = useState("formButtonText");
 
   const weather = new WeatherApi(constants);
 
@@ -76,12 +79,15 @@ function App() {
         itemCardName={itemCardName}
         activeModal={activeModal}
         setActiveModal={setActiveModal}
+        setFormTitle={setFormTitle}
+        setFormName={setFormName}
+        setFormButtonText={setFormButtonText}
       />
       <Footer />
       <ModalWithForm
-        formTitle={"Form Title"}
-        formName={"formName"}
-        buttonText={"Submit Button"}
+        formTitle={formTitle}
+        formName={formName}
+        formButtonText={formButtonText}
         activeModal={activeModal}
         setActiveModal={setActiveModal}
       >
