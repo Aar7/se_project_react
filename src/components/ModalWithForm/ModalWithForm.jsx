@@ -3,11 +3,9 @@ import "./ModalWithForm.css";
 function ModalWithForm(props) {
   return (
     <div
-      className={`modal__wrapper ${
-        props.activeModal == "add-clothing" ? "modal_opened" : ""
-      }`}
+      className={`modal__wrapper ${props.isOpen ? "modal_opened" : ""}`}
       onClick={(event) => {
-        props.setActiveModal("");
+        props.handleCloseModal();
       }}
     >
       <div
@@ -20,7 +18,7 @@ function ModalWithForm(props) {
         <button
           className="button modal__close-button"
           onClick={(event) => {
-            props.setActiveModal("");
+            props.handleCloseModal();
           }}
         ></button>
         <form className="modal__form" name={`${props.formName}`}>
@@ -29,7 +27,7 @@ function ModalWithForm(props) {
             className="button modal__submit-button"
             onClick={(event) => {
               event.preventDefault();
-              props.setActiveModal("");
+              props.handleCloseModal();
             }}
           >
             {props.formButtonText}

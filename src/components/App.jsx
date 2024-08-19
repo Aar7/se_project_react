@@ -42,6 +42,10 @@ function App() {
       .catch((error) => console.log(error));
   }
 
+  function handleCloseModal() {
+    setActiveModal("");
+  }
+
   useEffect(requestWeatherData, []);
   useEffect(() => {
     if (!activeModal) return;
@@ -88,8 +92,7 @@ function App() {
         formTitle={formTitle}
         formName={formName}
         formButtonText={formButtonText}
-        activeModal={activeModal}
-        setActiveModal={setActiveModal}
+        handleCloseModal={handleCloseModal}
         isOpen={activeModal === "add-clothing"}
       >
         {Forms[0]}
@@ -102,7 +105,7 @@ function App() {
         itemCardName={itemCardName}
         setItemCardName={setItemCardName}
         activeModal={activeModal}
-        setActiveModal={setActiveModal}
+        handleCloseModal={handleCloseModal}
       ></ItemModal>
     </>
   );

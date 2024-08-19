@@ -8,7 +8,7 @@ function ItemModal(props) {
         props.activeModal == "open-card" ? "modal_opened" : ""
       }`}
       onClick={() => {
-        props.setActiveModal("");
+        props.handleCloseModal();
       }}
     >
       <div
@@ -21,7 +21,7 @@ function ItemModal(props) {
           type="button"
           className="button item-modal__button-close"
           onClick={() => {
-            props.setActiveModal("");
+            props.handleCloseModal();
           }}
         ></button>
         <img
