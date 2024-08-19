@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { act, useEffect, useState } from "react";
 import "./App.css";
 import defaultContent from "../utils/defaultContent.js";
 import WeatherApi from "../utils/weatherApi.js";
@@ -90,6 +90,7 @@ function App() {
         formButtonText={formButtonText}
         activeModal={activeModal}
         setActiveModal={setActiveModal}
+        isOpen={activeModal === "add-clothing"}
       >
         {Forms[0]}
       </ModalWithForm>
