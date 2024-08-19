@@ -19,15 +19,11 @@ function App() {
     })
   );
   const [currentLocation, setCurrentLocation] = useState("Earth");
-  const [formModalClasslist, setFormModalClasslist] =
-    useState("modal__wrapper");
-  const [itemModalClasslist, setItemModalClasslist] =
-    useState("modal__wrapper");
   const [weatherType, setWeatherType] = useState("sunny");
-  const [clothing, setClothing] = useState(defaultContent);
   const [itemCardName, setItemCardName] = useState("Default Name");
   const [itemCardLink, setItemCardLink] = useState("Default Link");
   const [weatherTemp, setWeatherTemp] = useState("Default Temp");
+  const [activeModal, setActiveModal] = useState("");
 
   const weather = new WeatherApi(constants);
 
@@ -44,84 +40,62 @@ function App() {
   }
 
   useEffect(requestWeatherData, []);
+  useEffect(() => {
+    if (!activeModal) return;
 
-  function handleOpenModal(classlist, setterFn) {
-    setterFn(classlist.concat(" modal_opened"));
-    document.addEventListener("keydown", handlePressEsc);
-    console.log("Open modal called");
-  }
-
-  function handleCloseModal(classlist, setterFn) {
-    document.removeEventListener("keydown", handlePressEsc);
-    setterFn(classlist.replace(" modal_opened", ""));
-    console.log("Close modal called");
-    setItemCardLink("");
-    setItemCardName("");
-  }
-
-  // CONSIDER USING onKeyPress IN THE MODALS AND PASSING THIS FUNCTION
-  //  TO IT INSTEAD OF ADDING AND REMOVING IT VIA THE close AND open HANDLERS.
-  //  MAY NEED TO USE useEffect()
-  function handlePressEsc(event, classlist, setterFn) {
-    if (event.key === "Escape") {
-      handleCloseModal(itemModalClasslist, setItemModalClasslist);
-      handleCloseModal(formModalClasslist, setFormModalClasslist);
+    function handlePressEsc(event) {
+      console.log(`Pressed key: ${event.key}`);
+      if (event.key == "Escape") {
+        setActiveModal("");
+      }
     }
-    console.log("PressEscape called");
-  }
 
-  function testForDomEvent() {
-    console.log("TEST FUNCTION RUN");
-  }
-  // console.log(formModalClasslist);
-  // console.log(forms);
-  // console.log(itemCardData);
+    document.addEventListener("keydown", handlePressEsc);
+
+    return () => {
+      document.removeEventListener("keydown", handlePressEsc);
+    };
+  }, [activeModal]);
+
   return (
     <>
       <Header
         date={currentDate}
         location={currentLocation}
-        onOpen={handleOpenModal}
-        formModalClasslist={formModalClasslist}
-        setFormModalClasslist={setFormModalClasslist}
+        setActiveModal={setActiveModal}
       />
       <Main
         temp={temperature}
-        defaultContent={clothing}
+        defaultContent={defaultContent}
         weatherType={weatherType}
-        onOpen={handleOpenModal}
-        itemModalClasslist={itemModalClasslist}
-        setItemModalClasslist={setItemModalClasslist}
         weatherTemp={weatherTemp}
         setWeatherTemp={setWeatherTemp}
         setItemCardLink={setItemCardLink}
         itemCardLink={itemCardLink}
         setItemCardName={setItemCardName}
         itemCardName={itemCardName}
+        activeModal={activeModal}
+        setActiveModal={setActiveModal}
       />
       <Footer />
       <ModalWithForm
         formTitle={"Form Title"}
         formName={"formName"}
         buttonText={"Submit Button"}
-        formModalClasslist={formModalClasslist}
-        onClose={handleCloseModal}
-        setFormModalClasslist={setFormModalClasslist}
-        handlePressEsc={handlePressEsc}
+        activeModal={activeModal}
+        setActiveModal={setActiveModal}
       >
         {Forms[0]}
       </ModalWithForm>
       <ItemModal
-        itemModalClasslist={itemModalClasslist}
-        setItemModalClasslist={setItemModalClasslist}
-        onClose={handleCloseModal}
-        // weatherType={weatherType}
         weatherTemp={weatherTemp}
         setWeatherTemp={setWeatherTemp}
         itemCardLink={itemCardLink}
         setItemCardLink={setItemCardLink}
         itemCardName={itemCardName}
         setItemCardName={setItemCardName}
+        activeModal={activeModal}
+        setActiveModal={setActiveModal}
       ></ItemModal>
     </>
   );

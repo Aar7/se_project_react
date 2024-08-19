@@ -2,21 +2,14 @@ import "./ModalWithForm.css";
 
 function ModalWithForm(props) {
   return (
-    // <div className="modal__wrapper" onClick={props.onClose}>
     <div
-      className={props.formModalClasslist}
+      className={`modal__wrapper ${
+        props.activeModal == "add-clothing" ? "modal_opened" : ""
+      }`}
       onClick={(event) => {
-        props.onClose(props.formModalClasslist, props.setFormModalClasslist);
+        // props.onClose(props.formModalClasslist, props.setFormModalClasslist);
+        props.setActiveModal("");
       }}
-      // onKeyDown={(event) => {
-      //   console.log(`Pressed key: ${event.key}`);
-      //   if (event.key === "Escape") {
-      //     props.handlePressEsc(
-      //       props.formModalClasslist,
-      //       props.setFormModalClasslist
-      //     );
-      //   }
-      // }}
     >
       <div
         onClick={(event) => {
@@ -28,10 +21,11 @@ function ModalWithForm(props) {
         <button
           className="button modal__close-button"
           onClick={(event) => {
-            props.onClose(
-              props.formModalClasslist,
-              props.setFormModalClasslist
-            );
+            // props.onClose(
+            //   props.formModalClasslist,
+            //   props.setFormModalClasslist
+            // );
+            props.setActiveModal("");
           }}
         ></button>
         <form className="modal__form" name={`${props.formName}`}>

@@ -4,9 +4,11 @@ import sample from "../../assets/images/cap.svg";
 function ItemModal(props) {
   return (
     <div
-      className={props.itemModalClasslist}
+      className={`modal__wrapper ${
+        props.activeModal == "open-card" ? "modal_opened" : ""
+      }`}
       onClick={() => {
-        props.onClose(props.itemModalClasslist, props.setItemModalClasslist);
+        props.setActiveModal("");
       }}
     >
       <div
@@ -16,12 +18,10 @@ function ItemModal(props) {
         }}
       >
         <button
+          type="button"
           className="button item-modal__button-close"
           onClick={() => {
-            props.onClose(
-              props.itemModalClasslist,
-              props.setItemModalClasslist
-            );
+            props.setActiveModal("");
           }}
         ></button>
         <img

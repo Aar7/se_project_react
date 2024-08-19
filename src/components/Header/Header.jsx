@@ -13,13 +13,14 @@ function Header(props) {
         />
         <p className="header__date-location">{`${props.date}, ${props.location}`}</p>
       </div>
-      <button className="header__wrapper-button" type="button"></button>
+      {/* <button className="header__wrapper-button" type="button"></button> */}
       <div className="header__wrapper header__button-profile-wrapper">
         <button
           className="header__add-clothes"
           type="button"
           onClick={() => {
-            props.onOpen(props.formModalClasslist, props.setFormModalClasslist);
+            // props.onOpen(props.formModalClasslist, props.setFormModalClasslist);
+            props.setActiveModal("add-clothing");
           }}
         >
           + Add clothes

@@ -13,11 +13,11 @@ function Main(props) {
   }
   let newClothing = [];
 
-  newClothing = props.defaultContent.map((item, i) => {
+  newClothing = props.defaultContent.map((item) => {
     if (item.weather == tempDescribe) {
       return (
         <ItemCard
-          key={i}
+          key={item._id}
           itemLink={item.link}
           itemName={item.name}
           itemWeather={item.weather}
@@ -32,6 +32,8 @@ function Main(props) {
           // itemCardLink={props.itemCardLink}
           setItemCardName={props.setItemCardName}
           // itemCardName={props.itemCardName}
+          activeModal={props.activeModal}
+          setActiveModal={props.setActiveModal}
         />
       );
     }

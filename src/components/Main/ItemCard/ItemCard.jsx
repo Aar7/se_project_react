@@ -35,12 +35,11 @@ export function ItemCard(props) {
   return (
     <li
       className="main__cards_listItem"
-      key={props.key}
       onClick={() => {
         props.setItemCardLink.call(this, props.itemLink);
         props.setItemCardName.call(this, props.itemName);
         props.setWeatherTemp.call(this, props.itemWeather);
-        props.onOpen(props.itemModalClasslist, props.setItemModalClasslist);
+        props.setActiveModal("open-card");
       }}
     >
       <p className="main__cards_listItem-title">{props.itemName}</p>
