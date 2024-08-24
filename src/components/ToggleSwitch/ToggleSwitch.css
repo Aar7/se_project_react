@@ -1,0 +1,77 @@
+.switch-checkbox {
+  position: fixed;
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  /* opacity: 0; */
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 52px;
+  height: 24px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 100px;
+  position: relative;
+  border: rgba(126, 126, 126, 1) solid 2px;
+  transition: border-color 0.5s ease-in-out;
+}
+
+.switch-button {
+  content: "";
+  margin: 0px;
+  background-color: rgba(0, 0, 0, 1);
+  border-radius: 50%;
+  position: absolute;
+  left: -2px;
+  width: 28px;
+  height: 28px;
+  transition: 0.7s;
+}
+
+.switch-label:hover .switch-button {
+  /* margin-left: 2px; */
+  width: 30px;
+}
+
+.switch-checkbox:checked + .switch-label .switch-button {
+  transform: translate(28px);
+}
+
+.switch-text {
+  font-family: "Cabinet Grotesk Bold";
+  color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  margin: 0;
+  line-height: 17px;
+  font-size: 14px;
+}
+
+.switch-checkbox:checked + .switch-label .text-right {
+  color: rgba(255, 255, 255, 1);
+}
+
+.switch-checkbox:checked + .switch-label .text-left {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.switch-checkbox + .switch-label .text-left {
+  color: rgba(255, 255, 255, 1);
+}
+
+.switch-checkbox:hover + .switch-label {
+  border-color: rgba(0, 0, 0, 1);
+}
+
+.text-right {
+  right: 7px;
+  transition: color 1s;
+}
+
+.text-left {
+  left: 8px;
+  transition: color 1s;
+}

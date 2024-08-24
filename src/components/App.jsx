@@ -9,6 +9,7 @@ import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 import ModalWithForm from "./ModalWithForm/ModalWithForm.jsx";
 import ItemModal from "./ItemModal/ItemModal.jsx";
+import ToggleSwitch from "./ToggleSwitch/ToggleSwitch.jsx";
 
 function App() {
   const [temperature, setTemperature] = useState(68);
@@ -69,6 +70,7 @@ function App() {
 
   return (
     <>
+      {/* <ToggleSwitch /> */}
       <Header
         date={currentDate}
         location={currentLocation}

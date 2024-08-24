@@ -1,5 +1,6 @@
 import profImage from "../../assets/images/profile-image-placeholder.svg";
 import logo from "../../assets/images/wtwr-logo.svg";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 
 function Header(props) {
@@ -15,6 +16,7 @@ function Header(props) {
       </div>
       {/* <button className="header__wrapper-button" type="button"></button> */}
       <div className="header__wrapper header__button-profile-wrapper">
+        <ToggleSwitch />
         <button
           className="header__add-clothes"
           type="button"
