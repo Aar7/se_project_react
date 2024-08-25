@@ -7,9 +7,9 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 function Main(props) {
   const units = useContext(CurrentTemperatureUnitContext);
   let tempDescribe;
-  if (props.temp > 85) {
+  if (props.weatherData.temperature.F > 85) {
     tempDescribe = "hot";
-  } else if (props.temp > 65) {
+  } else if (props.weatherData.temperature.F > 65) {
     tempDescribe = "warm";
   } else {
     tempDescribe = "cold";
@@ -36,7 +36,6 @@ function Main(props) {
   return (
     <main className="main">
       <WeatherCard
-        temp={props.temp}
         weatherType={props.weatherType}
         weatherData={props.weatherData}
       />

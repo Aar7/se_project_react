@@ -1,5 +1,7 @@
 import { act, useEffect, useState } from "react";
+import { Link, NavLink, Routes, Route } from "react-router-dom";
 import "./App.css";
+// OTHER IMPORTS
 import defaultContent from "../utils/defaultContent.js";
 import WeatherApi from "../utils/weatherApi.js";
 import { constants } from "../utils/constants.js";
@@ -10,6 +12,8 @@ import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 import ModalWithForm from "./ModalWithForm/ModalWithForm.jsx";
 import ItemModal from "./ItemModal/ItemModal.jsx";
+import Profile from "./Profile/Profile.jsx";
+
 // CONTEXT IMPORTS
 import {
   CurrentTemperatureUnitContext,
@@ -19,7 +23,7 @@ import {
 // APP START
 function App() {
   // STATE DECLARATIONS
-  const [temperature, setTemperature] = useState(68);
+  // const [temperature, setTemperature] = useState(68);
   const [weatherData, setWeatherData] = useState({
     temperature: { F: 0, C: 0 },
   });
@@ -51,15 +55,11 @@ function App() {
             C: Math.round(((res.main.temp - 32) * 5) / 9),
           },
         });
-        // setTemperature(Math.round(50));
         setCurrentLocation(res.name);
         setWeatherType(res.weather[0].main.toLowerCase());
       })
       .catch((error) => console.log(error));
   }
-
-  console.log(weatherData);
-  console.log(temperature);
 
   function handleCloseModal() {
     setActiveModal("");
@@ -105,16 +105,24 @@ function App() {
           location={currentLocation}
           setActiveModal={setActiveModal}
         />
-        <Main
-          temp={temperature}
-          weatherData={weatherData}
-          defaultContent={defaultContent}
-          weatherType={weatherType}
-          activeModal={activeModal}
-          setActiveModal={setActiveModal}
-          handleCardClick={handleCardClick}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Main
+                weatherData={weatherData}
+                defaultContent={defaultContent}
+                weatherType={weatherType}
+                activeModal={activeModal}
+                setActiveModal={setActiveModal}
+                handleCardClick={handleCardClick}
+              />
+            }
+          />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
         <Footer />
+        {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
         <ModalWithForm
           formTitle={"New Garment"}
           formName={"new-garment"}
@@ -130,7 +138,7 @@ function App() {
           itemCardName={itemCardName}
           activeModal={activeModal}
           handleCloseModal={handleCloseModal}
-        ></ItemModal>
+        />
       </CurrentTemperatureUnitContext.Provider>
     </>
   );
