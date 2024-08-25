@@ -20,7 +20,9 @@ import {
 function App() {
   // STATE DECLARATIONS
   const [temperature, setTemperature] = useState(68);
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState({
+    temperature: { F: 0, C: 0 },
+  });
   const [currentDate, setCurrentDate] = useState(
     new Date().toLocaleString("default", {
       month: "long",
@@ -42,7 +44,7 @@ function App() {
     weather
       .fetchData()
       .then((res) => {
-        setTemperature(Math.round(res.main.temp));
+        // setTemperature(Math.round(res.main.temp));
         setWeatherData({
           temperature: {
             F: Math.round(res.main.temp),
