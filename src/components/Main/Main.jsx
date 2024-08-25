@@ -1,8 +1,11 @@
 import "./Main.css";
 import WeatherCard from "./WeatherCard/WeatherCard";
 import ItemCard from "./ItemCard/ItemCard";
+import { useContext } from "react";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 function Main(props) {
+  const units = useContext(CurrentTemperatureUnitContext);
   let tempDescribe;
   if (props.temp > 85) {
     tempDescribe = "hot";
@@ -32,10 +35,19 @@ function Main(props) {
   });
   return (
     <main className="main">
-      <WeatherCard temp={props.temp} weatherType={props.weatherType} />
+      <WeatherCard
+        temp={props.temp}
+        weatherType={props.weatherType}
+        weatherData={props.weatherData}
+      />
       <div className="main__cards">
+        {/* <p className="main__cards_suggestion">d</p> */}
         <p className="main__cards_suggestion">
-          {`Today is ${props.temp}°F. You may feel ${tempDescribe} and want to wear:`}
+          {`Today is ${
+            props.weatherData.temperature[units.currentTemperatureUnit]
+          }°${
+            units.currentTemperatureUnit
+          }. You may feel ${tempDescribe} and want to wear:`}
         </p>
         <ul className="main__cards_cardsList">{newClothing}</ul>
       </div>
