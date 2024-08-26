@@ -26,7 +26,7 @@ function Main(props) {
           //  Tests are flagging it as a component for some reason...
           ItemName={item.name}
           itemWeather={item.weather}
-          onOpen={props.onOpen}
+          // onOpen={props.onOpen}
           setActiveModal={props.setActiveModal}
           handleCardClick={props.handleCardClick}
         />
@@ -40,7 +40,6 @@ function Main(props) {
         weatherData={props.weatherData}
       />
       <div className="main__cards">
-        {/* <p className="main__cards_suggestion">d</p> */}
         <p className="main__cards_suggestion">
           {`Today is ${
             props.weatherData.temperature[units.currentTemperatureUnit]

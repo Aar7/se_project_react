@@ -1,0 +1,44 @@
+.profile-clothing {
+  display: flex;
+  align-self: flex-end;
+  flex-direction: column;
+  width: 100%;
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.profile-clothing__wrap {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+}
+
+.profile-clothing__info {
+  margin: 0;
+  margin-right: 20px;
+  padding: 0;
+}
+
+.profile-clothing__add-new {
+  margin: 0;
+  padding: 0;
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  line-height: 25px;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: transparent;
+  border: none;
+}
+
+.profile-clothing__items {
+  display: grid;
+  justify-content: start;
+  grid-template-columns: repeat(auto-fit, 325px);
+  grid-gap: 20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  padding-right: auto;
+}

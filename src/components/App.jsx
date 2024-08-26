@@ -119,7 +119,15 @@ function App() {
               />
             }
           />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                setActiveModal={setActiveModal}
+                handleCardClick={handleCardClick}
+              />
+            }
+          />
         </Routes>
         <Footer />
         {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}

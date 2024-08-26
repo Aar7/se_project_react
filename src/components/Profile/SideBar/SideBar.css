@@ -1,0 +1,21 @@
+.profile-sidebar {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  /* margin-right: 116px; */
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.profile-sidebar__image {
+  width: 56px;
+  align-self: start;
+  margin-right: 16px;
+}
+
+.profile-sidebar__name {
+  margin: 0;
+  padding-top: 16px;
+  text-align: center;
+}
