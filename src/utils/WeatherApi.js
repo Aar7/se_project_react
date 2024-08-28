@@ -24,6 +24,12 @@ class WeatherApi {
       `${this._constants.baseURL}lat=${this._constants.coordLat}&lon=${this._constants.coordLon}&units=imperial&appid=${this._constants.authKey}`
     );
   }
+
+  async saveGarmentData() {
+    // function to save garment new garments to a database
+    // return fetch(``).then(this._checkResponse);
+    console.log(`[WeatherAPI] weather.saveGarmentData called!`);
+  }
 }
 
 export default WeatherApi;

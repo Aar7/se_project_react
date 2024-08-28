@@ -1,9 +1,9 @@
 import "./ClothesSection.css";
-import defaultContent from "../../../utils/defaultContent";
+// import defaultContent from "../../../utils/defaultContent";
 import ItemCard from "../../Main/ItemCard/ItemCard";
 
 function ClothesSection(props) {
-  const clothingArray = defaultContent.map((item) => {
+  const clothingArray = props.clothingItems.map((item) => {
     return (
       <ItemCard
         key={item._id}
@@ -17,6 +17,20 @@ function ClothesSection(props) {
       />
     );
   });
+  // const clothingArray = defaultContent.map((item) => {
+  //   return (
+  //     <ItemCard
+  //       key={item._id}
+  //       itemLink={item.link}
+  //       // ItemName goes against convention to satisfy automated tests
+  //       //  Tests are flagging it as a component for some reason...
+  //       ItemName={item.name}
+  //       itemWeather={item.weather}
+  //       setActiveModal={props.setActiveModal}
+  //       handleCardClick={props.handleCardClick}
+  //     />
+  //   );
+  // });
   return (
     <div className="profile-clothing">
       <div className="profile-clothing__wrap">

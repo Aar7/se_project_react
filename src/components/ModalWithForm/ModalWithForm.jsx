@@ -5,7 +5,7 @@ function ModalWithForm(props) {
     <div
       className={`modal__wrapper ${props.isOpen ? "modal_opened" : ""}`}
       onClick={(event) => {
-        props.handleCloseModal();
+        props.onCloseModal();
       }}
     >
       <div
@@ -18,16 +18,19 @@ function ModalWithForm(props) {
         <button
           className="button modal__close-button"
           onClick={(event) => {
-            props.handleCloseModal();
+            props.onCloseModal();
           }}
         ></button>
-        <form className="modal__form" name={`${props.formName}`}>
+        <form
+          className="modal__form"
+          id="add-garment"
+          name={`${props.formName}`}
+        >
           {props.children}
           <button
             className="button modal__submit-button"
             onClick={(event) => {
-              event.preventDefault();
-              props.handleCloseModal();
+              props.onSubmit(event);
             }}
           >
             {props.formButtonText}

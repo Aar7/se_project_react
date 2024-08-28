@@ -3,7 +3,7 @@ import { Link, NavLink, Routes, Route } from "react-router-dom";
 import "./App.css";
 // OTHER IMPORTS
 import defaultContent from "../utils/defaultContent.js";
-import WeatherApi from "../utils/weatherApi.js";
+import WeatherApi from "../utils/WeatherApi.js";
 import { constants } from "../utils/constants.js";
 import Forms from "./ModalWithForm/Forms.jsx";
 // COMPONENT IMPORTS
@@ -13,12 +13,11 @@ import Footer from "./Footer/Footer";
 import ModalWithForm from "./ModalWithForm/ModalWithForm.jsx";
 import ItemModal from "./ItemModal/ItemModal.jsx";
 import Profile from "./Profile/Profile.jsx";
+import AddItemModal from "./AddItemModal/AddItemModal.jsx";
 
 // CONTEXT IMPORTS
-import {
-  CurrentTemperatureUnitContext,
-  tempUnit,
-} from "../contexts/CurrentTemperatureUnitContext.js";
+import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
+import { ClothingListContext } from "../contexts/ClothingListContext.js";
 
 // APP START
 function App() {
@@ -27,6 +26,7 @@ function App() {
   const [weatherData, setWeatherData] = useState({
     temperature: { F: 0, C: 0 },
   });
+  const [clothingItems, setClothingItems] = useState(defaultContent);
   const [currentDate, setCurrentDate] = useState(
     new Date().toLocaleString("default", {
       month: "long",
@@ -61,7 +61,7 @@ function App() {
       .catch((error) => console.log(error));
   }
 
-  function handleCloseModal() {
+  function handleCloseModal(props) {
     setActiveModal("");
   }
 
@@ -70,10 +70,20 @@ function App() {
     setItemCardName.call(cardObject, itemData.name);
     setWeatherTemp.call(cardObject, itemData.weather);
   }
+
   function handleToggleSwitchChange() {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
       : setCurrentTemperatureUnit("F");
+  }
+
+  function handleAddItemSubmit(item) {
+    weather.saveGarmentData();
+    console.log(`clothingItems before stateChange:`);
+    console.log(clothingItems);
+    setClothingItems([item, ...clothingItems]);
+    console.log(`clothingItems after stateChange:`);
+    console.log(clothingItems);
   }
 
   // EFFECTS
@@ -82,7 +92,8 @@ function App() {
     if (!activeModal) return;
 
     function handlePressEsc(event) {
-      console.log(`Pressed key: ${event.key}`);
+      // console.log(event);
+      // console.log(`Pressed key: ${event.key}`);
       if (event.key == "Escape") {
         setActiveModal("");
       }
@@ -111,7 +122,7 @@ function App() {
             element={
               <Main
                 weatherData={weatherData}
-                defaultContent={defaultContent}
+                clothingItems={clothingItems}
                 weatherType={weatherType}
                 activeModal={activeModal}
                 setActiveModal={setActiveModal}
@@ -122,24 +133,27 @@ function App() {
           <Route
             path="/profile"
             element={
-              <Profile
-                setActiveModal={setActiveModal}
-                handleCardClick={handleCardClick}
-              />
+              <ClothingListContext.Provider value={clothingItems}>
+                <Profile
+                  setActiveModal={setActiveModal}
+                  handleCardClick={handleCardClick}
+                />
+              </ClothingListContext.Provider>
             }
           />
         </Routes>
         <Footer />
         {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
-        <ModalWithForm
+        <AddItemModal
           formTitle={"New Garment"}
           formName={"new-garment"}
           formButtonText={"Add Garment"}
-          handleCloseModal={handleCloseModal}
           isOpen={activeModal === "add-garment"}
-        >
-          {Forms[0]}
-        </ModalWithForm>
+          onAddItem={handleAddItemSubmit}
+          handleCloseModal={handleCloseModal}
+          activeModal={activeModal}
+          clothingItems={clothingItems}
+        ></AddItemModal>
         <ItemModal
           weatherTemp={weatherTemp}
           itemCardLink={itemCardLink}

@@ -16,7 +16,7 @@ function Main(props) {
   }
   let newClothing = [];
 
-  newClothing = props.defaultContent.map((item) => {
+  newClothing = props.clothingItems.map((item) => {
     if (item.weather == tempDescribe) {
       return (
         <ItemCard
