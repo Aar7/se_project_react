@@ -29,6 +29,7 @@
   color: rgba(0, 0, 0, 0.6);
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .profile-clothing__items {

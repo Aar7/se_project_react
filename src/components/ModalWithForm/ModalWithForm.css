@@ -92,8 +92,16 @@
   font-size: 16px;
 }
 
+.modal__label_type_radio {
+  color: rgba(0, 0, 0, 0.5);
+}
+
 .modal__label_type_radio:last-of-type {
   margin-bottom: 0;
+}
+
+.modal__label_type_radio:has(.modal__input_type_radio:checked) {
+  color: rgba(0, 0, 0, 1);
 }
 
 .modal__input_type_radio {

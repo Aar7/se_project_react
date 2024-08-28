@@ -35,7 +35,13 @@ function ClothesSection(props) {
     <div className="profile-clothing">
       <div className="profile-clothing__wrap">
         <p className="profile-clothing__info">Your items</p>
-        <button className="profile-clothing__add-new" type="button">
+        <button
+          className="profile-clothing__add-new"
+          type="button"
+          onClick={() => {
+            props.setActiveModal("add-garment");
+          }}
+        >
           + Add New
         </button>
       </div>

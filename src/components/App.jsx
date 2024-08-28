@@ -1,16 +1,16 @@
-import { act, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, Routes, Route } from "react-router-dom";
 import "./App.css";
 // OTHER IMPORTS
 import defaultContent from "../utils/defaultContent.js";
 import WeatherApi from "../utils/WeatherApi.js";
 import { constants } from "../utils/constants.js";
-import Forms from "./ModalWithForm/Forms.jsx";
+// import Forms from "./ModalWithForm/Forms.jsx";
 // COMPONENT IMPORTS
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
-import ModalWithForm from "./ModalWithForm/ModalWithForm.jsx";
+// import ModalWithForm from "./ModalWithForm/ModalWithForm.jsx";
 import ItemModal from "./ItemModal/ItemModal.jsx";
 import Profile from "./Profile/Profile.jsx";
 import AddItemModal from "./AddItemModal/AddItemModal.jsx";
@@ -61,7 +61,7 @@ function App() {
       .catch((error) => console.log(error));
   }
 
-  function handleCloseModal(props) {
+  function handleCloseModal() {
     setActiveModal("");
   }
 
@@ -143,6 +143,8 @@ function App() {
           />
         </Routes>
         <Footer />
+        {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
+        {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
         {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
         <AddItemModal
           formTitle={"New Garment"}

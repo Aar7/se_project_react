@@ -36,7 +36,7 @@ function Forms(props) {
               htmlFor="hot"
             >
               <input
-                className=" modal__input_type_radio"
+                className="modal__input_type_radio"
                 id="hot"
                 type="radio"
                 value="Hot"
@@ -51,7 +51,7 @@ function Forms(props) {
               htmlFor="warm"
             >
               <input
-                className=" modal__input_type_radio"
+                className="modal__input_type_radio"
                 id="warm"
                 type="radio"
                 value="Warm"
@@ -66,7 +66,7 @@ function Forms(props) {
               htmlFor="cold"
             >
               <input
-                className=" modal__input_type_radio"
+                className="modal__input_type_radio"
                 id="cold"
                 type="radio"
                 value="Cold"
