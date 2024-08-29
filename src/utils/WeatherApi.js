@@ -25,17 +25,17 @@ class WeatherApi {
     );
   }
 
-  async saveGarmentData() {
-    // function to save garment new garments to a database
-    // return fetch(``).then(this._checkResponse);
-    console.log(`[WeatherAPI] weather.saveGarmentData called!`);
-  }
+  // async saveGarmentData() {
+  //   // function to save garment new garments to a database
+  //   // return fetch(``).then(this._checkResponse);
+  //   console.log(`[WeatherAPI] weather.saveGarmentData called!`);
+  // }
 
-  async deleteGarment() {
-    // function to remove the desired garment from the database
-    // return fetch(``).then(this._checkResponse)
-    console.log(`[WeatherAPI] weather.deleteGarment called!`);
-  }
+  // async deleteGarment() {
+  //   // function to remove the desired garment from the database
+  //   // return fetch(``).then(this._checkResponse)
+  //   console.log(`[WeatherAPI] weather.deleteGarment called!`);
+  // }
 }
 
 export default WeatherApi;

@@ -53,7 +53,7 @@ function AddItemModal(props) {
     props.onAddItem({
       _id: props.clothingItems.length,
       name: garmentNameInput,
-      link: imageUrlInput,
+      imageUrl: imageUrlInput,
       weather: weatherTypeInput,
     });
     // resetState();

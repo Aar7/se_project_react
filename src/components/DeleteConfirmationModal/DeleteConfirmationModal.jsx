@@ -1,9 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "./DeleteConfirmationModal.css";
 import { CardObjectContext } from "../../contexts/CardObjectContext";
 
 function DeleteItemModal(props) {
   const cardContext = useContext(CardObjectContext);
+  // let
+  // useEffect(() => {
+
+  // })
   return (
     <div
       // id="delete-item"
@@ -34,6 +38,8 @@ function DeleteItemModal(props) {
           type="button"
           className="modal-button delete-item-wrapper__confirm"
           onClick={() => {
+            console.log(`cardcontext Id`);
+            console.log(cardContext._id);
             props.handleDeleteConfirm(cardContext._id);
             props.handleCloseModal();
           }}

@@ -29,7 +29,7 @@ function Main(props) {
         <ItemCard
           key={item._id}
           itemKey={item._id}
-          itemLink={item.link}
+          itemLink={item.imageUrl}
           // ItemName goes against convention to satisfy automated tests
           //  Tests are flagging it as a component for some reason...
           ItemName={item.name}

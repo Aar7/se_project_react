@@ -4,6 +4,7 @@ import "./App.css";
 // OTHER IMPORTS
 import defaultContent from "../utils/defaultContent.js";
 import WeatherApi from "../utils/WeatherApi.js";
+import GarmentsApi from "../utils/GarmentsApi.js";
 import { constants } from "../utils/constants.js";
 // import Forms from "./ModalWithForm/Forms.jsx";
 // COMPONENT IMPORTS
@@ -24,12 +25,22 @@ import { CardObjectContext } from "../contexts/CardObjectContext.js";
 // APP START
 function App() {
   const cardObject = useContext(CardObjectContext);
+  const weather = new WeatherApi(constants);
+  const garmentsApi = new GarmentsApi();
+
   // STATE DECLARATIONS
-  // const [temperature, setTemperature] = useState(68);
   const [weatherData, setWeatherData] = useState({
     temperature: { F: 0, C: 0 },
   });
-  const [clothingItems, setClothingItems] = useState(defaultContent);
+  // const [clothingItems, setClothingItems] = useState(defaultContent);
+  const [clothingItems, setClothingItems] = useState([
+    {
+      _id: "",
+      name: "",
+      imageUrl: "",
+      weather: "",
+    },
+  ]);
   const [currentDate, setCurrentDate] = useState(
     new Date().toLocaleString("default", {
       month: "long",
@@ -49,8 +60,6 @@ function App() {
     link: "",
     weather: "",
   });
-
-  const weather = new WeatherApi(constants);
 
   // FUNCTION DECLARATIONS
   function requestWeatherData() {
@@ -74,25 +83,29 @@ function App() {
     setActiveModal("");
   }
 
-  function handleCardClick(cardObject, itemData) {
-    setItemCardLink.call(cardObject, itemData.link);
-    setItemCardName.call(cardObject, itemData.name);
-    setWeatherTemp.call(cardObject, itemData.weather);
-    setCurrentOpenCardObject.call(cardObject, {
+  function handleCardClick(cardObjectData, itemData) {
+    setItemCardLink.call(cardObjectData, itemData.link);
+    setItemCardName.call(cardObjectData, itemData.name);
+    setWeatherTemp.call(cardObjectData, itemData.weather);
+    setCurrentOpenCardObject.call(cardObjectData, {
       _id: itemData._id,
       name: itemData.name,
-      link: itemData.link,
+      imageUrl: itemData.link,
       weather: itemData.weather,
     });
   }
 
-  function handleClickDelete(cardObject) {
+  function handleClickDelete() {
     setActiveModal("delete-garment");
   }
 
   function handleDeleteConfirm() {
-    weather.deleteGarment();
+    // Just returns the data; doesn't actually delete a card right now.
+    garmentsApi.deleteGarmentData(currentOpenCardObject._id).then((res) => {
+      console.log(res);
+    });
     console.log(clothingItems);
+    console.log(cardObject);
     setClothingItems(
       clothingItems.filter(function (garment) {
         return garment._id !== currentOpenCardObject._id;
@@ -107,22 +120,21 @@ function App() {
   }
 
   function handleAddItemSubmit(item) {
-    weather.saveGarmentData();
-    // console.log(`clothingItems before stateChange:`);
-    // console.log(clothingItems);
+    garmentsApi.saveGarmentData(item); /* .then((res) => console.log(res)); */
     setClothingItems([item, ...clothingItems]);
-    // console.log(`clothingItems after stateChange:`);
-    // console.log(clothingItems);
   }
 
   // EFFECTS
-  useEffect(requestWeatherData, []);
+  useEffect(() => {
+    requestWeatherData();
+    garmentsApi.getGarmentData().then((res) => {
+      setClothingItems(res);
+    });
+  }, []);
   useEffect(() => {
     if (!activeModal) return;
 
     function handlePressEsc(event) {
-      // console.log(event);
-      // console.log(`Pressed key: ${event.key}`);
       if (event.key == "Escape") {
         setActiveModal("");
       }
