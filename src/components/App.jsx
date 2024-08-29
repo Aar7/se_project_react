@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, Routes, Route } from "react-router-dom";
 import "./App.css";
 // OTHER IMPORTS
@@ -14,13 +14,16 @@ import Footer from "./Footer/Footer";
 import ItemModal from "./ItemModal/ItemModal.jsx";
 import Profile from "./Profile/Profile.jsx";
 import AddItemModal from "./AddItemModal/AddItemModal.jsx";
+import DeleteConfirmationModal from "./DeleteConfirmationModal/DeleteConfirmationModal.jsx";
 
 // CONTEXT IMPORTS
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { ClothingListContext } from "../contexts/ClothingListContext.js";
+import { CardObjectContext } from "../contexts/CardObjectContext.js";
 
 // APP START
 function App() {
+  const cardObject = useContext(CardObjectContext);
   // STATE DECLARATIONS
   // const [temperature, setTemperature] = useState(68);
   const [weatherData, setWeatherData] = useState({
@@ -40,6 +43,12 @@ function App() {
   const [weatherTemp, setWeatherTemp] = useState("Default Temp");
   const [activeModal, setActiveModal] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [currentOpenCardObject, setCurrentOpenCardObject] = useState({
+    _id: "",
+    name: "",
+    link: "",
+    weather: "",
+  });
 
   const weather = new WeatherApi(constants);
 
@@ -69,6 +78,26 @@ function App() {
     setItemCardLink.call(cardObject, itemData.link);
     setItemCardName.call(cardObject, itemData.name);
     setWeatherTemp.call(cardObject, itemData.weather);
+    setCurrentOpenCardObject.call(cardObject, {
+      _id: itemData._id,
+      name: itemData.name,
+      link: itemData.link,
+      weather: itemData.weather,
+    });
+  }
+
+  function handleClickDelete(cardObject) {
+    setActiveModal("delete-garment");
+  }
+
+  function handleDeleteConfirm() {
+    weather.deleteGarment();
+    console.log(clothingItems);
+    setClothingItems(
+      clothingItems.filter(function (garment) {
+        return garment._id !== currentOpenCardObject._id;
+      })
+    );
   }
 
   function handleToggleSwitchChange() {
@@ -79,11 +108,11 @@ function App() {
 
   function handleAddItemSubmit(item) {
     weather.saveGarmentData();
-    console.log(`clothingItems before stateChange:`);
-    console.log(clothingItems);
+    // console.log(`clothingItems before stateChange:`);
+    // console.log(clothingItems);
     setClothingItems([item, ...clothingItems]);
-    console.log(`clothingItems after stateChange:`);
-    console.log(clothingItems);
+    // console.log(`clothingItems after stateChange:`);
+    // console.log(clothingItems);
   }
 
   // EFFECTS
@@ -108,62 +137,73 @@ function App() {
 
   return (
     <>
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      {/* {console.log(currentOpenCardObject)} */}
+      <CardObjectContext.Provider
+        value={{ currentOpenCardObject, setCurrentOpenCardObject }}
       >
-        <Header
-          date={currentDate}
-          location={currentLocation}
-          setActiveModal={setActiveModal}
-        />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                weatherData={weatherData}
-                clothingItems={clothingItems}
-                weatherType={weatherType}
-                activeModal={activeModal}
-                setActiveModal={setActiveModal}
-                handleCardClick={handleCardClick}
+        <CurrentTemperatureUnitContext.Provider
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        >
+          <Header
+            date={currentDate}
+            location={currentLocation}
+            setActiveModal={setActiveModal}
+          />
+          <ClothingListContext.Provider value={clothingItems}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    weatherData={weatherData}
+                    clothingItems={clothingItems}
+                    weatherType={weatherType}
+                    activeModal={activeModal}
+                    setActiveModal={setActiveModal}
+                    handleCardClick={handleCardClick}
+                  />
+                }
               />
-            }
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    setActiveModal={setActiveModal}
+                    handleCardClick={handleCardClick}
+                  />
+                }
+              />
+            </Routes>
+          </ClothingListContext.Provider>
+          <Footer />
+          {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
+          {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
+          {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
+          <AddItemModal
+            formTitle={"New Garment"}
+            formName={"new-garment"}
+            formButtonText={"Add Garment"}
+            isOpen={activeModal === "add-garment"}
+            onAddItem={handleAddItemSubmit}
+            handleCloseModal={handleCloseModal}
+            activeModal={activeModal}
+            clothingItems={clothingItems}
           />
-          <Route
-            path="/profile"
-            element={
-              <ClothingListContext.Provider value={clothingItems}>
-                <Profile
-                  setActiveModal={setActiveModal}
-                  handleCardClick={handleCardClick}
-                />
-              </ClothingListContext.Provider>
-            }
+          <ItemModal
+            weatherTemp={weatherTemp}
+            itemCardLink={itemCardLink}
+            itemCardName={itemCardName}
+            activeModal={activeModal}
+            handleCloseModal={handleCloseModal}
+            onClickDelete={handleClickDelete}
           />
-        </Routes>
-        <Footer />
-        {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
-        {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
-        {/* Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals ~ Modals */}
-        <AddItemModal
-          formTitle={"New Garment"}
-          formName={"new-garment"}
-          formButtonText={"Add Garment"}
-          isOpen={activeModal === "add-garment"}
-          onAddItem={handleAddItemSubmit}
-          handleCloseModal={handleCloseModal}
-          activeModal={activeModal}
-          clothingItems={clothingItems}
-        ></AddItemModal>
-        <ItemModal
-          weatherTemp={weatherTemp}
-          itemCardLink={itemCardLink}
-          itemCardName={itemCardName}
-          activeModal={activeModal}
-          handleCloseModal={handleCloseModal}
-        />
-      </CurrentTemperatureUnitContext.Provider>
+          <DeleteConfirmationModal
+            isOpen={activeModal === "delete-garment"}
+            handleCloseModal={handleCloseModal}
+            handleDeleteConfirm={handleDeleteConfirm}
+          />
+        </CurrentTemperatureUnitContext.Provider>
+      </CardObjectContext.Provider>
     </>
   );
 }

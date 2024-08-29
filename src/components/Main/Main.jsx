@@ -1,11 +1,14 @@
 import "./Main.css";
 import WeatherCard from "./WeatherCard/WeatherCard";
 import ItemCard from "./ItemCard/ItemCard";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { ClothingListContext } from "../../contexts/ClothingListContext";
 
 function Main(props) {
   const units = useContext(CurrentTemperatureUnitContext);
+  const clothingItems = useContext(ClothingListContext);
+  // console.log(clothing.clothingItems);
   let tempDescribe;
   if (props.weatherData.temperature.F > 85) {
     tempDescribe = "hot";
@@ -16,11 +19,16 @@ function Main(props) {
   }
   let newClothing = [];
 
-  newClothing = props.clothingItems.map((item) => {
+  // useEffect(() => {
+  // newClothing = props.clothingItems.map((item) => {
+  newClothing = clothingItems.map((item) => {
     if (item.weather == tempDescribe) {
+      // console.log("item._id: ");
+      // console.log(item._id);
       return (
         <ItemCard
           key={item._id}
+          itemKey={item._id}
           itemLink={item.link}
           // ItemName goes against convention to satisfy automated tests
           //  Tests are flagging it as a component for some reason...
@@ -33,6 +41,9 @@ function Main(props) {
       );
     }
   });
+  // }, [clothingItems]);
+  // console.log("newClothing: ");
+  // console.log(newClothing[0]);
   return (
     <main className="main">
       <WeatherCard

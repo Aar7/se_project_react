@@ -1,11 +1,20 @@
 import "./ItemCard.css";
 
 export function ItemCard(props) {
+  // console.log("itemKey from ItemCard comp: ");
+  // console.log(props.itemKey);
   return (
     <li
       className="main__cards_listItem"
       onClick={() => {
+        // console.log(
+        //   props.itemKey,
+        //   props.itemLink,
+        //   props.ItemName,
+        //   props.itemWeather
+        // );
         props.handleCardClick(this, {
+          _id: props.itemKey,
           link: props.itemLink,
           name: props.ItemName,
           weather: props.itemWeather,
