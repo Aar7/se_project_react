@@ -11,7 +11,9 @@ function Forms(props) {
             id="name"
             placeholder="Name"
             type="text"
-            onChange={props.onGarmentNameChange}
+            // onInput={(event) => props.onGarmentNameChange(event)}
+            onChange={(event) => props.onGarmentNameChange(event)}
+            onPaste={(event) => props.onGarmentNameChange(event)}
             required
           />
 
@@ -23,7 +25,10 @@ function Forms(props) {
             id="imageLink"
             placeholder="Image URL"
             type="url"
-            onChange={props.onImageUrlChange}
+            // onInput={(event) => props.onGarmentNameChange(event)}
+            // onChange={(event) => props.onImageUrlChange(event)}
+            // onPaste={(event) => props.onImageUrlChange(event)}
+            onKeyUp={(event) => props.onImageUrlChange(event)}
             required
           />
 
@@ -41,7 +46,9 @@ function Forms(props) {
                 type="radio"
                 value="Hot"
                 name="weather"
-                onChange={props.onWeatherTypeChange}
+                // onInput={(event) => props.onGarmentNameChange(event)}
+                // onChange={(event) => props.onWeatherTypeChange(event)}
+                onClick={(event) => props.onWeatherTypeChange(event)}
               />
               Hot
             </label>
@@ -56,7 +63,9 @@ function Forms(props) {
                 type="radio"
                 value="Warm"
                 name="weather"
-                onChange={props.onWeatherTypeChange}
+                // onInput={(event) => props.onGarmentNameChange(event)}
+                // onChange={(event) => props.onWeatherTypeChange(event)}
+                onClick={(event) => props.onWeatherTypeChange(event)}
               />
               Warm
             </label>
@@ -71,7 +80,9 @@ function Forms(props) {
                 type="radio"
                 value="Cold"
                 name="weather"
-                onChange={props.onWeatherTypeChange}
+                // onInput={(event) => props.onGarmentNameChange(event)}
+                // onChange={(event) => props.onWeatherTypeChange(event)}
+                onClick={(event) => props.onWeatherTypeChange(event)}
               />
               Cold
             </label>
