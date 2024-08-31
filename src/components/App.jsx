@@ -120,8 +120,9 @@ function App() {
   }
 
   function handleAddItemSubmit(item) {
-    garmentsApi.saveGarmentData(item);
-    setClothingItems([item, ...clothingItems]);
+    garmentsApi.saveGarmentData(item).then((res) => {
+      setClothingItems([res, ...clothingItems]);
+    });
   }
 
   // EFFECTS
