@@ -25,6 +25,7 @@ import { CardObjectContext } from "../contexts/CardObjectContext.js";
 // APP START
 function App() {
   const cardObject = useContext(CardObjectContext);
+
   const weather = new WeatherApi(constants);
   const garmentsApi = new GarmentsApi();
 
@@ -100,7 +101,6 @@ function App() {
   }
 
   function handleDeleteConfirm() {
-    // Just returns the data; doesn't actually delete a card right now.
     garmentsApi.deleteGarmentData(currentOpenCardObject._id).then((res) => {
       console.log(res);
     });
@@ -120,7 +120,7 @@ function App() {
   }
 
   function handleAddItemSubmit(item) {
-    garmentsApi.saveGarmentData(item); /* .then((res) => console.log(res)); */
+    garmentsApi.saveGarmentData(item);
     setClothingItems([item, ...clothingItems]);
   }
 

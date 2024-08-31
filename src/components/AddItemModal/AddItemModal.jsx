@@ -30,17 +30,20 @@ function AddItemModal(props) {
   // create onChange handlers corresponding to each state variable
   function handleGarmentNameChange(event) {
     const inputValue = event.target.value;
-    // console.log(`Name inputValue: ${inputValue}`);
+    console.log(`Name inputValue: ${inputValue}`);
     setGarmentNameInput(inputValue);
   }
   function handleImageUrlChange(event) {
     const inputValue = event.target.value;
-    // console.log(`URL inputValue: ${inputValue}`);
+    console.log(`URL inputValue: ${inputValue}`);
     setImageUrl(inputValue);
   }
   function handleWeatherTypeChange(event) {
     const inputValue = event.target.value;
-    // console.log(`Radio inputValue: ${inputValue}`);
+    // inputValue = inputValue.toLowerCase();
+    // console.log(inputValue.toLowerCase());
+    // console.log(inputValue);
+    console.log(`Radio inputValue: ${inputValue}`);
     setWeatherTypeInput(inputValue);
 
     // console.log(weatherTypeInput);
@@ -54,7 +57,7 @@ function AddItemModal(props) {
       _id: props.clothingItems.length,
       name: garmentNameInput,
       imageUrl: imageUrlInput,
-      weather: weatherTypeInput,
+      weather: weatherTypeInput.toLowerCase(),
     });
     // resetState();
     props.handleCloseModal();

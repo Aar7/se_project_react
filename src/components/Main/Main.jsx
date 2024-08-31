@@ -17,11 +17,11 @@ function Main(props) {
   } else {
     tempDescribe = "cold";
   }
-  let newClothing = [];
+  // let newClothing = [];
 
   // useEffect(() => {
   // newClothing = props.clothingItems.map((item) => {
-  newClothing = clothingItems.map((item) => {
+  const newClothing = clothingItems.map((item) => {
     if (item.weather == tempDescribe) {
       // console.log("item._id: ");
       // console.log(item._id);
