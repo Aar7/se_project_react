@@ -55,7 +55,8 @@ function AddItemModal(props) {
       return alert("Please fill in all fields.");
     }
     props.onAddItem({
-      _id: props.clothingItems.length,
+      // _id: props.clothingItems.length,
+      _id: "",
       name: garmentNameInput,
       imageUrl: imageUrlInput,
       weather: weatherTypeInput.toLowerCase(),
