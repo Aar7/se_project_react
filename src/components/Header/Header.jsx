@@ -30,16 +30,18 @@ function Header(props) {
           + Add clothes
         </button>
 
-        <Link to="/profile">
-          <div className="header__profile">
+        {/* <Link to="/profile"> */}
+        <div className="header__profile">
+          <Link className="header__profile-link" to="/profile">
             <p className="header__profile-name">Name, Namerson</p>
-            <img
-              className="header__profile-image"
-              src={profImage}
-              alt="User profile image"
-            />
-          </div>
-        </Link>
+          </Link>
+          <img
+            className="header__profile-image"
+            src={profImage}
+            alt="User profile image"
+          />
+        </div>
+        {/* </Link> */}
       </div>
     </header>
   );

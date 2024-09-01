@@ -1,8 +1,9 @@
 .profile-clothing {
   display: flex;
-  align-self: flex-end;
+  /* align-self: flex-end; */
   flex-direction: column;
-  width: 100%;
+  /* width: 100%; */
+  width: 1015px;
   font-family: "Cabinet Grotesk Bold";
   font-size: 20px;
   line-height: 25px;
@@ -12,6 +13,7 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 16px;
+  /* align-self: flex-end; */
 }
 
 .profile-clothing__info {
@@ -35,11 +37,14 @@
 .profile-clothing__items {
   display: grid;
   justify-content: start;
+  align-self: flex-end;
+  /* width: 1015px; */
+  width: 100%;
   grid-template-columns: repeat(auto-fit, 325px);
   grid-gap: 20px;
   list-style-type: none;
   margin: 0;
   padding: 0;
 
-  padding-right: auto;
+  /* padding-right: auto; */
 }

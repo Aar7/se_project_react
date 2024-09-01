@@ -15,7 +15,7 @@
   /* visibility: hidden; */
 }
 
-.header__wrapper-button {
+/* .header__wrapper-button {
   position: absolute;
   padding: 16px 8px;
   top: 0;
@@ -25,11 +25,10 @@
   border: 0;
   background: no-repeat center;
   background-size: 28px 12px;
-  /* box-shadow: 10px 10px 10px 10px; */
   background-image: url("../../assets/images/line.svg");
   visibility: hidden;
   cursor: pointer;
-}
+} */
 
 .header__button-profile-wrapper {
   visibility: visible;
@@ -46,6 +45,11 @@
   font-weight: 700;
   background-color: white;
   border: 0;
+  cursor: pointer;
+}
+
+.header__profile-link {
+  text-decoration: none;
 }
 
 .header__profile {
@@ -55,6 +59,7 @@
 
 .header__profile-name {
   margin: 0 0 0 20px;
+  text-decoration: none;
 }
 
 .header__profile-image {

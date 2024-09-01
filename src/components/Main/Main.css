@@ -12,9 +12,9 @@
 
 .main__cards_cardsList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 328px);
-  row-gap: 21px;
-  column-gap: 21px;
+  grid-template-columns: repeat(auto-fit, 325px);
+  row-gap: 20px;
+  column-gap: 20px;
   position: relative;
   list-style-type: none;
   padding: 0;
