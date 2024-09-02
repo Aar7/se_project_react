@@ -13,15 +13,14 @@ class WeatherApi {
     }
   }
 
-  async fetchData() {
-    return fetch(
-      `${this._constants.baseURL}lat=${this._constants.coordLat}&lon=${this._constants.coordLon}&units=imperial&appid=${this._constants.authKey}`
-    ).then(this._checkResponse);
+  async _request(url, options) {
+    return fetch(url, options).then(this._checkResponse);
   }
 
-  logData() {
-    console.log(
-      `${this._constants.baseURL}lat=${this._constants.coordLat}&lon=${this._constants.coordLon}&units=imperial&appid=${this._constants.authKey}`
+  async fetchData() {
+    return this._request(
+      `${this._constants.baseURL}lat=${this._constants.coordLat}&lon=${this._constants.coordLon}&units=imperial&appid=${this._constants.authKey}`,
+      {}
     );
   }
 }
