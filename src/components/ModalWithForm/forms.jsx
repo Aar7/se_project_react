@@ -11,9 +11,8 @@ function Forms(props) {
             id="name"
             placeholder="Name"
             type="text"
-            // onInput={(event) => props.onGarmentNameChange(event)}
+            value={props.garmentNameInput}
             onChange={(event) => props.onGarmentNameChange(event)}
-            onPaste={(event) => props.onGarmentNameChange(event)}
             required
           />
 
@@ -25,10 +24,8 @@ function Forms(props) {
             id="imageLink"
             placeholder="Image URL"
             type="url"
-            // onInput={(event) => props.onGarmentNameChange(event)}
-            // onChange={(event) => props.onImageUrlChange(event)}
-            // onPaste={(event) => props.onImageUrlChange(event)}
-            onKeyUp={(event) => props.onImageUrlChange(event)}
+            value={props.imageUrlInput}
+            onChange={(event) => props.onImageUrlChange(event)}
             required
           />
 
@@ -44,11 +41,11 @@ function Forms(props) {
                 className="modal__input_type_radio"
                 id="hot"
                 type="radio"
-                value="Hot"
+                value="hot"
                 name="weather"
-                // onInput={(event) => props.onGarmentNameChange(event)}
-                // onChange={(event) => props.onWeatherTypeChange(event)}
-                onClick={(event) => props.onWeatherTypeChange(event)}
+                checked={props.weatherTypeInput === "hot"}
+                onChange={(event) => props.onWeatherTypeChange(event)}
+                required
               />
               Hot
             </label>
@@ -61,11 +58,10 @@ function Forms(props) {
                 className="modal__input_type_radio"
                 id="warm"
                 type="radio"
-                value="Warm"
+                value="warm"
                 name="weather"
-                // onInput={(event) => props.onGarmentNameChange(event)}
-                // onChange={(event) => props.onWeatherTypeChange(event)}
-                onClick={(event) => props.onWeatherTypeChange(event)}
+                checked={props.weatherTypeInput === "warm"}
+                onChange={(event) => props.onWeatherTypeChange(event)}
               />
               Warm
             </label>
@@ -78,11 +74,10 @@ function Forms(props) {
                 className="modal__input_type_radio"
                 id="cold"
                 type="radio"
-                value="Cold"
+                value="cold"
                 name="weather"
-                // onInput={(event) => props.onGarmentNameChange(event)}
-                // onChange={(event) => props.onWeatherTypeChange(event)}
-                onClick={(event) => props.onWeatherTypeChange(event)}
+                checked={props.weatherTypeInput === "cold"}
+                onChange={(event) => props.onWeatherTypeChange(event)}
               />
               Cold
             </label>
@@ -92,62 +87,5 @@ function Forms(props) {
     }
   }
 }
-
-// const Forms = [
-//   <>
-//     <label className="modal__label" htmlFor="name">
-//       Name
-//     </label>
-//     <input className="modal__input" id="name" placeholder="Name" type="text" />
-
-//     <label className="modal__label" htmlFor="imageLink">
-//       Image
-//     </label>
-//     <input
-//       className="modal__input"
-//       id="imageLink"
-//       placeholder="Image URL"
-//       type="url"
-//     />
-
-//     <fieldset className="modal__radio-buttons">
-//       <legend className="modal__form-title modal__header">
-//         Select weather type
-//       </legend>
-//       <label className="modal__label modal__label_type_radio" htmlFor="hot">
-//         <input
-//           className=" modal__input_type_radio"
-//           id="hot"
-//           type="radio"
-//           value="Hot"
-//           name="weather"
-//         />
-//         Hot
-//       </label>
-
-//       <label className="modal__label modal__label_type_radio" htmlFor="warm">
-//         <input
-//           className=" modal__input_type_radio"
-//           id="warm"
-//           type="radio"
-//           value="Warm"
-//           name="weather"
-//         />
-//         Warm
-//       </label>
-
-//       <label className="modal__label modal__label_type_radio" htmlFor="cold">
-//         <input
-//           className=" modal__input_type_radio"
-//           id="cold"
-//           type="radio"
-//           value="Cold"
-//           name="weather"
-//         />
-//         Cold
-//       </label>
-//     </fieldset>
-//   </>,
-// ];
 
 export default Forms;
