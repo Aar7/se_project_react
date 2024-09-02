@@ -103,6 +103,7 @@ function App() {
   function handleDeleteConfirm() {
     garmentsApi.deleteGarmentData(currentOpenCardObject._id).then((res) => {
       console.log(res);
+      handleCloseModal();
     });
     console.log(clothingItems);
     console.log(cardObject);
@@ -122,6 +123,7 @@ function App() {
   function handleAddItemSubmit(item) {
     garmentsApi.saveGarmentData(item).then((res) => {
       setClothingItems([res, ...clothingItems]);
+      handleCloseModal();
     });
   }
 

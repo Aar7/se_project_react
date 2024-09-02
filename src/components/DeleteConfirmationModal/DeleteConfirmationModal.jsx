@@ -41,7 +41,7 @@ function DeleteItemModal(props) {
             console.log(`cardcontext Id`);
             console.log(cardContext._id);
             props.handleDeleteConfirm(cardContext._id);
-            props.handleCloseModal();
+            // props.handleCloseModal();
           }}
         >
           Yes, delete item

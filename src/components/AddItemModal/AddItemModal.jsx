@@ -62,7 +62,7 @@ function AddItemModal(props) {
       weather: weatherTypeInput.toLowerCase(),
     });
     // resetState();
-    props.handleCloseModal();
+    // props.handleCloseModal();
   }
 
   return (
