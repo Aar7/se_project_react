@@ -25,14 +25,12 @@ function ModalWithForm(props) {
           className="modal__form"
           id="add-garment"
           name={`${props.formName}`}
+          onSubmit={(event) => {
+            props.onSubmit(event);
+          }}
         >
           {props.children}
-          <button
-            className="button modal__submit-button"
-            onClick={(event) => {
-              props.onSubmit(event);
-            }}
-          >
+          <button className="button modal__submit-button" type="submit">
             {props.formButtonText}
           </button>
         </form>
