@@ -103,18 +103,18 @@ function App() {
   function handleDeleteConfirm() {
     garmentsApi
       .deleteGarmentData(currentOpenCardObject._id)
+      .then(() => {
+        setClothingItems(
+          clothingItems.filter(function (garment) {
+            return garment._id !== currentOpenCardObject._id;
+          })
+        );
+      })
       .then((res) => {
         console.log(res);
         handleCloseModal();
       })
       .catch((error) => console.log(error));
-    console.log(clothingItems);
-    console.log(cardObject);
-    setClothingItems(
-      clothingItems.filter(function (garment) {
-        return garment._id !== currentOpenCardObject._id;
-      })
-    );
   }
 
   function handleToggleSwitchChange() {
