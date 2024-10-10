@@ -16,6 +16,7 @@ import ItemModal from "./ItemModal/ItemModal.jsx";
 import Profile from "./Profile/Profile.jsx";
 import AddItemModal from "./AddItemModal/AddItemModal.jsx";
 import DeleteConfirmationModal from "./DeleteConfirmationModal/DeleteConfirmationModal.jsx";
+import RegisterModal from "./RegisterModal/RegisterModal.jsx";
 
 // CONTEXT IMPORTS
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
@@ -133,6 +134,15 @@ function App() {
       .catch((error) => console.log(error));
   }
 
+  function handleRegisterSubmit(registrationData) {
+    // API call to create user
+    const { email, password, name, avatar } = registrationData;
+    console.log(`Email: ${email}`);
+    console.log(`Password: ${password}`);
+    console.log(`Name: ${name}`);
+    console.log(`Avatar URL: ${avatar}`);
+  }
+
   // EFFECTS
   useEffect(() => {
     requestWeatherData();
@@ -143,6 +153,7 @@ function App() {
       })
       .catch((error) => console.log(error));
   }, []);
+
   useEffect(() => {
     if (!activeModal) return;
 
@@ -205,11 +216,21 @@ function App() {
           formTitle={"New Garment"}
           formName={"new-garment"}
           formButtonText={"Add Garment"}
+          formId={"add-garment"}
           isOpen={activeModal === "add-garment"}
           onAddItem={handleAddItemSubmit}
           handleCloseModal={handleCloseModal}
           activeModal={activeModal}
           clothingItems={clothingItems}
+        />
+        <RegisterModal
+          formTitle={"Sign Up"}
+          formName={"register-user"}
+          formButtonText={"Next"}
+          isOpen={activeModal === "register-user"}
+          onRegister={handleRegisterSubmit}
+          handleCloseModal={handleCloseModal}
+          activeModal={activeModal}
         />
         <ItemModal
           weatherTemp={weatherTemp}

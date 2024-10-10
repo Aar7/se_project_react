@@ -23,7 +23,7 @@ function ModalWithForm(props) {
         ></button>
         <form
           className="modal__form"
-          id="add-garment"
+          id={`${props.formId}`}
           name={`${props.formName}`}
           onSubmit={(event) => {
             props.onSubmit(event);

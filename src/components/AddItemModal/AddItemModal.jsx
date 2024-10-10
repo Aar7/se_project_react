@@ -58,6 +58,7 @@ function AddItemModal(props) {
       onCloseModal={props.handleCloseModal}
       isOpen={props.isOpen}
       onSubmit={handleSubmit}
+      formId={"add-garment"}
     >
       <Forms
         index={0}

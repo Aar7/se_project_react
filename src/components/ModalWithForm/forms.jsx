@@ -3,12 +3,12 @@ function Forms(props) {
     case 0: {
       return (
         <>
-          <label className="modal__label" htmlFor="name">
+          <label className="modal__label" htmlFor="userName">
             Name
           </label>
           <input
             className="modal__input"
-            id="name"
+            id="userName"
             placeholder="Name"
             type="text"
             value={props.garmentNameInput}
@@ -82,6 +82,58 @@ function Forms(props) {
               Cold
             </label>
           </fieldset>
+        </>
+      );
+    }
+    case 1: {
+      return (
+        <>
+          <label className="modal__label" htmlFor="email">
+            Email *
+          </label>
+          <input
+            className="modal__input"
+            id="email"
+            placeholder="Email"
+            type="email"
+            value={props.emailInput}
+            onChange={(event) => props.onEmailChange(event)}
+            required
+          />
+          <label className="modal__label" htmlFor="password">
+            Password *
+          </label>
+          <input
+            className="modal__input"
+            id="password"
+            placeholder="Password"
+            type="password"
+            value={props.passwordInput}
+            onChange={(event) => props.onPasswordChange(event)}
+            required
+          />
+          <label className="modal__label" htmlFor="name">
+            Name
+          </label>
+          <input
+            className="modal__input"
+            id="name"
+            placeholder="Name"
+            type="text"
+            value={props.nameInput}
+            onChange={(event) => props.onNameChange(event)}
+          />
+          <label className="modal__label" htmlFor="avatarUrl">
+            Avatar URL
+          </label>
+          <input
+            className="modal__input"
+            id="avatarUrl"
+            placeholder="Avatar URL"
+            type="url"
+            value={props.avatarUrlInput}
+            onChange={(event) => props.onAvatarUrlChange(event)}
+          />
         </>
       );
     }
