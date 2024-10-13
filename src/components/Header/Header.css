@@ -73,6 +73,19 @@
   align-self: center;
 }
 
+.header__buttons {
+  font-family: "Cabinet Grotesk Regular";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-left: 20px;
+}
+
 /* @media screen and (max-width: 375px) {
   .header__wrapper {
     flex-direction: column;

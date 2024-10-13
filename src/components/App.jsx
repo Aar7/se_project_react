@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink, Routes, Route } from "react-router-dom";
+import { Link, NavLink, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 // OTHER IMPORTS
 import defaultContent from "../utils/defaultContent.js";
@@ -63,6 +63,7 @@ function App() {
     link: "",
     weather: "",
   });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // FUNCTION DECLARATIONS
   function requestWeatherData() {
@@ -189,29 +190,55 @@ function App() {
           date={currentDate}
           location={currentLocation}
           setActiveModal={setActiveModal}
+          isLoggedIn={isLoggedIn}
         />
         <ClothingListContext.Provider value={clothingItems}>
           <Routes>
             <Route
               path="/"
               element={
-                <Main
-                  weatherData={weatherData}
-                  clothingItems={clothingItems}
-                  weatherType={weatherType}
-                  activeModal={activeModal}
-                  setActiveModal={setActiveModal}
-                  handleCardClick={handleCardClick}
-                />
+                <>
+                  {/* <Header
+                    date={currentDate}
+                    location={currentLocation}
+                    setActiveModal={setActiveModal}
+                  /> */}
+                  <Main
+                    weatherData={weatherData}
+                    clothingItems={clothingItems}
+                    weatherType={weatherType}
+                    activeModal={activeModal}
+                    setActiveModal={setActiveModal}
+                    handleCardClick={handleCardClick}
+                  />
+                </>
               }
             />
             <Route
               path="/profile"
               element={
-                <Profile
-                  setActiveModal={setActiveModal}
-                  handleCardClick={handleCardClick}
-                />
+                <>
+                  {/* <Header
+                    date={currentDate}
+                    location={currentLocation}
+                    setActiveModal={setActiveModal}
+                  /> */}
+                  <Profile
+                    setActiveModal={setActiveModal}
+                    handleCardClick={handleCardClick}
+                  />
+                </>
+              }
+            />
+            <Route path="/login" element={null} />
+            <Route
+              path="*"
+              element={
+                isLoggedIn ? (
+                  <Navigate to="/items" replace />
+                ) : (
+                  <Navigate to="/login" replace />
+                )
               }
             />
           </Routes>
