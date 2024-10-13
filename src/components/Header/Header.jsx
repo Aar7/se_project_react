@@ -8,6 +8,14 @@ function Header(props) {
   // need to pass user information here from API call upon login
   let headerHtml;
 
+  function handleClickSignUp() {
+    props.setActiveModal("register-user");
+  }
+
+  function handleClickLogin() {
+    props.setActiveModal("login-user");
+  }
+
   if (props.isLoggedIn) {
     headerHtml = (
       <header className="header">
@@ -61,8 +69,12 @@ function Header(props) {
         </div>
         <div className="header__wrapper header__button-profile-wrapper">
           <ToggleSwitch />
-          <button className="header__buttons">Sign Up</button>
-          <button className="header__buttons">Log In</button>
+          <button className="header__buttons" onClick={handleClickSignUp}>
+            Sign Up
+          </button>
+          <button className="header__buttons" onClick={handleClickLogin}>
+            Log In
+          </button>
         </div>
       </header>
     );

@@ -22,22 +22,22 @@ export default class GarmentsApi {
     return this._request(`${this.baseUrl}items`, {});
   }
 
-  async saveGarmentData(cardData) {
+  async saveGarmentData(cardData, token) {
     console.log(`[GarmentsApi] garmentsApi.saveGarmentData called!`);
 
     return this._request(`${this.baseUrl}items`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", authorization: token },
       body: JSON.stringify(cardData),
     });
   }
 
-  async deleteGarmentData(garmentId) {
+  async deleteGarmentData(garmentId, token) {
     console.log(`[GarmentsApi] garmentsApi.deleteGarmentData called!`);
 
     return this._request(`${this.baseUrl}items/${garmentId}`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", authorization: token },
     });
   }
 }

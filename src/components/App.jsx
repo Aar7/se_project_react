@@ -1,6 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink, Routes, Route, Navigate } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 import "./App.css";
+import * as auth from "../utils/auth.js";
 // OTHER IMPORTS
 import defaultContent from "../utils/defaultContent.js";
 import WeatherApi from "../utils/WeatherApi.js";
@@ -18,6 +26,7 @@ import AddItemModal from "./AddItemModal/AddItemModal.jsx";
 import DeleteConfirmationModal from "./DeleteConfirmationModal/DeleteConfirmationModal.jsx";
 import RegisterModal from "./RegisterModal/RegisterModal.jsx";
 import LoginModal from "./LoginModal/LoginModal.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 // CONTEXT IMPORTS
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
@@ -64,6 +73,13 @@ function App() {
     weather: "",
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    avatar: "",
+  });
+  const [token, setToken] = useState("");
+  const navigate = useNavigate();
 
   // FUNCTION DECLARATIONS
   function requestWeatherData() {
@@ -105,7 +121,7 @@ function App() {
 
   function handleDeleteConfirm() {
     garmentsApi
-      .deleteGarmentData(currentOpenCardObject._id)
+      .deleteGarmentData(currentOpenCardObject._id, token)
       .then(() => {
         setClothingItems(
           clothingItems.filter(function (garment) {
@@ -128,7 +144,7 @@ function App() {
 
   function handleAddItemSubmit(item) {
     garmentsApi
-      .saveGarmentData(item)
+      .saveGarmentData(item, token)
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
         handleCloseModal();
@@ -138,21 +154,53 @@ function App() {
 
   function handleRegisterSubmit(registrationData) {
     // API call to create user
-    const { email, password, name, avatar } = registrationData;
-    console.log(`Email: ${email}`);
-    console.log(`Password: ${password}`);
-    console.log(`Name: ${name}`);
-    console.log(`Avatar URL: ${avatar}`);
+    console.log(`handleRegisterSubmit called`);
+    // let name, email, avatar;
+
+    auth
+      .register(registrationData)
+      .then((res) => {
+        console.log(res);
+        setIsLoggedIn(true);
+        handleCloseModal();
+        return res;
+      })
+      .then((res) => {
+        const { name, email, avatar } = res;
+        setUserData({ name: name, email: email, avatar: avatar });
+        navigate("/profile");
+      });
   }
 
   function handleLoginSubmit(loginData) {
+    console.log(`handleRegisterSubmit called`);
     // API call to login user
-    const { email, password } = loginData;
-    console.log(`Email: ${email}`);
-    console.log(`Password: ${password}`);
+    auth
+      .login(loginData)
+      .then((res) => {
+        setIsLoggedIn(true);
+        handleCloseModal();
+        localStorage.setItem("jwt", res.token);
+        return res;
+      })
+      .then((res) => {
+        const { name, email, avatar } = res;
+        setUserData({ name: name, email: email, avatar: avatar });
+        navigate("/profile");
+      })
+      .catch((error) => console.error(`There was an error: ${error}`));
   }
 
   // EFFECTS
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    console.log(token);
+    if (!token) return;
+
+    auth.tokenCheck(token);
+    setToken(token);
+  }, []);
+
   useEffect(() => {
     requestWeatherData();
     garmentsApi
@@ -197,37 +245,25 @@ function App() {
             <Route
               path="/"
               element={
-                <>
-                  {/* <Header
-                    date={currentDate}
-                    location={currentLocation}
-                    setActiveModal={setActiveModal}
-                  /> */}
-                  <Main
-                    weatherData={weatherData}
-                    clothingItems={clothingItems}
-                    weatherType={weatherType}
-                    activeModal={activeModal}
-                    setActiveModal={setActiveModal}
-                    handleCardClick={handleCardClick}
-                  />
-                </>
+                <Main
+                  weatherData={weatherData}
+                  clothingItems={clothingItems}
+                  weatherType={weatherType}
+                  activeModal={activeModal}
+                  setActiveModal={setActiveModal}
+                  handleCardClick={handleCardClick}
+                />
               }
             />
             <Route
               path="/profile"
               element={
-                <>
-                  {/* <Header
-                    date={currentDate}
-                    location={currentLocation}
-                    setActiveModal={setActiveModal}
-                  /> */}
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <Profile
                     setActiveModal={setActiveModal}
                     handleCardClick={handleCardClick}
                   />
-                </>
+                </ProtectedRoute>
               }
             />
             <Route path="/login" element={null} />
@@ -272,7 +308,7 @@ function App() {
           formName={"login-user"}
           formButtonText={"Log In"}
           isOpen={activeModal === "login-user"}
-          onRegister={handleLoginSubmit}
+          onLogin={handleLoginSubmit}
           handleCloseModal={handleCloseModal}
           activeModal={activeModal}
         />
