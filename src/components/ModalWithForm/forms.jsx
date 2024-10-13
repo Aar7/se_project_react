@@ -137,6 +137,36 @@ function Forms(props) {
         </>
       );
     }
+    case 2: {
+      return (
+        <>
+          <label className="modal__label" htmlFor="email_login">
+            Email
+          </label>
+          <input
+            className="modal__input"
+            id="email_login"
+            placeholder="Email"
+            type="email"
+            value={props.loginEmailInput}
+            onChange={(event) => props.onLoginEmailChange(event)}
+            required
+          />
+          <label className="modal__label" htmlFor="password_login">
+            Password
+          </label>
+          <input
+            className="modal__input"
+            id="password_login"
+            placeholder="Password"
+            type="password"
+            value={props.loginPasswordInput}
+            onChange={(event) => props.onLoginPasswordChange(event)}
+            required
+          />
+        </>
+      );
+    }
   }
 }
 

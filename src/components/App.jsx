@@ -17,6 +17,7 @@ import Profile from "./Profile/Profile.jsx";
 import AddItemModal from "./AddItemModal/AddItemModal.jsx";
 import DeleteConfirmationModal from "./DeleteConfirmationModal/DeleteConfirmationModal.jsx";
 import RegisterModal from "./RegisterModal/RegisterModal.jsx";
+import LoginModal from "./LoginModal/LoginModal.jsx";
 
 // CONTEXT IMPORTS
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
@@ -143,6 +144,13 @@ function App() {
     console.log(`Avatar URL: ${avatar}`);
   }
 
+  function handleLoginSubmit(loginData) {
+    // API call to login user
+    const { email, password } = loginData;
+    console.log(`Email: ${email}`);
+    console.log(`Password: ${password}`);
+  }
+
   // EFFECTS
   useEffect(() => {
     requestWeatherData();
@@ -229,6 +237,15 @@ function App() {
           formButtonText={"Next"}
           isOpen={activeModal === "register-user"}
           onRegister={handleRegisterSubmit}
+          handleCloseModal={handleCloseModal}
+          activeModal={activeModal}
+        />
+        <LoginModal
+          formTitle={"Log in"}
+          formName={"login-user"}
+          formButtonText={"Log In"}
+          isOpen={activeModal === "login-user"}
+          onRegister={handleLoginSubmit}
           handleCloseModal={handleCloseModal}
           activeModal={activeModal}
         />
