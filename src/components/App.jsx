@@ -234,7 +234,7 @@ function App() {
         <RegisterModal
           formTitle={"Sign Up"}
           formName={"register-user"}
-          formButtonText={"Next"}
+          formButtonText={"Sign Up"}
           isOpen={activeModal === "register-user"}
           onRegister={handleRegisterSubmit}
           handleCloseModal={handleCloseModal}

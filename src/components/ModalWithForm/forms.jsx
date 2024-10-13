@@ -134,6 +134,9 @@ function Forms(props) {
             value={props.avatarUrlInput}
             onChange={(event) => props.onAvatarUrlChange(event)}
           />
+          <button className="button modal__altroute_button modal__orlogin">
+            or Log In
+          </button>
         </>
       );
     }
@@ -164,6 +167,9 @@ function Forms(props) {
             onChange={(event) => props.onLoginPasswordChange(event)}
             required
           />
+          <button className="button modal__altroute_button modal__orsignup">
+            or Sign Up
+          </button>
         </>
       );
     }

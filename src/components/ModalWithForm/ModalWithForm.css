@@ -124,6 +124,34 @@
   width: max-content;
 }
 
+.modal__altroute_button {
+  font-family: "Cabinet Grotesk Regular";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: left;
+
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
+  border: none;
+  /* border-width: 1px; */
+  width: max-content;
+  position: absolute;
+  bottom: 44px;
+  /* left: 126px; */
+  right: auto;
+  margin-left: 98px;
+  padding: 0;
+}
+
+.modal__orsignup {
+  margin-left: 85px;
+}
+
+.modal__orlogin {
+  margin-left: 98px;
+}
+
 /* .modal__radio-wrapper {
   margin-bottom: 8px;
 }
@@ -134,4 +162,8 @@
 
 .modal__submit-button:hover {
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__input:last-of-type {
+  margin-bottom: 0;
 }
