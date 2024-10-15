@@ -27,7 +27,7 @@ export default class GarmentsApi {
 
     return this._request(`${this.baseUrl}items`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", authorization: token },
+      headers: { "Content-Type": "application/json", Authorization: token },
       body: JSON.stringify(cardData),
     });
   }
@@ -37,7 +37,7 @@ export default class GarmentsApi {
 
     return this._request(`${this.baseUrl}items/${garmentId}`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json", authorization: token },
+      headers: { "Content-Type": "application/json", Authorization: token },
     });
   }
 }

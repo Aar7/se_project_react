@@ -1,7 +1,9 @@
 export const BASE_URL = "http://localhost:3001";
 
 function checkResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  return res.ok
+    ? res.json()
+    : Promise.reject(`Error: ${res.status}, ${res.statusCode}`);
 }
 function responseError(error) {
   console.error(error);
@@ -32,12 +34,19 @@ export const login = async ({ email, password }) => {
     .catch(responseError);
 };
 
-export const tokenCheck = async (token) => {
+export const getUserInfo = async (token) => {
+  console.warn("getUserInfo called");
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
+
       authorization: `Bearer ${token}`,
     },
+  }).then((res) => {
+    return res.ok
+      ? res.json()
+      : Promise.reject(`Token-login error: ${res.status}`);
   });
 };

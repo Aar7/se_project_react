@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import * as auth from "../utils/auth.js";
+import { setToken, getToken } from "../utils/token.js";
 // OTHER IMPORTS
 import defaultContent from "../utils/defaultContent.js";
 import WeatherApi from "../utils/WeatherApi.js";
@@ -78,7 +79,7 @@ function App() {
     email: "",
     avatar: "",
   });
-  const [token, setToken] = useState("");
+  // const [token, setToken] = useState("");
   const navigate = useNavigate();
 
   // FUNCTION DECLARATIONS
@@ -172,33 +173,37 @@ function App() {
       });
   }
 
-  function handleLoginSubmit(loginData) {
-    console.log(`handleRegisterSubmit called`);
-    // API call to login user
-    auth
-      .login(loginData)
-      .then((res) => {
-        setIsLoggedIn(true);
-        handleCloseModal();
-        localStorage.setItem("jwt", res.token);
-        return res;
-      })
-      .then((res) => {
-        const { name, email, avatar } = res;
-        setUserData({ name: name, email: email, avatar: avatar });
-        navigate("/profile");
-      })
-      .catch((error) => console.error(`There was an error: ${error}`));
+  async function handleLoginSubmit(loginData) {
+    console.log(`handleLoginSubmit called`);
+
+    try {
+      const res = await auth.login(loginData);
+      console.log("Logging response from login attempt:", res);
+      const { name, email, avatar, token } = res;
+      setToken(token);
+      await setIsLoggedIn(true);
+      await setUserData({
+        name: name,
+        email: email,
+        avatar: avatar,
+      });
+      handleCloseModal();
+      navigate("/profile");
+    } catch (error) {
+      console.error(`There was an error: ${error}`);
+    }
   }
 
   // EFFECTS
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    console.log(token);
+    const token = getToken();
+    console.log(`Token retrieved on refresh: ${token}`);
     if (!token) return;
 
-    auth.tokenCheck(token);
-    setToken(token);
+    auth.getUserInfo(token).then(({ name, email, avatar }) => {
+      setIsLoggedIn(true);
+      setUserData({ name, email, avatar });
+    });
   }, []);
 
   useEffect(() => {
