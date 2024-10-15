@@ -53,6 +53,7 @@
 }
 
 .header__profile {
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -66,6 +67,35 @@
   margin: 0 0 0 12px;
   height: 40px;
   width: 40px;
+}
+
+.header__avatar-missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 0;
+}
+
+.header__name-initial {
+  top: 0px;
+  left: 0px;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  color: rgba(255, 255, 255, 1);
+}
+
+.header__user-initial {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  /* top: 50%;
+  left: 50%; */
+  top: 20px;
+  right: 20px;
 }
 
 .header__date-location {
