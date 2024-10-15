@@ -1,9 +1,24 @@
 import { useContext } from "react";
 import "./ItemModal.css";
 import { CardObjectContext } from "../../contexts/CardObjectContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ItemModal(props) {
   const cardContext = useContext(CardObjectContext);
+  const currentUserContext = useContext(CurrentUserContext);
+
+  // Checking if the current user is the owner of the current clothing item
+  console.log(cardContext.currentOpenCardObject.owner);
+  // console.log(currentUserContext._id);
+  // const isOwn =
+  //   cardContext.currentOpenCardObject.owner === currentUserContext._id;
+  // console.log(`isOwn: ${isOwn}`);
+
+  // Creating a variable which you'll then set in `className` for the delete button
+  // const itemDeleteButtonClassName = `item__delete-button ${
+  //   isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
+  // }`;
+
   return (
     <div
       className={`modal__wrapper ${

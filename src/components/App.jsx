@@ -41,7 +41,6 @@ const garmentsApi = new GarmentsApi();
 // APP START
 function App() {
   const cardObject = useContext(CardObjectContext);
-  const currentUser = useContext(CurrentUserContext);
 
   // STATE DECLARATIONS
   const [weatherData, setWeatherData] = useState({
@@ -74,6 +73,7 @@ function App() {
     name: "",
     link: "",
     weather: "",
+    owner: "",
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({
@@ -81,7 +81,8 @@ function App() {
     email: "",
     avatar: "",
   });
-  // const [token, setToken] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
+
   const navigate = useNavigate();
 
   // FUNCTION DECLARATIONS
@@ -107,6 +108,8 @@ function App() {
   }
 
   function handleCardClick(cardObjectData, itemData) {
+    console.log(cardObjectData);
+    // console.log(itemData);
     setItemCardLink.call(cardObjectData, itemData.link);
     setItemCardName.call(cardObjectData, itemData.name);
     setWeatherTemp.call(cardObjectData, itemData.weather);
@@ -115,6 +118,7 @@ function App() {
       name: itemData.name,
       imageUrl: itemData.link,
       weather: itemData.weather,
+      owner: itemData.owner,
     });
   }
 
@@ -165,6 +169,7 @@ function App() {
       .then((res) => {
         console.log(res);
         setIsLoggedIn(true);
+        setCurrentUser(res._id);
         handleCloseModal();
         return res;
       })

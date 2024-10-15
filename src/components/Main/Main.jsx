@@ -34,6 +34,7 @@ function Main(props) {
           //  Tests are flagging it as a component for some reason...
           ItemName={item.name}
           itemWeather={item.weather}
+          itemOwner={item.owner}
           // onOpen={props.onOpen}
           setActiveModal={props.setActiveModal}
           handleCardClick={props.handleCardClick}
