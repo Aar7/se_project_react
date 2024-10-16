@@ -1,23 +1,29 @@
 import "./ClothesSection.css";
+import { useContext } from "react";
 // import defaultContent from "../../../utils/defaultContent";
 import ItemCard from "../../Main/ItemCard/ItemCard";
+import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
 function ClothesSection(props) {
+  const userData = useContext(CurrentUserContext);
+
   const clothingArray = props.clothingItems.map((item) => {
-    return (
-      <ItemCard
-        key={item._id}
-        itemKey={item._id}
-        itemLink={item.imageUrl}
-        // ItemName goes against convention to satisfy automated tests
-        //  Tests are flagging it as a component for some reason...
-        ItemName={item.name}
-        itemWeather={item.weather}
-        itemOwner={item.owner}
-        setActiveModal={props.setActiveModal}
-        handleCardClick={props.handleCardClick}
-      />
-    );
+    if (userData._id === item.owner) {
+      return (
+        <ItemCard
+          key={item._id}
+          itemKey={item._id}
+          itemLink={item.imageUrl}
+          // ItemName goes against convention to satisfy automated tests
+          //  Tests are flagging it as a component for some reason...
+          ItemName={item.name}
+          itemWeather={item.weather}
+          itemOwner={item.owner}
+          setActiveModal={props.setActiveModal}
+          handleCardClick={props.handleCardClick}
+        />
+      );
+    }
   });
   // const clothingArray = defaultContent.map((item) => {
   //   return (

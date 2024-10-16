@@ -68,9 +68,6 @@ function App() {
   const [weatherTemp, setWeatherTemp] = useState("Default Temp");
   const [activeModal, setActiveModal] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [deleteConfirmClass, setDeleteConfirmClass] = useState(
-    "modal-button modal-button__delete-button_hidden"
-  );
   const [currentOpenCardObject, setCurrentOpenCardObject] = useState({
     _id: "",
     name: "",
@@ -343,13 +340,11 @@ function App() {
             activeModal={activeModal}
             handleCloseModal={handleCloseModal}
             onClickDelete={handleClickDelete}
-            setDeleteConfirmClass={setDeleteConfirmClass}
           />
           <DeleteConfirmationModal
             isOpen={activeModal === "delete-garment"}
             handleCloseModal={handleCloseModal}
             handleDeleteConfirm={handleDeleteConfirm}
-            deleteConfirmClass={deleteConfirmClass}
           />
         </CurrentTemperatureUnitContext.Provider>
       </CardObjectContext.Provider>
