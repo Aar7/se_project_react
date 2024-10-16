@@ -5,6 +5,11 @@ export function ItemCard(props) {
     <li
       className="main__cards_listItem"
       onClick={() => {
+        // console.log("props.itemKey", props.itemKey);
+        // console.log("props.itemLink", props.itemLink);
+        // console.log("props.ItemName", props.ItemName);
+        // console.log("props.itemWeather", props.itemWeather);
+        // console.log("props.itemOwner", props.itemOwner);
         props.handleCardClick(this, {
           _id: props.itemKey,
           link: props.itemLink,

@@ -21,22 +21,22 @@ function RegisterModal(props) {
   function handleEmailChange(event) {
     const inputValue = event.target.value;
     setEmailInput(inputValue);
-    console.log(`Email inputValue: ${inputValue}`);
+    // console.log(`Email inputValue: ${inputValue}`);
   }
   function handlePasswordChange(event) {
     const inputValue = event.target.value;
     setPasswordInput(inputValue);
-    console.log(`Password inputValue: ${inputValue}`);
+    // console.log(`Password inputValue: ${inputValue}`);
   }
   function handleNameChange(event) {
     const inputValue = event.target.value;
     setNameInput(inputValue);
-    console.log(`Name inputValue: ${inputValue}`);
+    // console.log(`Name inputValue: ${inputValue}`);
   }
   function handleAvatarUrlChange(event) {
     const inputValue = event.target.value;
     setAvatarUrlInput(inputValue);
-    console.log(`Avatar URL inputValue: ${inputValue}`);
+    // console.log(`Avatar URL inputValue: ${inputValue}`);
   }
 
   function handleSubmit(event) {

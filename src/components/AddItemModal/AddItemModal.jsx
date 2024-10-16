@@ -20,17 +20,17 @@ function AddItemModal(props) {
   function handleGarmentNameChange(event) {
     const inputValue = event.target.value;
     setGarmentNameInput(inputValue);
-    console.log(`Name inputValue: ${inputValue}`);
+    // console.log(`Name inputValue: ${inputValue}`);
   }
   function handleImageUrlChange(event) {
     const inputValue = event.target.value;
     setImageUrl(inputValue);
-    console.log(`URL inputValue: ${inputValue}`);
+    // console.log(`URL inputValue: ${inputValue}`);
   }
   function handleWeatherTypeChange(event) {
     const inputValue = event.target.value;
     setWeatherTypeInput(inputValue);
-    console.log(`Radio inputValue: ${inputValue}`);
+    // console.log(`Radio inputValue: ${inputValue}`);
   }
 
   function handleSubmit(event) {

@@ -1,24 +1,36 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "./ItemModal.css";
 import { CardObjectContext } from "../../contexts/CardObjectContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ItemModal(props) {
-  const cardContext = useContext(CardObjectContext);
-  const currentUserContext = useContext(CurrentUserContext);
+  const userData = useContext(CurrentUserContext);
+  const { currentOpenCardObject } = useContext(CardObjectContext);
 
   // Checking if the current user is the owner of the current clothing item
-  console.log(cardContext.currentOpenCardObject.owner);
-  // console.log(currentUserContext._id);
-  // const isOwn =
-  //   cardContext.currentOpenCardObject.owner === currentUserContext._id;
+  // console.log(
+  //   "cardContext.currentOpenCardObject.owner",
+  //   cardContext.currentOpenCardObject.owner
+  // );
+  // console.log("userData._id", userData._id);
+
+  const isOwn = currentOpenCardObject?.owner === userData._id;
+  // console.log(cardContext.currentOpenCardObject);
+  console.log(currentOpenCardObject.owner);
+  console.log(userData._id);
+  // console.log(isOwn);
+
   // console.log(`isOwn: ${isOwn}`);
+  const itemDeleteButtonClassName = `modal-button ${
+    isOwn
+      ? "modal-button__delete-button_visible"
+      : "modal-button__delete-button_hidden"
+  }`;
+  useEffect(() => {
+    props.setDeleteConfirmClass(itemDeleteButtonClassName);
+  }, [isOwn]);
 
-  // Creating a variable which you'll then set in `className` for the delete button
-  // const itemDeleteButtonClassName = `item__delete-button ${
-  //   isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
-  // }`;
-
+  // props.setDeleteConfirmClass(itemDeleteButtonClassName);
   return (
     <div
       className={`modal__wrapper ${

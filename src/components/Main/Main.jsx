@@ -25,6 +25,7 @@ function Main(props) {
     if (item.weather == tempDescribe) {
       // console.log("item._id: ");
       // console.log(item._id);
+      // console.log(item.owner);
       return (
         <ItemCard
           key={item._id}

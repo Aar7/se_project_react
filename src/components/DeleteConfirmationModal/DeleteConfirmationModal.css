@@ -71,3 +71,13 @@
   font: inherit;
   cursor: pointer;
 }
+
+.modal-button__delete-button_visible {
+  visibility: none;
+  opacity: 0;
+}
+
+.modal-button__delete-button_hidden {
+  visibility: visible;
+  opacity: 1;
+}

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 
 function Header(props) {
+  // console.log("userData:", props.userData);
   let headerHtml;
 
   function handleClickSignUp() {

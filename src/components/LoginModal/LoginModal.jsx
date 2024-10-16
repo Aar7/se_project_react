@@ -17,12 +17,12 @@ function LoginModal(props) {
   function handleEmailChange(event) {
     const inputValue = event.target.value;
     setLoginEmailInput(inputValue);
-    console.log(`Email inputValue: ${inputValue}`);
+    // console.log(`Email inputValue: ${inputValue}`);
   }
   function handlePasswordChange(event) {
     const inputValue = event.target.value;
     setLoginPasswordInput(inputValue);
-    console.log(`Password inputValue: ${inputValue}`);
+    // console.log(`Password inputValue: ${inputValue}`);
   }
   function handleSubmit(event) {
     event.preventDefault();

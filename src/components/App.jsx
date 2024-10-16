@@ -68,6 +68,9 @@ function App() {
   const [weatherTemp, setWeatherTemp] = useState("Default Temp");
   const [activeModal, setActiveModal] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [deleteConfirmClass, setDeleteConfirmClass] = useState(
+    "modal-button modal-button__delete-button_hidden"
+  );
   const [currentOpenCardObject, setCurrentOpenCardObject] = useState({
     _id: "",
     name: "",
@@ -80,8 +83,9 @@ function App() {
     name: "",
     email: "",
     avatar: "",
+    _id: "",
   });
-  const [currentUser, setCurrentUser] = useState("");
+  // const [currentUser, setCurrentUser] = useState("");
 
   const navigate = useNavigate();
 
@@ -107,19 +111,19 @@ function App() {
     setActiveModal("");
   }
 
-  function handleCardClick(cardObjectData, itemData) {
-    console.log(cardObjectData);
-    // console.log(itemData);
+  async function handleCardClick(cardObjectData, itemData) {
+    // console.log(cardObjectData);
     setItemCardLink.call(cardObjectData, itemData.link);
     setItemCardName.call(cardObjectData, itemData.name);
     setWeatherTemp.call(cardObjectData, itemData.weather);
-    setCurrentOpenCardObject.call(cardObjectData, {
+    await setCurrentOpenCardObject.call(cardObjectData, {
       _id: itemData._id,
       name: itemData.name,
       imageUrl: itemData.link,
       weather: itemData.weather,
       owner: itemData.owner,
     });
+    // console.log(currentOpenCardObject);
   }
 
   function handleClickDelete() {
@@ -150,6 +154,7 @@ function App() {
   }
 
   function handleAddItemSubmit(item) {
+    const token = getToken();
     garmentsApi
       .saveGarmentData(item, token)
       .then((res) => {
@@ -174,9 +179,10 @@ function App() {
         return res;
       })
       .then((res) => {
-        const { name, email, avatar } = res;
+        const { name, email, avatar } = res.data;
         setUserData({ name: name, email: email, avatar: avatar });
-        navigate("/profile");
+        setActiveModal("login-user");
+        navigate("/login");
       });
   }
 
@@ -193,6 +199,7 @@ function App() {
         name: name,
         email: email,
         avatar: avatar,
+        _id: _id,
       });
       handleCloseModal();
       navigate("/profile");
@@ -207,9 +214,11 @@ function App() {
     console.log(`Token retrieved on refresh: ${token}`);
     if (!token) return;
 
-    auth.getUserInfo(token).then(({ name, email, avatar }) => {
+    auth.getUserInfo(token).then((res) => {
+      console.log(res);
+      const { name, email, avatar, _id } = res;
       setIsLoggedIn(true);
-      setUserData({ name, email, avatar });
+      setUserData({ name, email, avatar, _id });
     });
   }, []);
 
@@ -240,7 +249,7 @@ function App() {
   }, [activeModal]);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={userData}>
       <CardObjectContext.Provider
         value={{ currentOpenCardObject, setCurrentOpenCardObject }}
       >
@@ -333,11 +342,13 @@ function App() {
             activeModal={activeModal}
             handleCloseModal={handleCloseModal}
             onClickDelete={handleClickDelete}
+            setDeleteConfirmClass={setDeleteConfirmClass}
           />
           <DeleteConfirmationModal
             isOpen={activeModal === "delete-garment"}
             handleCloseModal={handleCloseModal}
             handleDeleteConfirm={handleDeleteConfirm}
+            deleteConfirmClass={deleteConfirmClass}
           />
         </CurrentTemperatureUnitContext.Provider>
       </CardObjectContext.Provider>

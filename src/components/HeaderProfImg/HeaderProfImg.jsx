@@ -1,4 +1,5 @@
 function HeaderProfImg({ userData }) {
+  // console.log(`userData, headerprofimg`, userData);
   if (!userData.avatar) {
     const nameInitial = userData.name[0];
     return (
