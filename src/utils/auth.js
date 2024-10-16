@@ -50,3 +50,19 @@ export const getUserInfo = async (token) => {
       : Promise.reject(`Token-login error: ${res.status}`);
   });
 };
+
+export const changeUserInfo = async ({ name, avatar }, token) => {
+  console.warn("changeUserInfo called...");
+
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+    body: JSON.stringify({ name, avatar }),
+  })
+    .then(checkResponse)
+    .catch(responseError);
+};

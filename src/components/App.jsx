@@ -205,6 +205,16 @@ function App() {
     }
   }
 
+  function handleNewProfileInfoSubmit(changedData) {
+    const token = getToken();
+
+    auth.changeUserInfo(changedData, token).then((res) => {
+      console.log(res);
+      // setUserData(userData => ({...userData, name:res.name}))
+      // setUserData(userData => ({...userData, avatar:res.avatar}))
+    });
+  }
+
   // EFFECTS
   useEffect(() => {
     const token = getToken();
