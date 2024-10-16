@@ -219,6 +219,7 @@ function App() {
       const { name, email, avatar, _id } = res;
       setIsLoggedIn(true);
       setUserData({ name, email, avatar, _id });
+      navigate("/");
     });
   }, []);
 

@@ -72,12 +72,13 @@
   cursor: pointer;
 }
 
-.modal-button__delete-button_visible {
-  visibility: none;
-  opacity: 0;
-}
-
-.modal-button__delete-button_hidden {
+.item-modal__delete-item_visible {
   visibility: visible;
   opacity: 1;
+}
+
+.item-modal__delete-item_hidden {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
 }

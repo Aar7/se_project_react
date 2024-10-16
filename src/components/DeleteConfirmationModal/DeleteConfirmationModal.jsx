@@ -36,7 +36,7 @@ function DeleteItemModal(props) {
         ></button>
         <button
           type="button"
-          className={`delete-item-wrapper__confirm ${props.deleteConfirmClass}`}
+          className={`modal-button delete-item-wrapper__confirm`}
           onClick={() => {
             console.log(`cardcontext Id`);
             console.log(cardContext._id);
