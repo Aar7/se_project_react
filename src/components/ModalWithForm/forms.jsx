@@ -173,6 +173,36 @@ function Forms(props) {
         </>
       );
     }
+    case 3: {
+      return (
+        <>
+          <label className="modal__label" htmlFor="new_name">
+            Name *
+          </label>
+          <input
+            className="modal__input"
+            id="new_name"
+            placeholder="New Name"
+            type="text"
+            // value={/* props.loginEmailInput */}
+            // onChange={(event) => /* props.onLoginEmailChange(event) */}
+            required
+          />
+          <label className="modal__label" htmlFor="new_avatar">
+            Avatar *
+          </label>
+          <input
+            className="modal__input"
+            id="new_avatar"
+            placeholder="New Avatar URL"
+            type="url"
+            // value={/* props.loginPasswordInput */}
+            // onChange={(event) => /* props.onLoginPasswordChange(event) */}
+            required
+          />
+        </>
+      );
+    }
   }
 }
 
