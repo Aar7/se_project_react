@@ -27,6 +27,7 @@ import AddItemModal from "./AddItemModal/AddItemModal.jsx";
 import DeleteConfirmationModal from "./DeleteConfirmationModal/DeleteConfirmationModal.jsx";
 import RegisterModal from "./RegisterModal/RegisterModal.jsx";
 import LoginModal from "./LoginModal/LoginModal.jsx";
+import EditProfileModal from "./EditProfileModal/EditProfileModal.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 
 // CONTEXT IMPORTS
@@ -340,6 +341,15 @@ function App() {
             formButtonText={"Log In"}
             isOpen={activeModal === "login-user"}
             onLogin={handleLoginSubmit}
+            handleCloseModal={handleCloseModal}
+            activeModal={activeModal}
+          />
+          <EditProfileModal
+            formTitle={"Change profile data"}
+            formName={"edit-profile-info"}
+            formButtonText={"Save Changes"}
+            isOpen={activeModal === "edit-profile-info"}
+            onLogin={handleNewProfileInfoSubmit}
             handleCloseModal={handleCloseModal}
             activeModal={activeModal}
           />

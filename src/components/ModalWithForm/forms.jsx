@@ -184,8 +184,8 @@ function Forms(props) {
             id="new_name"
             placeholder="New Name"
             type="text"
-            // value={/* props.loginEmailInput */}
-            // onChange={(event) => /* props.onLoginEmailChange(event) */}
+            value={props.newNameInput}
+            onChange={(event) => props.onNameChange(event)}
             required
           />
           <label className="modal__label" htmlFor="new_avatar">
@@ -196,8 +196,8 @@ function Forms(props) {
             id="new_avatar"
             placeholder="New Avatar URL"
             type="url"
-            // value={/* props.loginPasswordInput */}
-            // onChange={(event) => /* props.onLoginPasswordChange(event) */}
+            value={props.newAvatarInput}
+            onChange={(event) => onAvatarChange(event)}
             required
           />
         </>

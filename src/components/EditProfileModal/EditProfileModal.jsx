@@ -47,7 +47,13 @@ function EditProfileModal(props) {
       onSubmit={handleSubmit}
       formId={"edit-profile-info"}
     >
-      <Forms index={3} />
+      <Forms
+        index={3}
+        newNameInput={newNameInput}
+        newAvatarInput={newAvatarInput}
+        onNameChange={handleNewNameChange}
+        onAvatarChange={handleNewAvatarChange}
+      />
     </ModalWithForm>
   );
 }
