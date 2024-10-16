@@ -9,7 +9,9 @@ function Profile(props) {
   const clothingItems = useContext(ClothingListContext);
   return (
     <div className="profile-main">
-      <SideBar />
+      <SideBar
+        handleClickChangeProfileData={props.handleClickChangeProfileData}
+      />
       <ClothesSection
         clothingItems={clothingItems}
         setActiveModal={props.setActiveModal}

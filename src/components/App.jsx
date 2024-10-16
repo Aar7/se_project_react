@@ -128,6 +128,10 @@ function App() {
     setActiveModal("delete-garment");
   }
 
+  function handleClickChangeProfileData() {
+    setActiveModal("edit-profile-info");
+  }
+
   function handleDeleteConfirm() {
     garmentsApi
       .deleteGarmentData(currentOpenCardObject._id, token)
@@ -294,6 +298,9 @@ function App() {
                     <Profile
                       setActiveModal={setActiveModal}
                       handleCardClick={handleCardClick}
+                      handleClickChangeProfileData={
+                        handleClickChangeProfileData
+                      }
                     />
                   </ProtectedRoute>
                 }
@@ -349,7 +356,7 @@ function App() {
             formName={"edit-profile-info"}
             formButtonText={"Save Changes"}
             isOpen={activeModal === "edit-profile-info"}
-            onLogin={handleNewProfileInfoSubmit}
+            onChangeInfo={handleNewProfileInfoSubmit}
             handleCloseModal={handleCloseModal}
             activeModal={activeModal}
           />

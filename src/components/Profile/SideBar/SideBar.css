@@ -1,11 +1,35 @@
 .profile-sidebar {
+  position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: max-content;
   /* margin-right: 116px; */
   font-family: "Cabinet Grotesk Bold";
   font-size: 20px;
   line-height: 25px;
+}
+
+.profile-sidebar__user-info {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+}
+
+.profile-sidebar__buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-sidebar__button {
+  border: none;
+  background-color: transparent;
+  font-family: "Cabinet Grotesk Bold";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  text-align: left;
+  margin-bottom: 8px;
+  cursor: pointer;
 }
 
 .profile-sidebar__image {

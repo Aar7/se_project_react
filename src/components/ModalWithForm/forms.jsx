@@ -197,7 +197,7 @@ function Forms(props) {
             placeholder="New Avatar URL"
             type="url"
             value={props.newAvatarInput}
-            onChange={(event) => onAvatarChange(event)}
+            onChange={(event) => props.onAvatarChange(event)}
             required
           />
         </>
