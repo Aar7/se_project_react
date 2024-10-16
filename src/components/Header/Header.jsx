@@ -45,7 +45,11 @@ function Header(props) {
             <Link className="header__profile-link" to="/profile">
               <p className="header__profile-name">{props.userData.name}</p>
             </Link>
-            <HeaderProfImg userData={props.userData} />
+            <HeaderProfImg
+              mainClass={"header__profile-image"}
+              avatarMissingClass={"header__avatar-missing"}
+              nameInitialClass={"header__name-initial"}
+            />
           </div>
         </div>
       </header>

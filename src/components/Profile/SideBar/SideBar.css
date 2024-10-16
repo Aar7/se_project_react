@@ -10,12 +10,30 @@
 
 .profile-sidebar__image {
   width: 56px;
+  height: 56px;
   align-self: start;
   margin-right: 16px;
+}
+
+.profile-sidebar__image_missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 0;
 }
 
 .profile-sidebar__name {
   margin: 0;
   padding-top: 16px;
   text-align: center;
+}
+
+.profile-sidebar__name-initial {
+  margin: 0;
+  padding: 0;
+  /* line-height: 0; */
+  color: rgba(255, 255, 255, 1);
 }
