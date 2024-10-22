@@ -142,8 +142,9 @@ function App() {
         auth
           .addCardLike(id, token)
           .then((updatedCard) => {
+            console.log("updatedCard from handleCardLike: ", updatedCard);
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
           .catch((error) => console.log(error))
@@ -151,8 +152,9 @@ function App() {
         auth
           .removeCardLike(id, token)
           .then((updatedCard) => {
+            console.log("updatedCard from handleCardLike: ", updatedCard);
             setClothingItems((cards) =>
-              cards.map((item) => (item._id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
           .catch((error) => console.log(error));
