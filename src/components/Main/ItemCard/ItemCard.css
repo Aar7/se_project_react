@@ -6,16 +6,43 @@
   border-radius: 19px;
 }
 
-.main__cards_listItem-title {
+.main__cards_head {
   position: absolute;
+  top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* left: 10px; */
+}
+
+.main__cards_listItem-title {
+  /* position: absolute; */
   padding: 2px 12px;
   margin: 0;
-  top: 15px;
-  left: 50%; /* Incorrect. This will not center the element on the image. */
+  /* top: 15px;
+  left: 50%; Incorrect. This will not center the element on the image. */
   width: max-content;
-  transform: translate(-50%);
+  height: 24px;
+  /* transform: translate(-50%); */
   background-color: rgba(255, 255, 255, 1);
   border-radius: 4px;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.main__cards_listItem-like-button {
+  /* position: absolute; */
+  width: 18px;
+  height: 15px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-left: 10px;
+  background-image: url("../../../src/assets/images/like-icon.svg");
+  background-size: 18px 15px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
 .main__cards_listItem-image {

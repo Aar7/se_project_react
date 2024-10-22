@@ -132,6 +132,30 @@ function App() {
     setActiveModal("edit-profile-info");
   }
 
+  function handleCardLike({ id, isLiked }) {
+    const token = getToken();
+
+    !isLiked
+      ? // api call to like card
+        auth
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((error) => console.log(error))
+      : // api call to dislike card
+        auth
+          .removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id ? updatedCard : item))
+            );
+          })
+          .catch((error) => console.log(error));
+  }
+
   function handleDeleteConfirm() {
     garmentsApi
       .deleteGarmentData(currentOpenCardObject._id, token)
@@ -189,7 +213,7 @@ function App() {
   }
 
   async function handleLoginSubmit(loginData) {
-    console.log(`handleLoginSubmit called`);
+    console.warn(`handleLoginSubmit called`);
 
     try {
       const res = await auth.login(loginData);
@@ -201,7 +225,7 @@ function App() {
         name: name,
         email: email,
         avatar: avatar,
-        _id: _id,
+        // _id: _id,
       });
       handleCloseModal();
       navigate("/profile");
@@ -215,8 +239,8 @@ function App() {
 
     auth.changeUserInfo(changedData, token).then((res) => {
       console.log(res);
-      // setUserData(userData => ({...userData, name:res.name}))
-      // setUserData(userData => ({...userData, avatar:res.avatar}))
+      setUserData((userData) => ({ ...userData, name: res.name }));
+      setUserData((userData) => ({ ...userData, avatar: res.avatar }));
     });
   }
 
@@ -288,6 +312,7 @@ function App() {
                     activeModal={activeModal}
                     setActiveModal={setActiveModal}
                     handleCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -301,6 +326,7 @@ function App() {
                       handleClickChangeProfileData={
                         handleClickChangeProfileData
                       }
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }

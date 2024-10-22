@@ -21,6 +21,7 @@ function ClothesSection(props) {
           itemOwner={item.owner}
           setActiveModal={props.setActiveModal}
           handleCardClick={props.handleCardClick}
+          onCardLike={props.onCardLike}
         />
       );
     }

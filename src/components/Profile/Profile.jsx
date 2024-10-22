@@ -16,6 +16,7 @@ function Profile(props) {
         clothingItems={clothingItems}
         setActiveModal={props.setActiveModal}
         handleCardClick={props.handleCardClick}
+        onCardLike={props.onCardLike}
       />
     </div>
   );

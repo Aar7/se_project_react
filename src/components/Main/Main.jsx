@@ -39,6 +39,7 @@ function Main(props) {
           // onOpen={props.onOpen}
           setActiveModal={props.setActiveModal}
           handleCardClick={props.handleCardClick}
+          onCardLike={props.onCardLike}
         />
       );
     }

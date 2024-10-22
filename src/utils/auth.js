@@ -1,8 +1,8 @@
 export const BASE_URL = "http://localhost:3001";
 
-function checkResponse(res) {
+async function checkResponse(res) {
   return res.ok
-    ? res.json()
+    ? await res.json()
     : Promise.reject(`Error: ${res.status}, ${res.statusCode}`);
 }
 function responseError(error) {
@@ -36,6 +36,7 @@ export const login = async ({ email, password }) => {
 
 export const getUserInfo = async (token) => {
   console.warn("getUserInfo called");
+  console.log("token from getUserInfo: ", token);
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
@@ -59,10 +60,45 @@ export const changeUserInfo = async ({ name, avatar }, token) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: token,
+      authorization: token,
     },
     body: JSON.stringify({ name, avatar }),
   })
     .then(checkResponse)
     .catch(responseError);
+};
+
+export const addCardLike = async (id, token) => {
+  console.log("Token from addCardlike: ", token);
+  console.log("User id: ", id);
+
+  try {
+    const res = await fetch(`${BASE_URL}/items/${id}/likes`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    return checkResponse(res);
+  } catch (error) {
+    return responseError(error);
+  }
+};
+
+export const removeCardLike = async (id, token) => {
+  try {
+    const res = await fetch(`${BASE_URL}/items/${id}/likes`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    return checkResponse(res);
+  } catch (error) {
+    return responseError(error);
+  }
 };
