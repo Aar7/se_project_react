@@ -25,6 +25,7 @@ function ClothesSection(props) {
           setActiveModal={props.setActiveModal}
           handleCardClick={props.handleCardClick}
           onCardLike={props.onCardLike}
+          isLoggedIn={props.isLoggedIn}
         />
       );
     }

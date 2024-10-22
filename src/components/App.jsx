@@ -315,6 +315,7 @@ function App() {
                     setActiveModal={setActiveModal}
                     handleCardClick={handleCardClick}
                     onCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />
@@ -329,6 +330,7 @@ function App() {
                         handleClickChangeProfileData
                       }
                       onCardLike={handleCardLike}
+                      isLoggedIn={isLoggedIn}
                     />
                   </ProtectedRoute>
                 }

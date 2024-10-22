@@ -51,6 +51,12 @@
   background-image: url("../../../src/assets/images/like-icon.svg");
 }
 
+.main__cards_listItem-like-button_hidden {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
+
 .main__cards_listItem-image {
   border-radius: 19px;
 }

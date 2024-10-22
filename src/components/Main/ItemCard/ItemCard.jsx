@@ -22,6 +22,17 @@ export function ItemCard(props) {
     : (likeButtonClasses =
         "main__cards_listItem-like-button main__cards_listItem-like-button_not-liked");
 
+  // console.log(props.isLoggedIn);
+  if (!props.isLoggedIn) {
+    console.log("In conditional");
+    likeButtonClasses = likeButtonClasses.concat(
+      " ",
+      "main__cards_listItem-like-button_hidden"
+    );
+  }
+
+  console.log("likeButtonClasses: ", likeButtonClasses);
+
   function handleLike() {
     props.onCardLike({ id: props.itemKey, isLiked: isLiked });
   }
