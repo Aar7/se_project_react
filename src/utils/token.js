@@ -5,6 +5,6 @@ export const getToken = () => {
 };
 
 export const setToken = (token) => {
-  localStorage.setItem(TOKEN_KEY, token);
+  localStorage.setItem(TOKEN_KEY, `Bearer ${token}`);
   return;
 };

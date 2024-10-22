@@ -43,7 +43,8 @@ export const getUserInfo = async (token) => {
       Accept: "application/json",
       "Content-Type": "application/json",
 
-      authorization: `Bearer ${token}`,
+      // authorization: `Bearer ${token}`,
+      authorization: token,
     },
   }).then((res) => {
     return res.ok
