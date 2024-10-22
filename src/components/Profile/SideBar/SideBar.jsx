@@ -2,8 +2,13 @@ import "./SideBar.css";
 import HeaderProfImg from "../../HeaderProfImg/HeaderProfImg";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
+import { removeToken } from "../../../utils/token";
 
 function SideBar(props) {
+  async function handleClickLogout() {
+    removeToken();
+    await props.setIsLoggedIn(false);
+  }
   const userData = useContext(CurrentUserContext);
   return (
     <div className="profile-sidebar">
@@ -25,8 +30,8 @@ function SideBar(props) {
         </button>
         <button
           className="profile-sidebar__button profile-sidebar__log-out"
-          type="
-        button"
+          type="button"
+          onClick={handleClickLogout}
         >
           Log Out
         </button>

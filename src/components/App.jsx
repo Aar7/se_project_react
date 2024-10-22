@@ -220,7 +220,7 @@ function App() {
     try {
       const res = await auth.login(loginData);
       console.log("Logging response from login attempt:", res);
-      const { name, email, avatar, token } = res;
+      const { name, email, avatar, token, _id } = res;
       setToken(token);
       await setIsLoggedIn(true);
       await setUserData({
@@ -254,6 +254,7 @@ function App() {
 
     auth.getUserInfo(token).then((res) => {
       console.log(res);
+      console.log("isLoggedIn: ", isLoggedIn);
       const { name, email, avatar, _id } = res;
       setIsLoggedIn(true);
       setUserData({ name, email, avatar, _id });
@@ -331,6 +332,7 @@ function App() {
                       }
                       onCardLike={handleCardLike}
                       isLoggedIn={isLoggedIn}
+                      setIsLoggedIn={setIsLoggedIn}
                     />
                   </ProtectedRoute>
                 }

@@ -11,6 +11,7 @@ function Profile(props) {
     <div className="profile-main">
       <SideBar
         handleClickChangeProfileData={props.handleClickChangeProfileData}
+        setIsLoggedIn={props.setIsLoggedIn}
       />
       <ClothesSection
         clothingItems={clothingItems}
