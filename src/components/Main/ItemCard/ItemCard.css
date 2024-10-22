@@ -38,11 +38,17 @@
   height: 15px;
   color: rgba(0, 0, 0, 0.6);
   margin-left: 10px;
-  background-image: url("../../../src/assets/images/like-icon.svg");
   background-size: 18px 15px;
   background-color: transparent;
   border: 0;
   cursor: pointer;
+}
+
+.main__cards_listItem-like-button_liked {
+  background-image: url("../../../src/assets/images/like-icon_filled.svg");
+}
+.main__cards_listItem-like-button_not-liked {
+  background-image: url("../../../src/assets/images/like-icon.svg");
 }
 
 .main__cards_listItem-image {

@@ -1,25 +1,42 @@
+import { useContext } from "react";
 import "./ItemCard.css";
+import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
 export function ItemCard(props) {
+  const userData = useContext(CurrentUserContext);
+
+  // const likeButtonClasses = "main__cards_listItem-like-button";
+  let likeButtonClasses;
+  // console.log("props.isLiked: ", props.isLiked);
+
+  // const isLiked = this.likes.some((id) => id === currentUser._id);
+
+  // // Create a variable which you then set in `className` for the like button
+  // const itemLikeButtonClassName = `...`;
+
+  const isLiked = props.itemLikes.some((userId) => userId === userData._id);
+  // console.log(isLiked);
+  isLiked
+    ? (likeButtonClasses =
+        "main__cards_listItem-like-button main__cards_listItem-like-button_liked")
+    : (likeButtonClasses =
+        "main__cards_listItem-like-button main__cards_listItem-like-button_not-liked");
+
   function handleLike() {
-    props.onCardLike({ id: props.itemKey, isLiked: props.isLiked });
+    props.onCardLike({ id: props.itemKey, isLiked: isLiked });
   }
   return (
     <li
       className="main__cards_listItem"
       onClick={(event) => {
         event.stopPropagation();
-        // console.log("props.itemKey", props.itemKey);
-        // console.log("props.itemLink", props.itemLink);
-        // console.log("props.ItemName", props.ItemName);
-        // console.log("props.itemWeather", props.itemWeather);
-        // console.log("props.itemOwner", props.itemOwner);
         props.handleCardClick(this, {
           _id: props.itemKey,
           link: props.itemLink,
           name: props.ItemName,
           weather: props.itemWeather,
           owner: props.itemOwner,
+          likes: props.itemLikes,
         });
         props.setActiveModal("open-card");
       }}
@@ -31,7 +48,8 @@ export function ItemCard(props) {
             event.stopPropagation();
             handleLike();
           }}
-          className="main__cards_listItem-like-button"
+          // className="main__cards_listItem-like-button"
+          className={`${likeButtonClasses}`}
           src="../../../src/assets/images/like-icon.svg"
         ></button>
       </div>

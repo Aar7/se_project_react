@@ -6,9 +6,11 @@ import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
 function ClothesSection(props) {
   const userData = useContext(CurrentUserContext);
+  console.log(props.clothingItems);
 
   const clothingArray = props.clothingItems.map((item) => {
     if (userData._id === item.owner) {
+      console.log("item: ", item);
       return (
         <ItemCard
           key={item._id}
@@ -19,6 +21,7 @@ function ClothesSection(props) {
           ItemName={item.name}
           itemWeather={item.weather}
           itemOwner={item.owner}
+          itemLikes={item.likes}
           setActiveModal={props.setActiveModal}
           handleCardClick={props.handleCardClick}
           onCardLike={props.onCardLike}

@@ -22,6 +22,7 @@ function Main(props) {
   // useEffect(() => {
   // newClothing = props.clothingItems.map((item) => {
   const newClothing = clothingItems.map((item) => {
+    // console.log("item from newClothing: ", item);
     if (item.weather == tempDescribe) {
       // console.log("item._id: ");
       // console.log(item._id);
@@ -36,6 +37,7 @@ function Main(props) {
           ItemName={item.name}
           itemWeather={item.weather}
           itemOwner={item.owner}
+          itemLikes={item.likes}
           // onOpen={props.onOpen}
           setActiveModal={props.setActiveModal}
           handleCardClick={props.handleCardClick}

@@ -75,6 +75,7 @@ function App() {
     link: "",
     weather: "",
     owner: "",
+    likes: {},
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({
@@ -110,7 +111,7 @@ function App() {
   }
 
   async function handleCardClick(cardObjectData, itemData) {
-    // console.log(cardObjectData);
+    console.log("itemData: ", itemData);
     setItemCardLink.call(cardObjectData, itemData.link);
     setItemCardName.call(cardObjectData, itemData.name);
     setWeatherTemp.call(cardObjectData, itemData.weather);
@@ -120,6 +121,7 @@ function App() {
       imageUrl: itemData.link,
       weather: itemData.weather,
       owner: itemData.owner,
+      likes: itemData.likes,
     });
     // console.log(currentOpenCardObject);
   }
@@ -225,7 +227,7 @@ function App() {
         name: name,
         email: email,
         avatar: avatar,
-        // _id: _id,
+        _id: _id,
       });
       handleCloseModal();
       navigate("/profile");
