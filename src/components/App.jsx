@@ -161,6 +161,7 @@ function App() {
   }
 
   function handleDeleteConfirm() {
+    const token = getToken();
     garmentsApi
       .deleteGarmentData(currentOpenCardObject._id, token)
       .then(() => {
