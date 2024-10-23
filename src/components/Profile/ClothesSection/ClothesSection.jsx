@@ -6,14 +6,13 @@ import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 import { ClothingListContext } from "../../../contexts/ClothingListContext";
 
 function ClothesSection(props) {
-  console.warn("ClothesSection re-rendered!");
+  // console.warn("ClothesSection re-rendered!");
 
   const clothingItems = useContext(ClothingListContext);
   const userData = useContext(CurrentUserContext);
   const [clothingArray, setClothingArray] = useState([]);
 
   useEffect(() => {
-    console.log("clothingItems before change: ", clothingItems);
     const filteredClothingItems = clothingItems
       .filter((item) => userData._id === item.owner)
       .map((item) => {

@@ -1,20 +1,29 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import Forms from "../ModalWithForm/Forms";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 // form id is edit-profile-info
 
 function EditProfileModal(props) {
+  const userData = useContext(CurrentUserContext);
+  const { name, avatar } = userData;
+  console.log("userData in Edit modal: ", userData);
   const [newNameInput, setNewNameInput] = useState("");
   const [newAvatarInput, setNewAvatarInput] = useState("");
 
   useEffect(() => {
     if (!props.activeModal) {
       document.getElementById("edit-profile-info").reset();
-      setNewNameInput("");
-      setNewAvatarInput("");
+      // setNewNameInput("");
+      // setNewAvatarInput("");
+      setNewNameInput(name);
+      setNewAvatarInput(avatar);
     }
   }, [props.activeModal]);
+
+  // useEffect(() => {
+  // }, []);
 
   function handleNewNameChange(event) {
     const inputValue = event.target.value;
@@ -35,6 +44,7 @@ function EditProfileModal(props) {
       name: newNameInput,
       avatar: newAvatarInput,
     });
+    props.handleCloseModal();
   }
 
   return (
@@ -53,6 +63,8 @@ function EditProfileModal(props) {
         newAvatarInput={newAvatarInput}
         onNameChange={handleNewNameChange}
         onAvatarChange={handleNewAvatarChange}
+        currentName={userData.name}
+        currentAvatar={userData.avatar}
       />
     </ModalWithForm>
   );
