@@ -249,6 +249,10 @@ function App() {
     });
   }
 
+  function handleChangeAuthMethod(otherModal) {
+    setActiveModal(otherModal);
+  }
+
   // EFFECTS
   useEffect(() => {
     const token = getToken();
@@ -377,6 +381,7 @@ function App() {
             onRegister={handleRegisterSubmit}
             handleCloseModal={handleCloseModal}
             activeModal={activeModal}
+            handleChangeAuthMethod={handleChangeAuthMethod}
           />
           <LoginModal
             formTitle={"Log in"}
@@ -386,6 +391,7 @@ function App() {
             onLogin={handleLoginSubmit}
             handleCloseModal={handleCloseModal}
             activeModal={activeModal}
+            handleChangeAuthMethod={handleChangeAuthMethod}
           />
           <EditProfileModal
             formTitle={"Change profile data"}

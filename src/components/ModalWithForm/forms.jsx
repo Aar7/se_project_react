@@ -1,6 +1,7 @@
 function Forms(props) {
   switch (props.index) {
     case 0: {
+      // Add new garment
       return (
         <>
           <label className="modal__label" htmlFor="userName">
@@ -86,6 +87,7 @@ function Forms(props) {
       );
     }
     case 1: {
+      // Register new user
       return (
         <>
           <label className="modal__label" htmlFor="email">
@@ -134,13 +136,18 @@ function Forms(props) {
             value={props.avatarUrlInput}
             onChange={(event) => props.onAvatarUrlChange(event)}
           />
-          <button className="button modal__altroute_button modal__orlogin">
+          <button
+            className="button modal__altroute_button modal__orlogin"
+            type="button"
+            onClick={() => props.handleChangeAuthMethod("login-user")}
+          >
             or Log In
           </button>
         </>
       );
     }
     case 2: {
+      // Log in existing user
       return (
         <>
           <label className="modal__label" htmlFor="email_login">
@@ -167,13 +174,18 @@ function Forms(props) {
             onChange={(event) => props.onLoginPasswordChange(event)}
             required
           />
-          <button className="button modal__altroute_button modal__orsignup">
+          <button
+            className="button modal__altroute_button modal__orsignup"
+            type="button"
+            onClick={() => props.handleChangeAuthMethod("register-user")}
+          >
             or Sign Up
           </button>
         </>
       );
     }
     case 3: {
+      // Change user profile data
       return (
         <>
           <label className="modal__label" htmlFor="new_name">

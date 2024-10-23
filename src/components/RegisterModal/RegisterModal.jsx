@@ -79,6 +79,7 @@ function RegisterModal(props) {
         onPasswordChange={handlePasswordChange}
         onNameChange={handleNameChange}
         onAvatarUrlChange={handleAvatarUrlChange}
+        handleChangeAuthMethod={props.handleChangeAuthMethod}
       />
     </ModalWithForm>
   );

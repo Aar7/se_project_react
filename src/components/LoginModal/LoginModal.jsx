@@ -56,6 +56,7 @@ function LoginModal(props) {
         loginPasswordInput={loginPasswordInput}
         onLoginEmailChange={handleEmailChange}
         onLoginPasswordChange={handlePasswordChange}
+        handleChangeAuthMethod={props.handleChangeAuthMethod}
       />
     </ModalWithForm>
   );
