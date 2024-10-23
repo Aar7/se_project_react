@@ -1,49 +1,50 @@
 import "./ClothesSection.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 // import defaultContent from "../../../utils/defaultContent";
 import ItemCard from "../../Main/ItemCard/ItemCard";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
+import { ClothingListContext } from "../../../contexts/ClothingListContext";
 
 function ClothesSection(props) {
-  const userData = useContext(CurrentUserContext);
-  console.log(props.clothingItems);
+  console.warn("ClothesSection re-rendered!");
 
-  const clothingArray = props.clothingItems.map((item) => {
-    if (userData._id === item.owner) {
-      console.log("item: ", item);
-      return (
-        <ItemCard
-          key={item._id}
-          itemKey={item._id}
-          itemLink={item.imageUrl}
-          // ItemName goes against convention to satisfy automated tests
-          //  Tests are flagging it as a component for some reason...
-          ItemName={item.name}
-          itemWeather={item.weather}
-          itemOwner={item.owner}
-          itemLikes={item.likes}
-          setActiveModal={props.setActiveModal}
-          handleCardClick={props.handleCardClick}
-          onCardLike={props.onCardLike}
-          isLoggedIn={props.isLoggedIn}
-        />
-      );
-    }
-  });
-  // const clothingArray = defaultContent.map((item) => {
-  //   return (
-  //     <ItemCard
-  //       key={item._id}
-  //       itemLink={item.link}
-  //       // ItemName goes against convention to satisfy automated tests
-  //       //  Tests are flagging it as a component for some reason...
-  //       ItemName={item.name}
-  //       itemWeather={item.weather}
-  //       setActiveModal={props.setActiveModal}
-  //       handleCardClick={props.handleCardClick}
-  //     />
-  //   );
-  // });
+  const clothingItems = useContext(ClothingListContext);
+  const userData = useContext(CurrentUserContext);
+  const [clothingArray, setClothingArray] = useState([]);
+
+  useEffect(() => {
+    console.log("clothingItems before change: ", clothingItems);
+    const filteredClothingItems = clothingItems
+      .filter((item) => userData._id === item.owner)
+      .map((item) => {
+        // if (userData._id === item.owner) {
+        // console.log("item: ", item);
+        return (
+          <ItemCard
+            key={item._id}
+            itemKey={item._id}
+            itemLink={item.imageUrl}
+            // ItemName goes against convention to satisfy automated tests
+            //  Tests are flagging it as a component for some reason...
+            ItemName={item.name}
+            itemWeather={item.weather}
+            itemOwner={item.owner}
+            itemLikes={item.likes}
+            setActiveModal={props.setActiveModal}
+            handleCardClick={props.handleCardClick}
+            onCardLike={props.onCardLike}
+            isLoggedIn={props.isLoggedIn}
+          />
+        );
+        // }
+      });
+    setClothingArray(filteredClothingItems);
+  }, [clothingItems, userData._id]);
+
+  // useEffect(() => {
+  //   setClothingArray(filteredClothingItems);
+  // }, [clothingItems]);
+
   return (
     <div className="profile-clothing">
       <div className="profile-clothing__wrap">

@@ -49,12 +49,12 @@ function App() {
   });
   // const [clothingItems, setClothingItems] = useState(defaultContent);
   const [clothingItems, setClothingItems] = useState([
-    {
+    /*     {
       _id: "",
       name: "",
       imageUrl: "",
       weather: "",
-    },
+    }, */
   ]);
   const [currentDate, setCurrentDate] = useState(
     new Date().toLocaleString("default", {
@@ -184,12 +184,12 @@ function App() {
       : setCurrentTemperatureUnit("F");
   }
 
-  function handleAddItemSubmit(item) {
+  async function handleAddItemSubmit(item) {
     const token = getToken();
-    garmentsApi
+    await garmentsApi
       .saveGarmentData(item, token)
       .then((res) => {
-        setClothingItems([res, ...clothingItems]);
+        setClothingItems([res.data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((error) => console.log(error));
@@ -252,14 +252,15 @@ function App() {
   // EFFECTS
   useEffect(() => {
     const token = getToken();
-    console.log(`Token retrieved on refresh: ${token}`);
+    // console.log(`Token retrieved on refresh: ${token}`);
     if (!token) return;
 
     auth.getUserInfo(token).then((res) => {
-      console.log(res);
-      console.log("isLoggedIn: ", isLoggedIn);
+      // console.log(res);
+      // console.log("isLoggedIn: ", isLoggedIn);
       const { name, email, avatar, _id } = res;
       setIsLoggedIn(true);
+      // console.log("isLoggedIn: ", isLoggedIn);
       setUserData({ name, email, avatar, _id });
       navigate("/");
     });
@@ -313,7 +314,7 @@ function App() {
                 element={
                   <Main
                     weatherData={weatherData}
-                    clothingItems={clothingItems}
+                    // clothingItems={clothingItems}
                     weatherType={weatherType}
                     activeModal={activeModal}
                     setActiveModal={setActiveModal}

@@ -36,7 +36,7 @@ export const login = async ({ email, password }) => {
 
 export const getUserInfo = async (token) => {
   console.warn("getUserInfo called");
-  console.log("token from getUserInfo: ", token);
+  // console.log("token from getUserInfo: ", token);
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {

@@ -6,7 +6,7 @@ import { ClothingListContext } from "../../contexts/ClothingListContext";
 // import { ClothingListContext } from "../../contexts/ClothingListContext";
 
 function Profile(props) {
-  const clothingItems = useContext(ClothingListContext);
+  // const clothingItems = useContext(ClothingListContext);
   return (
     <div className="profile-main">
       <SideBar
@@ -14,7 +14,7 @@ function Profile(props) {
         setIsLoggedIn={props.setIsLoggedIn}
       />
       <ClothesSection
-        clothingItems={clothingItems}
+        // clothingItems={clothingItems}
         setActiveModal={props.setActiveModal}
         handleCardClick={props.handleCardClick}
         onCardLike={props.onCardLike}
