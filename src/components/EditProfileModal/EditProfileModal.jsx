@@ -8,7 +8,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function EditProfileModal(props) {
   const userData = useContext(CurrentUserContext);
   const { name, avatar } = userData;
-  console.log("userData in Edit modal: ", userData);
+  // console.log("userData in Edit modal: ", userData);
   const [newNameInput, setNewNameInput] = useState("");
   const [newAvatarInput, setNewAvatarInput] = useState("");
 

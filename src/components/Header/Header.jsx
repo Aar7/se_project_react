@@ -3,9 +3,11 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import HeaderProfImg from "../HeaderProfImg/HeaderProfImg";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Header(props) {
-  // console.log("userData:", props.userData);
+  const userData = useContext(CurrentUserContext);
   let headerHtml;
 
   function handleClickSignUp() {
@@ -43,7 +45,7 @@ function Header(props) {
           </button>
           <div className="header__profile">
             <Link className="header__profile-link" to="/profile">
-              <p className="header__profile-name">{props.userData.name}</p>
+              <p className="header__profile-name">{userData.name}</p>
             </Link>
             <HeaderProfImg
               mainClass={"header__profile-image"}

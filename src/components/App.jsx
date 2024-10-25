@@ -317,7 +317,6 @@ function App() {
             location={currentLocation}
             setActiveModal={setActiveModal}
             isLoggedIn={isLoggedIn}
-            userData={userData}
           />
           <ClothingListContext.Provider value={clothingItems}>
             <Routes>
