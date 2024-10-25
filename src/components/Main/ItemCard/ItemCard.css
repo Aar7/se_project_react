@@ -58,8 +58,9 @@
 }
 
 .main__cards_listItem-image {
-  object-fit: cover;
+  object-fit: fill;
+  height: 100%;
+  width: 100%;
   max-height: 323px;
-  max-width: 100%;
   border-radius: 19px;
 }
