@@ -1,44 +1,34 @@
 import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import Forms from "../ModalWithForm/Forms";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useForm } from "../../hooks/useForm";
 
 function LoginModal(props) {
-  const [loginEmailInput, setLoginEmailInput] = useState("");
-  const [loginPasswordInput, setLoginPasswordInput] = useState("");
-  useEffect(() => {
-    if (!props.activeModal) {
-      setLoginEmailInput("");
-      setLoginPasswordInput("");
-    }
-  }, [props.activeModal]);
-
-  function handleEmailChange(event) {
-    const inputValue = event.target.value;
-    setLoginEmailInput(inputValue);
-    // console.log(`Email inputValue: ${inputValue}`);
-  }
-  function handlePasswordChange(event) {
-    const inputValue = event.target.value;
-    setLoginPasswordInput(inputValue);
-    // console.log(`Password inputValue: ${inputValue}`);
-  }
+  const { values, setValues, handleChange } = useForm({});
   function handleSubmit(event) {
     event.preventDefault();
 
-    console.log(loginEmailInput == false);
-    console.log(loginPasswordInput == false);
+    const { email, password } = values;
+    console.log(email == false);
+    console.log(password == false);
 
-    if ((loginEmailInput || loginPasswordInput) == false) {
+    if ((email || password) == false) {
       return alert("Please fill in all fields.");
     }
 
+    console.log("Submitted form values: ", values);
+
     props.onLogin({
-      email: loginEmailInput,
-      password: loginPasswordInput,
+      email: email,
+      password: password,
     });
   }
 
+  useEffect(() => {
+    if (!props.activeModal) {
+      setValues({});
+    }
+  }, [props.activeModal]);
   return (
     <ModalWithForm
       formTitle={props.formTitle}
@@ -49,14 +39,39 @@ function LoginModal(props) {
       onSubmit={handleSubmit}
       formId={"login-user"}
     >
-      <Forms
-        index={2}
-        loginEmailInput={loginEmailInput}
-        loginPasswordInput={loginPasswordInput}
-        onLoginEmailChange={handleEmailChange}
-        onLoginPasswordChange={handlePasswordChange}
-        handleChangeAuthMethod={props.handleChangeAuthMethod}
+      <label className="modal__label" htmlFor="email_login">
+        Email
+      </label>
+      <input
+        className="modal__input"
+        id="email_login"
+        name="email"
+        placeholder="Email"
+        type="email"
+        value={values.email || ""}
+        onChange={(event) => handleChange(event)}
+        required
       />
+      <label className="modal__label" htmlFor="password_login">
+        Password
+      </label>
+      <input
+        className="modal__input"
+        id="password_login"
+        name="password"
+        placeholder="Password"
+        type="password"
+        value={values.password || ""}
+        onChange={(event) => handleChange(event)}
+        required
+      />
+      <button
+        className="button modal__altroute_button modal__orsignup"
+        type="button"
+        onClick={() => props.handleChangeAuthMethod("register-user")}
+      >
+        or Sign Up
+      </button>
     </ModalWithForm>
   );
 }

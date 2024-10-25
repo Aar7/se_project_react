@@ -158,8 +158,10 @@ function Forms(props) {
             id="email_login"
             placeholder="Email"
             type="email"
-            value={props.loginEmailInput}
-            onChange={(event) => props.onLoginEmailChange(event)}
+            // value={props.loginEmailInput}
+            // onChange={(event) => props.onLoginEmailChange(event)}
+            value={props.loginModalValues.email_login || ""}
+            onChange={(event) => props.handleLoginInputChange(event)}
             required
           />
           <label className="modal__label" htmlFor="password_login">
@@ -170,8 +172,10 @@ function Forms(props) {
             id="password_login"
             placeholder="Password"
             type="password"
-            value={props.loginPasswordInput}
-            onChange={(event) => props.onLoginPasswordChange(event)}
+            // value={props.loginPasswordInput}
+            // onChange={(event) => props.onLoginPasswordChange(event)}
+            value={props.loginModalValues.password_login || ""}
+            onChange={(event) => props.handleLoginInputChange(event)}
             required
           />
           <button

@@ -1,62 +1,36 @@
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import Forms from "../ModalWithForm/Forms";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useForm } from "../../hooks/useForm";
 
 function RegisterModal(props) {
-  const [emailInput, setEmailInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
-  const [nameInput, setNameInput] = useState("");
-  const [avatarUrlInput, setAvatarUrlInput] = useState("");
-  useEffect(() => {
-    if (!props.activeModal) {
-      setEmailInput("");
-      setPasswordInput("");
-      setNameInput("");
-      setAvatarUrlInput("");
-    }
-  }, [props.activeModal]);
-
-  function handleEmailChange(event) {
-    const inputValue = event.target.value;
-    setEmailInput(inputValue);
-    // console.log(`Email inputValue: ${inputValue}`);
-  }
-  function handlePasswordChange(event) {
-    const inputValue = event.target.value;
-    setPasswordInput(inputValue);
-    // console.log(`Password inputValue: ${inputValue}`);
-  }
-  function handleNameChange(event) {
-    const inputValue = event.target.value;
-    setNameInput(inputValue);
-    // console.log(`Name inputValue: ${inputValue}`);
-  }
-  function handleAvatarUrlChange(event) {
-    const inputValue = event.target.value;
-    setAvatarUrlInput(inputValue);
-    // console.log(`Avatar URL inputValue: ${inputValue}`);
-  }
+  const { values, setValues, handleChange } = useForm({});
 
   function handleSubmit(event) {
     event.preventDefault();
+    const { name, avatarUrl, email, password } = values;
 
-    console.log(emailInput == false);
-    console.log(passwordInput == false);
-    console.log(nameInput == false);
-    console.log(avatarUrlInput == false);
+    console.log(email == false);
+    console.log(password == false);
+    console.log(name == false);
+    console.log(avatarUrl == false);
 
-    if ((emailInput || passwordInput || nameInput || avatarUrlInput) == false) {
+    if ((email || password || name || avatarUrl) == false) {
       return alert("Please fill in all fields.");
     }
 
     props.onRegister({
-      name: nameInput,
-      avatar: avatarUrlInput,
-      email: emailInput,
-      password: passwordInput,
+      name: name,
+      avatar: avatarUrl,
+      email: email,
+      password: password,
     });
   }
+  useEffect(() => {
+    if (!props.activeModal) {
+      setValues({});
+    }
+  }, [props.activeModal]);
 
   return (
     <ModalWithForm
@@ -68,18 +42,63 @@ function RegisterModal(props) {
       onSubmit={handleSubmit}
       formId={"register-user"}
     >
-      <Forms
-        index={1}
-        emailInput={emailInput}
-        passwordInput={passwordInput}
-        nameInput={nameInput}
-        avatarUrlInput={avatarUrlInput}
-        onEmailChange={handleEmailChange}
-        onPasswordChange={handlePasswordChange}
-        onNameChange={handleNameChange}
-        onAvatarUrlChange={handleAvatarUrlChange}
-        handleChangeAuthMethod={props.handleChangeAuthMethod}
+      <label className="modal__label" htmlFor="email">
+        Email *
+      </label>
+      <input
+        className="modal__input"
+        id="email"
+        name="email"
+        placeholder="Email"
+        type="email"
+        value={values.email}
+        onChange={(event) => handleChange(event)}
+        required
       />
+      <label className="modal__label" htmlFor="password">
+        Password *
+      </label>
+      <input
+        className="modal__input"
+        id="password"
+        name="password"
+        placeholder="Password"
+        type="password"
+        value={values.password}
+        onChange={(event) => handleChange(event)}
+        required
+      />
+      <label className="modal__label" htmlFor="name">
+        Name
+      </label>
+      <input
+        className="modal__input"
+        id="name"
+        name="name"
+        placeholder="Name"
+        type="text"
+        value={values.name}
+        onChange={(event) => handleChange(event)}
+      />
+      <label className="modal__label" htmlFor="avatarUrl">
+        Avatar URL
+      </label>
+      <input
+        className="modal__input"
+        id="avatarUrl"
+        name="avatarUrl"
+        placeholder="Avatar URL"
+        type="url"
+        value={values.avatarUrl}
+        onChange={(event) => handleChange(event)}
+      />
+      <button
+        className="button modal__altroute_button modal__orlogin"
+        type="button"
+        onClick={() => props.handleChangeAuthMethod("login-user")}
+      >
+        or Log In
+      </button>
     </ModalWithForm>
   );
 }

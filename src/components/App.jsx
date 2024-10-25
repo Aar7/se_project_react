@@ -248,8 +248,7 @@ function App() {
       .changeUserInfo(changedData, token)
       .then((res) => {
         console.log(res);
-        setUserData((userData) => ({ ...userData, name: res.name }));
-        setUserData((userData) => ({ ...userData, avatar: res.avatar }));
+        setUserData((userData) => ({ ...userData, ...res }));
       })
       .catch(auth.responseError);
   }

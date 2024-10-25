@@ -1,48 +1,31 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import Forms from "../ModalWithForm/Forms";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-
-// form id is edit-profile-info
+import { useForm } from "../../hooks/useForm";
 
 function EditProfileModal(props) {
+  const { values, setValues, handleChange } = useForm({});
   const userData = useContext(CurrentUserContext);
   const { name, avatar } = userData;
-  // console.log("userData in Edit modal: ", userData);
-  const [newNameInput, setNewNameInput] = useState("");
-  const [newAvatarInput, setNewAvatarInput] = useState("");
-
-  useEffect(() => {
-    if (!props.activeModal) {
-      setNewNameInput(name);
-      setNewAvatarInput(avatar);
-    }
-  }, [props.activeModal]);
-
-  // useEffect(() => {
-  // }, []);
-
-  function handleNewNameChange(event) {
-    const inputValue = event.target.value;
-    setNewNameInput(inputValue);
-  }
-  function handleNewAvatarChange(event) {
-    const inputValue = event.target.value;
-    setNewAvatarInput(inputValue);
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
+    const { name, avatar } = values;
 
-    if ((newNameInput || newAvatarInput) === false) {
+    if ((name || avatar) === false) {
       return alert("Please fill in all fields.");
     }
     props.onChangeInfo({
-      name: newNameInput,
-      avatar: newAvatarInput,
+      name: name,
+      avatar: avatar,
     });
     props.handleCloseModal();
   }
+  useEffect(() => {
+    if (!props.activeModal) {
+      setValues({ name: name, avatar: avatar });
+    }
+  }, [props.activeModal]);
 
   return (
     <ModalWithForm
@@ -54,14 +37,31 @@ function EditProfileModal(props) {
       onSubmit={handleSubmit}
       formId={"edit-profile-info"}
     >
-      <Forms
-        index={3}
-        newNameInput={newNameInput}
-        newAvatarInput={newAvatarInput}
-        onNameChange={handleNewNameChange}
-        onAvatarChange={handleNewAvatarChange}
-        currentName={userData.name}
-        currentAvatar={userData.avatar}
+      <label className="modal__label" htmlFor="new_name">
+        Name *
+      </label>
+      <input
+        className="modal__input"
+        id="new_name"
+        name="name"
+        placeholder="New Name"
+        type="text"
+        value={values.name}
+        onChange={(event) => handleChange(event)}
+        required
+      />
+      <label className="modal__label" htmlFor="new_avatar">
+        Avatar *
+      </label>
+      <input
+        className="modal__input"
+        id="new_avatar"
+        name="avatar"
+        placeholder="New Avatar URL"
+        type="url"
+        value={values.avatar}
+        onChange={(event) => handleChange(event)}
+        required
       />
     </ModalWithForm>
   );
