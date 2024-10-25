@@ -8,9 +8,6 @@ function ItemModal(props) {
   const { currentOpenCardObject } = useContext(CardObjectContext);
 
   const isOwn = currentOpenCardObject?.owner === userData._id;
-  // console.log(currentOpenCardObject.owner);
-  // console.log(userData._id);
-  // console.log(isOwn);
   const itemDeleteButtonClassName = `item-modal__delete-item ${
     isOwn ? "item-modal__delete-item_visible" : "item-modal__delete-item_hidden"
   }`;

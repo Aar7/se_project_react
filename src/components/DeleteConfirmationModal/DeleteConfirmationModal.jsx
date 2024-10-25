@@ -4,10 +4,6 @@ import { CardObjectContext } from "../../contexts/CardObjectContext";
 
 function DeleteItemModal(props) {
   const cardContext = useContext(CardObjectContext);
-  // let
-  // useEffect(() => {
-
-  // })
   return (
     <div
       // id="delete-item"
@@ -41,7 +37,6 @@ function DeleteItemModal(props) {
             console.log(`cardcontext Id`);
             console.log(cardContext._id);
             props.handleDeleteConfirm(cardContext._id);
-            // props.handleCloseModal();
           }}
         >
           Yes, delete item

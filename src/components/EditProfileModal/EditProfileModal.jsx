@@ -19,7 +19,6 @@ function EditProfileModal(props) {
       name: name,
       avatar: avatar,
     });
-    props.handleCloseModal();
   }
   useEffect(() => {
     if (!props.activeModal) {
@@ -46,7 +45,7 @@ function EditProfileModal(props) {
         name="name"
         placeholder="New Name"
         type="text"
-        value={values.name}
+        value={values.name || ""}
         onChange={(event) => handleChange(event)}
         required
       />
@@ -59,7 +58,7 @@ function EditProfileModal(props) {
         name="avatar"
         placeholder="New Avatar URL"
         type="url"
-        value={values.avatar}
+        value={values.avatar || ""}
         onChange={(event) => handleChange(event)}
         required
       />

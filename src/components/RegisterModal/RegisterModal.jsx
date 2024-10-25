@@ -51,7 +51,7 @@ function RegisterModal(props) {
         name="email"
         placeholder="Email"
         type="email"
-        value={values.email}
+        value={values.email || ""}
         onChange={(event) => handleChange(event)}
         required
       />
@@ -64,7 +64,7 @@ function RegisterModal(props) {
         name="password"
         placeholder="Password"
         type="password"
-        value={values.password}
+        value={values.password || ""}
         onChange={(event) => handleChange(event)}
         required
       />
@@ -77,7 +77,7 @@ function RegisterModal(props) {
         name="name"
         placeholder="Name"
         type="text"
-        value={values.name}
+        value={values.name || ""}
         onChange={(event) => handleChange(event)}
       />
       <label className="modal__label" htmlFor="avatarUrl">
@@ -89,7 +89,7 @@ function RegisterModal(props) {
         name="avatarUrl"
         placeholder="Avatar URL"
         type="url"
-        value={values.avatarUrl}
+        value={values.avatarUrl || ""}
         onChange={(event) => handleChange(event)}
       />
       <button
