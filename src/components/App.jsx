@@ -147,7 +147,7 @@ function App() {
               cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
-          .catch((error) => console.log(error))
+          .catch(auth.responseError)
       : // api call to dislike card
         auth
           .removeCardLike(id, token)
@@ -157,7 +157,7 @@ function App() {
               cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
-          .catch((error) => console.log(error));
+          .catch(auth.responseError);
   }
 
   function handleDeleteConfirm() {
@@ -214,7 +214,8 @@ function App() {
         setUserData({ name: name, email: email, avatar: avatar });
         setActiveModal("login-user");
         navigate("/login");
-      });
+      })
+      .catch(auth.responseError);
   }
 
   async function handleLoginSubmit(loginData) {
@@ -225,8 +226,8 @@ function App() {
       console.log("Logging response from login attempt:", res);
       const { name, email, avatar, token, _id } = res;
       setToken(token);
-      await setIsLoggedIn(true);
-      await setUserData({
+      setIsLoggedIn(true);
+      setUserData({
         name: name,
         email: email,
         avatar: avatar,
@@ -235,18 +236,22 @@ function App() {
       handleCloseModal();
       navigate("/profile");
     } catch (error) {
-      console.error(`There was an error: ${error}`);
+      // console.error(`There was an error: ${error}`);
+      auth.responseError(error);
     }
   }
 
   function handleNewProfileInfoSubmit(changedData) {
     const token = getToken();
 
-    auth.changeUserInfo(changedData, token).then((res) => {
-      console.log(res);
-      setUserData((userData) => ({ ...userData, name: res.name }));
-      setUserData((userData) => ({ ...userData, avatar: res.avatar }));
-    });
+    auth
+      .changeUserInfo(changedData, token)
+      .then((res) => {
+        console.log(res);
+        setUserData((userData) => ({ ...userData, name: res.name }));
+        setUserData((userData) => ({ ...userData, avatar: res.avatar }));
+      })
+      .catch(auth.responseError);
   }
 
   function handleChangeAuthMethod(otherModal) {
@@ -259,15 +264,18 @@ function App() {
     // console.log(`Token retrieved on refresh: ${token}`);
     if (!token) return;
 
-    auth.getUserInfo(token).then((res) => {
-      // console.log(res);
-      // console.log("isLoggedIn: ", isLoggedIn);
-      const { name, email, avatar, _id } = res;
-      setIsLoggedIn(true);
-      // console.log("isLoggedIn: ", isLoggedIn);
-      setUserData({ name, email, avatar, _id });
-      navigate("/");
-    });
+    auth
+      .getUserInfo(token)
+      .then((res) => {
+        // console.log(res);
+        // console.log("isLoggedIn: ", isLoggedIn);
+        const { name, email, avatar, _id } = res;
+        setIsLoggedIn(true);
+        // console.log("isLoggedIn: ", isLoggedIn);
+        setUserData({ name, email, avatar, _id });
+        navigate("/");
+      })
+      .catch(auth.responseError);
   }, []);
 
   useEffect(() => {
