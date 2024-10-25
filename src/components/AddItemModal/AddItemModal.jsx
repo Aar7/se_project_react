@@ -10,7 +10,6 @@ function AddItemModal(props) {
 
   useEffect(() => {
     if (!props.activeModal) {
-      document.getElementById("add-garment").reset();
       setGarmentNameInput("");
       setImageUrl("");
       setWeatherTypeInput("");

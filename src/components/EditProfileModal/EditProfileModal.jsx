@@ -14,9 +14,6 @@ function EditProfileModal(props) {
 
   useEffect(() => {
     if (!props.activeModal) {
-      document.getElementById("edit-profile-info").reset();
-      // setNewNameInput("");
-      // setNewAvatarInput("");
       setNewNameInput(name);
       setNewAvatarInput(avatar);
     }

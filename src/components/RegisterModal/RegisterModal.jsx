@@ -10,7 +10,6 @@ function RegisterModal(props) {
   const [avatarUrlInput, setAvatarUrlInput] = useState("");
   useEffect(() => {
     if (!props.activeModal) {
-      document.getElementById("register-user").reset();
       setEmailInput("");
       setPasswordInput("");
       setNameInput("");

@@ -8,7 +8,6 @@ function LoginModal(props) {
   const [loginPasswordInput, setLoginPasswordInput] = useState("");
   useEffect(() => {
     if (!props.activeModal) {
-      document.getElementById("login-user").reset();
       setLoginEmailInput("");
       setLoginPasswordInput("");
     }
