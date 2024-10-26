@@ -1,26 +1,18 @@
-import { useContext, useEffect, useState } from "react";
-import {
-  Link,
-  NavLink,
-  Routes,
-  Route,
-  Navigate,
-  useNavigate,
-} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import "./App.css";
 import * as auth from "../utils/auth.js";
 import { setToken, getToken } from "../utils/token.js";
+
 // OTHER IMPORTS
-import defaultContent from "../utils/defaultContent.js";
 import WeatherApi from "../utils/WeatherApi.js";
 import GarmentsApi from "../utils/GarmentsApi.js";
 import { constants } from "../utils/constants.js";
-// import Forms from "./ModalWithForm/Forms.jsx";
+
 // COMPONENT IMPORTS
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
-// import ModalWithForm from "./ModalWithForm/ModalWithForm.jsx";
 import ItemModal from "./ItemModal/ItemModal.jsx";
 import Profile from "./Profile/Profile.jsx";
 import AddItemModal from "./AddItemModal/AddItemModal.jsx";
@@ -41,13 +33,13 @@ const garmentsApi = new GarmentsApi();
 
 // APP START
 function App() {
-  const cardObject = useContext(CardObjectContext);
-
-  // STATE DECLARATIONS
+  // *** *** *** *** *** *** *** *** *** *** *** *
+  // STATE DECs STATE DECs STATE DECs STATE DECs *
+  // STATE DECs STATE DECs STATE DECs STATE DECs *
+  // *** *** *** *** *** *** *** *** *** *** *** *
   const [weatherData, setWeatherData] = useState({
     temperature: { F: 0, C: 0 },
   });
-  // const [clothingItems, setClothingItems] = useState(defaultContent);
   const [clothingItems, setClothingItems] = useState([
     /*     {
       _id: "",
@@ -84,11 +76,13 @@ function App() {
     avatar: "",
     _id: "",
   });
-  // const [currentUser, setCurrentUser] = useState("");
 
   const navigate = useNavigate();
 
-  // FUNCTION DECLARATIONS
+  // *** *** *** *** *** *** *** *** *** *** *
+  // FN DECs FN DECs FN DECs FN DECs FN DECs *
+  // FN DECs FN DECs FN DECs FN DECs FN DECs *
+  // *** *** *** *** *** *** *** *** *** *** *
   function requestWeatherData() {
     weather
       .fetchData()
@@ -258,7 +252,12 @@ function App() {
     setActiveModal(otherModal);
   }
 
-  // EFFECTS
+  // *** *** *** *** *** *** *** *** *** *** *
+  // EFFECTS EFFECTS EFFECTS EFFECTS EFFECTS *
+  // EFFECTS EFFECTS EFFECTS EFFECTS EFFECTS *
+  // *** *** *** *** *** *** *** *** *** *** *
+
+  // Logs in user corresponding to the jwt save in localstorage
   useEffect(() => {
     const token = getToken();
     // console.log(`Token retrieved on refresh: ${token}`);
@@ -278,6 +277,8 @@ function App() {
       .catch(auth.responseError);
   }, []);
 
+  // Gets garment data from the database through an API call
+  // Sets the returned objects to the clothingItems array
   useEffect(() => {
     requestWeatherData();
     garmentsApi
@@ -288,6 +289,7 @@ function App() {
       .catch((error) => console.log(error));
   }, []);
 
+  // Adds 'Esc' event listener to document when activeModal state is not falsy
   useEffect(() => {
     if (!activeModal) return;
 
@@ -325,7 +327,6 @@ function App() {
                 element={
                   <Main
                     weatherData={weatherData}
-                    // clothingItems={clothingItems}
                     weatherType={weatherType}
                     activeModal={activeModal}
                     setActiveModal={setActiveModal}
