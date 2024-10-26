@@ -214,7 +214,7 @@ function App() {
         setActiveModal("login-user");
         navigate("/login");
       })
-      .then(handleCloseModal())
+      .then(handleCloseModal)
       .catch(auth.responseError);
   }
 
@@ -250,7 +250,7 @@ function App() {
         console.log(res);
         setUserData((userData) => ({ ...userData, ...res }));
       })
-      .then(handleCloseModal())
+      .then(handleCloseModal)
       .catch(auth.responseError);
   }
 
