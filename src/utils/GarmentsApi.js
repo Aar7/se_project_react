@@ -1,6 +1,7 @@
 export default class GarmentsApi {
   constructor() {
-    this.baseUrl = "http://localhost:3001/";
+    // this.baseUrl = "http://localhost:3001/";
+    this.baseUrl = "http://34.72.174.88:3001/";
   }
 
   async _checkResponse(res) {
