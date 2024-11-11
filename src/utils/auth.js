@@ -1,5 +1,9 @@
 // export const BASE_URL = "http://localhost:3001";
-export const BASE_URL = "http://34.72.174.88:3001";
+// export const BASE_URL = "http://34.72.174.88:3001";
+export const BASE_URL =
+  process.env === "production"
+    ? "https://api.aarwtwr.fairuse.org"
+    : "http://localhost:3001";
 
 async function checkResponse(res) {
   return res.ok
