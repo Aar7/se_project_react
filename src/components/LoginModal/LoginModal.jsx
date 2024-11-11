@@ -9,14 +9,14 @@ function LoginModal(props) {
     event.preventDefault();
 
     const { email, password } = values;
-    console.log(email == false);
-    console.log(password == false);
+    // console.log(email == false);
+    // console.log(password == false);
 
     if ((email || password) == false) {
       return alert("Please fill in all fields.");
     }
 
-    console.log("Submitted form values: ", values);
+    // console.log("Submitted form values: ", values);
 
     props.onLogin({
       email: email,

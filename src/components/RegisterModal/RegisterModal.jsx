@@ -10,10 +10,10 @@ function RegisterModal(props) {
     event.preventDefault();
     const { name, avatarUrl, email, password } = values;
 
-    console.log(email == false);
-    console.log(password == false);
-    console.log(name == false);
-    console.log(avatarUrl == false);
+    // console.log(email == false);
+    // console.log(password == false);
+    // console.log(name == false);
+    // console.log(avatarUrl == false);
 
     if ((email || password || name || avatarUrl) == false) {
       return alert("Please fill in all fields.");

@@ -10,9 +10,9 @@ function AddItemModal(props) {
     event.preventDefault();
     const { name, weather, imageUrl } = values;
     // the following conditional may be removed when form validation is set up properly
-    console.log(name == false);
-    console.log(imageUrl == false);
-    console.log(weather == false);
+    // console.log(name == false);
+    // console.log(imageUrl == false);
+    // console.log(weather == false);
     if (name | imageUrl | (weather == false)) {
       return alert("Please fill in all fields.");
     }
