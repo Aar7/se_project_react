@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && scp -r ./dist/* aaronmeighoo1@aarwtwr.example.com:/home/aaronmeighoo1/frontend"
+    "deploy": "npm run build && scp -r ./dist/* aaronmeighoo1@aarwtwr.fairuse.org:/home/aaronmeighoo1/frontend"
   },
   "dependencies": {
     "react": "^18.3.1",
