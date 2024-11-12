@@ -1,7 +1,7 @@
 import "./Main.css";
 import WeatherCard from "./WeatherCard/WeatherCard";
 import ItemCard from "./ItemCard/ItemCard";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { ClothingListContext } from "../../contexts/ClothingListContext";
 

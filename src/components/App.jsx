@@ -48,12 +48,16 @@ function App() {
       weather: "",
     }, */
   ]);
-  const [currentDate, setCurrentDate] = useState(
-    new Date().toLocaleString("default", {
-      month: "long",
-      day: "numeric",
-    })
-  );
+  // const [currentDate, setCurrentDate] = useState(
+  //   new Date().toLocaleString("default", {
+  //     month: "long",
+  //     day: "numeric",
+  //   })
+  // );
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
   const [currentLocation, setCurrentLocation] = useState("Earth");
   const [weatherType, setWeatherType] = useState("sunny");
   const [itemCardName, setItemCardName] = useState("Default Name");
@@ -199,7 +203,7 @@ function App() {
       .then((res) => {
         console.log(res);
         setIsLoggedIn(true);
-        setCurrentUser(res._id);
+        // setCurrentUser(res._id);
         return res;
       })
       .then((res) => {

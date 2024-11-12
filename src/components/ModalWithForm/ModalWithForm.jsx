@@ -4,7 +4,7 @@ function ModalWithForm(props) {
   return (
     <div
       className={`modal__wrapper ${props.isOpen ? "modal_opened" : ""}`}
-      onClick={(event) => {
+      onClick={() => {
         props.onCloseModal();
       }}
     >
@@ -17,7 +17,7 @@ function ModalWithForm(props) {
         <h2 className="modal__form-title">{props.formTitle}</h2>
         <button
           className="button modal__close-button"
-          onClick={(event) => {
+          onClick={() => {
             props.onCloseModal();
           }}
         ></button>

@@ -1,8 +1,8 @@
 import "./Profile.css";
 import ClothesSection from "./ClothesSection/ClothesSection";
 import SideBar from "./SideBar/SideBar";
-import { useContext } from "react";
-import { ClothingListContext } from "../../contexts/ClothingListContext";
+// import { useContext } from "react";
+// import { ClothingListContext } from "../../contexts/ClothingListContext";
 // import { ClothingListContext } from "../../contexts/ClothingListContext";
 
 function Profile(props) {

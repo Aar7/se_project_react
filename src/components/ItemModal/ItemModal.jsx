@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import "./ItemModal.css";
 import { CardObjectContext } from "../../contexts/CardObjectContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
