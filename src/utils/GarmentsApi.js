@@ -4,7 +4,7 @@ export default class GarmentsApi {
     // this.baseUrl = "http://34.72.174.88:3001/";
     this.baseUrl =
       process.env.NODE_ENV === "production"
-        ? "https://api.aarwtwr.fairuse.org/"
+        ? "https://api.aarwtwr.crabdance.com/"
         : "http://localhost:3001/";
   }
 
