@@ -29,10 +29,12 @@ export default class GarmentsApi {
 
   async saveGarmentData(cardData, token) {
     console.log(`[GarmentsApi] garmentsApi.saveGarmentData called!`);
-
     return this._request(`${this.baseUrl}items`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: token },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
       body: JSON.stringify(cardData),
     });
   }
